@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://tk4ot5vnv8t5"]
+
+[ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/machines/tutorial/bg_tile_blue_lines.png" id="1_dl1bo"]
+[ext_resource type="Texture2D" uid="uid://c1hsu6ff3h4lg" path="res://art/machines/tutorial/bg_clouds.png" id="2_ld3sr"]
+[ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/machines/tutorial/machine_bounds.png" id="2_uya77"]
+[ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/machines/tutorial/bg_doodles.png" id="3_2ba6w"]
+[ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/machines/tutorial/flipper_lane.png" id="3_4874o"]
+[ext_resource type="PackedScene" uid="uid://bx5wqcdtukyv5" path="res://game/flipper.tscn" id="4_6pi0p"]
+[ext_resource type="PackedScene" uid="uid://8udor3evj7v7" path="res://game/ball.tscn" id="5_0ilhg"]
+[ext_resource type="PackedScene" uid="uid://c7qeo0om0wc7l" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
+
+[node name="Machine" type="PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 800)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_dl1bo")
+stretch_mode = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ld3sr")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_2ba6w")
+centered = false
+
+[node name="Box" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D_Box" type="Sprite2D" parent="Box"]
+texture = ExtResource("2_uya77")
+centered = false
+
+[node name="Collisions_Top" type="CollisionPolygon2D" parent="Box"]
+position = Vector2(250, 400)
+polygon = PackedVector2Array(-245, -219, -243, -240, -235, -260, -221, -280, -200, -300, -169, -319, -150, -328, -130, -335, -109, -342, -90, -346, -70, -349, -50, -352, -30, -353, -10, -354, 11, -354, 31, -353, 50, -352, 70, -349, 90, -346, 110, -341, 130, -335, 150, -328, 171, -319, 200, -300, 221, -280, 235, -259, 242, -240, 245, -220, 245, -40, 250, -40, 250, -400, -250, -400, -250, -220, -250, -40, -245, -40)
+
+[node name="Collisions_Bottom" type="CollisionPolygon2D" parent="Box"]
+position = Vector2(250, 400)
+polygon = PackedVector2Array(-245, -60, -250, -60, -250, 400, 250, 400, 250, -60, 245, -60, 245, 354, 225, 354, 225, 180.176, 225, -225, 220, -225, 220, 180, 212, 200, 199, 220, 184, 240, 167, 260, 148, 280, 128, 300, 105, 320, 81, 340, 53, 360, 37, 369, 19, 376, -45, 376, -63, 369, -79, 360, -107, 340, -131, 320, -153, 300, -173, 280, -192, 260, -209, 240, -224, 220, -237, 200, -245, 180)
+
+[node name="LeftGuide" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D_LeftGuide" type="Sprite2D" parent="LeftGuide"]
+position = Vector2(89.3, 595.2)
+texture = ExtResource("3_4874o")
+
+[node name="Collisions_LeftGuide" type="CollisionPolygon2D" parent="LeftGuide"]
+position = Vector2(233.3, 384.2)
+polygon = PackedVector2Array(-190, 113.015, -190, 193, -84, 299, -84, 303, -88, 309, -94, 313, -100, 313, -107, 309, -205, 199, -205, 113, -204, 110, -202, 109, -193, 109, -191, 110)
+
+[node name="RightGuide" type="StaticBody2D" parent="."]
+position = Vector2(475, 0)
+scale = Vector2(-1, 1)
+
+[node name="Sprite2D_LeftGuide" type="Sprite2D" parent="RightGuide"]
+position = Vector2(87.7, 594.2)
+texture = ExtResource("3_4874o")
+
+[node name="Collisions_LeftGuide" type="CollisionPolygon2D" parent="RightGuide"]
+position = Vector2(231.7, 383.2)
+polygon = PackedVector2Array(-190, 113.015, -190, 193, -84, 299, -84, 303, -88, 309, -94, 313, -100, 313, -107, 309, -205, 199, -205, 113, -204, 110, -202, 109, -193, 109, -191, 110)
+
+[node name="FlipperLeft" parent="." instance=ExtResource("4_6pi0p")]
+position = Vector2(155, 696)
+
+[node name="FlipperRight" parent="." instance=ExtResource("4_6pi0p")]
+position = Vector2(323, 696)
+scale = Vector2(-1, 1)
+
+[node name="Ball" parent="." instance=ExtResource("5_0ilhg")]
+position = Vector2(52, 266)
+linear_velocity = Vector2(100, 0)
+
+[node name="Sling" parent="." instance=ExtResource("8_hrvvv")]
+position = Vector2(114, 567)
+
+[node name="Sling2" parent="." instance=ExtResource("8_hrvvv")]
+position = Vector2(365, 567)
+scale = Vector2(-1, 1)
