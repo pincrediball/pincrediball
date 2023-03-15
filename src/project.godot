@@ -18,6 +18,10 @@ boot_splash/image="res://art/header.png"
 config/icon="res://art/logo.png"
 boot_splash/minimum_display_time=1000
 
+[autoload]
+
+Scoring="*res://game/scoring.gd"
+
 [display]
 
 window/size/viewport_width=1600
