@@ -7,7 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cfcf7eveokcg5" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
-[ext_resource type="PackedScene" uid="uid://qjtheyuoutnw" path="res://game/controls.tscn" id="8_agiy6"]
+
+[sub_resource type="GDScript" id="GDScript_2jvih"]
+script/source = "extends Control
+
+func _on_button_button_up():
+	$machine.play()
+"
 
 [sub_resource type="FontVariation" id="FontVariation_2drok"]
 
@@ -23,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_2jvih")
 metadata/_edit_horizontal_guides_ = []
 metadata/_edit_vertical_guides_ = [550.0, 1050.0]
 
@@ -45,6 +52,7 @@ grow_vertical = 2
 texture = ExtResource("1_tgpce")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,11 +63,14 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="LeftSide" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(520, 0)
+[node name="LeftSide" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 
-[node name="LevelHeader" type="MarginContainer" parent="CenterContainer/HBoxContainer/LeftSide"]
+[node name="LeftSideContent" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide"]
+layout_mode = 2
+
+[node name="LevelHeader" type="MarginContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 24
@@ -67,40 +78,36 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide/LevelHeader"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
+[node name="Header" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Tutorial - Level 1"
 label_settings = SubResource("LabelSettings_h6tt2")
 
-[node name="Explanation" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
+[node name="Explanation" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Drag and drop a maximum of three bumpers onto the playfield to get the highest possible score!"
 label_settings = ExtResource("2_ksjyh")
 autowrap_mode = 2
 
-[node name="Toolbox" parent="CenterContainer/HBoxContainer/LeftSide" instance=ExtResource("3_5lpl1")]
+[node name="Toolbox" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent" instance=ExtResource("3_5lpl1")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 800)
 layout_mode = 2
-
-[node name="Main" type="AspectRatioContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="machine" parent="CenterContainer/HBoxContainer/VBoxContainer/Main" instance=ExtResource("1_b3inv")]
-layout_mode = 2
+color = Color(1, 0.976471, 0.768627, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
 [node name="RightSide" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -113,5 +120,37 @@ layout_mode = 2
 [node name="Score" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("7_ydt4m")]
 layout_mode = 2
 
-[node name="Controls" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("8_agiy6")]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.45098, 0.819608, 0.45098, 1)
+theme_override_colors/font_hover_color = Color(0.45098, 0.819608, 0.45098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270588, 1)
+text = "Run Playbook"
+
+[node name="machine" parent="." instance=ExtResource("1_b3inv")]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -400.0
+offset_right = 250.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlc8sof8w0pi4"]
+
+[ext_resource type="Script" path="res://game/tutorial/gate.gd" id="1_am2rc"]
+[ext_resource type="Texture2D" uid="uid://diac5e0c0x4lo" path="res://art/machines/tutorial/component_gate.png" id="1_xroxo"]
+[ext_resource type="Texture2D" uid="uid://dq1x1suwefv5n" path="res://art/machines/tutorial/component_gate_rollover.png" id="2_gvf0y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lj2cv"]
+radius = 3.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk03s"]
+size = Vector2(31, 27)
+
+[node name="Gate" type="StaticBody2D"]
+script = ExtResource("1_am2rc")
+
+[node name="Sprite2DWalls" type="Sprite2D" parent="."]
+texture = ExtResource("1_xroxo")
+
+[node name="Sprite2DRollOver" type="Sprite2D" parent="."]
+modulate = Color(0.16, 0.16, 0.16, 1)
+texture = ExtResource("2_gvf0y")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-18, 0)
+shape = SubResource("CapsuleShape2D_lj2cv")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="."]
+position = Vector2(19, 0)
+shape = SubResource("CapsuleShape2D_lj2cv")
+
+[node name="RollOverArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RollOverArea2D"]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_sk03s")
+
+[connection signal="body_exited" from="RollOverArea2D" to="." method="_on_roll_over_area_2d_body_exited"]

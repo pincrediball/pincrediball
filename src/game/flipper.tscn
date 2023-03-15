@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx5wqcdtukyv5"]
+[gd_scene load_steps=3 format=3 uid="uid://bx5wqcdtukyv5"]
 
 [ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/machines/tutorial/flipper.png" id="1_5pvjj"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1iujl"]
+bounce = 0.5
+
+[node name="RigidBody2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_1iujl")
+continuous_cd = 2
+freeze = true
+freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(31, 0)

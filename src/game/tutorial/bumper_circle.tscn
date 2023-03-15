@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds72loqfvudw5"]
+[gd_scene load_steps=5 format=3 uid="uid://ds72loqfvudw5"]
 
 [ext_resource type="Texture2D" uid="uid://6v4wgckwjtxt" path="res://art/machines/tutorial/component_bumper_circle.png" id="1_5uneb"]
+[ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_7mnp0"]
 [ext_resource type="Script" path="res://game/tutorial/bumper_circle.gd" id="1_cjumq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v3sfw"]
 radius = 19.0
 
 [node name="BumperCircle" type="StaticBody2D"]
+physics_material_override = ExtResource("1_7mnp0")
 script = ExtResource("1_cjumq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
