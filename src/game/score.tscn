@@ -8,6 +8,7 @@ font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_birc7"]
 font_names = PackedStringArray("Consolas", "Courier New")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_o35pc"]
 font = SubResource("SystemFont_birc7")

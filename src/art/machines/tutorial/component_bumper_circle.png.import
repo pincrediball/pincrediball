@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bscus68jw7e0b"
-path="res://.godot/imported/component_bumper_circular.png-8dc218e172e28c35979ffd9d80f293f8.ctex"
+uid="uid://6v4wgckwjtxt"
+path="res://.godot/imported/component_bumper_circle.png-c3197a5f186f95bb0a197b0d67107d73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/component_bumper_circular.png"
-dest_files=["res://.godot/imported/component_bumper_circular.png-8dc218e172e28c35979ffd9d80f293f8.ctex"]
+source_file="res://art/machines/tutorial/component_bumper_circle.png"
+dest_files=["res://.godot/imported/component_bumper_circle.png-c3197a5f186f95bb0a197b0d67107d73.ctex"]
 
 [params]
 

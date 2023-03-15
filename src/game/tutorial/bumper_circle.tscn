@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds72loqfvudw5"]
+
+[ext_resource type="Texture2D" uid="uid://6v4wgckwjtxt" path="res://art/machines/tutorial/component_bumper_circle.png" id="1_5uneb"]
+[ext_resource type="Script" path="res://game/tutorial/bumper_circle.gd" id="1_cjumq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3sfw"]
+radius = 19.0
+
+[node name="BumperCircle" type="StaticBody2D"]
+script = ExtResource("1_cjumq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5uneb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v3sfw")
