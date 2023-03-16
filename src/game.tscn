@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkm8htnfe2j7g"]
+
+[ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
+[ext_resource type="Texture2D" uid="uid://cpe6kddf874bs" path="res://art/bg_zinc_gradient.png" id="1_tgpce"]
+[ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_ksjyh"]
+[ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/toolbox.tscn" id="3_5lpl1"]
+[ext_resource type="PackedScene" path="res://game/playbook.tscn" id="5_t5wa1"]
+[ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
+[ext_resource type="Texture2D" uid="uid://pmtyabwubb8u" path="res://art/game/run_playbook_button.png" id="7_cys07"]
+[ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
+
+[sub_resource type="GDScript" id="GDScript_2jvih"]
+script/source = "extends Control
+
+func _on_button_button_up():
+	Scoring.reset_score()
+	$machine.play()
+"
+
+[sub_resource type="FontVariation" id="FontVariation_2drok"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6tt2"]
+font = SubResource("FontVariation_2drok")
+font_size = 44
+font_color = Color(0.984314, 0.74902, 0.141176, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_2jvih")
+metadata/_edit_horizontal_guides_ = []
+metadata/_edit_vertical_guides_ = [550.0, 1050.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.105882, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tgpce")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="LeftSide" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+
+[node name="LeftSideContent" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide"]
+layout_mode = 2
+
+[node name="LevelHeader" type="MarginContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+layout_mode = 2
+text = "Tutorial - Level 1"
+label_settings = SubResource("LabelSettings_h6tt2")
+
+[node name="Explanation" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+layout_mode = 2
+text = "Drag and drop a maximum of three bumpers onto the playfield to get the highest possible score!"
+label_settings = ExtResource("2_ksjyh")
+autowrap_mode = 2
+
+[node name="Toolbox" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent" instance=ExtResource("3_5lpl1")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 800)
+layout_mode = 2
+color = Color(1, 0.976471, 0.768627, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="RightSide" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Playbook" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("5_t5wa1")]
+layout_mode = 2
+
+[node name="Medals" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("6_18ytx")]
+layout_mode = 2
+
+[node name="Score" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("7_ydt4m")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.45098, 0.819608, 0.45098, 1)
+theme_override_colors/font_hover_color = Color(0.45098, 0.819608, 0.45098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270588, 1)
+theme_override_constants/h_separation = 8
+text = "Run Playbook"
+icon = ExtResource("7_cys07")
+
+[node name="machine" parent="." instance=ExtResource("1_b3inv")]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -400.0
+offset_right = 250.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/Button" to="." method="_on_button_button_up"]

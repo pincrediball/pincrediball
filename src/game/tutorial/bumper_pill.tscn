@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://c0uymxosrxkko" path="res://art/game/tutorial/component_bumper_pill.png" id="1_b71sv"]
+[ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_f6wnl"]
+[ext_resource type="Script" path="res://game/tutorial/bumper_pill.gd" id="1_hxuug"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oya8u"]
+radius = 9.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_crhwx"]
+radius = 5.0
+height = 94.0
+
+[node name="BumperPill" type="StaticBody2D"]
+physics_material_override = ExtResource("1_f6wnl")
+script = ExtResource("1_hxuug")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b71sv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_oya8u")
+
+[node name="SlingArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlingArea2D"]
+position = Vector2(6, 0)
+shape = SubResource("CapsuleShape2D_crhwx")

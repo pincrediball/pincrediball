@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_3egyw"]
+[ext_resource type="Texture2D" uid="uid://clkwn12rb1iu1" path="res://art/game/tutorial/component_sling.png" id="1_h8wmd"]
+[ext_resource type="Script" path="res://game/tutorial/sling.gd" id="1_jew7a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oshty"]
+radius = 6.31277
+height = 150.479
+
+[node name="Sling" type="StaticBody2D"]
+physics_material_override = ExtResource("1_3egyw")
+script = ExtResource("1_jew7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h8wmd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-33, -71, -32, -74, -29, -75, -26, -74, -24, -72, -23, -64, 30, 65, 33, 68, 33, 72, 30, 74, 27, 74, 24, 72, -33, 13)
+
+[node name="SlingArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlingArea2D"]
+position = Vector2(4, -2)
+rotation = -0.382798
+shape = SubResource("CapsuleShape2D_oshty")

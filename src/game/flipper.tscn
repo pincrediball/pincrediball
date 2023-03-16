@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw1vps7k815gg"]
+
+[ext_resource type="Script" path="res://game/flipper.gd" id="1_rv37f"]
+[ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/game/flipper.png" id="2_wuth4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rv37f")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+rotation = 0.610865
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(31, 0)
+texture = ExtResource("2_wuth4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+position = Vector2(31, 0)
+polygon = PackedVector2Array(-40, 3, -40, -3, -39, -6, -37, -8, -33, -10, -29, -10, 36, -5, 39, -4, 40, -2, 40, 1, 39, 3, 37, 4, -28, 9, -32, 9, -36, 8, -39, 6)

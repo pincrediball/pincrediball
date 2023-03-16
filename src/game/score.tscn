@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7gnqdufk7u88"]
+
+[ext_resource type="Script" path="res://game/score.gd" id="1_dmxya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rvfl"]
+font_size = 28
+font_color = Color(0.984314, 0.74902, 0.141176, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_birc7"]
+font_names = PackedStringArray("Consolas", "Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_o35pc"]
+font = SubResource("SystemFont_birc7")
+font_size = 38
+
+[node name="Score" type="PanelContainer"]
+script = ExtResource("1_dmxya")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 0
+
+[node name="HeaderLabel" type="Label" parent="VBoxContainer/MarginContainer1"]
+layout_mode = 2
+text = "Your Score"
+label_settings = SubResource("LabelSettings_5rvfl")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "0 points"
+label_settings = SubResource("LabelSettings_o35pc")
