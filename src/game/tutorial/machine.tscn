@@ -1,16 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://tk4ot5vnv8t5"]
+[gd_scene load_steps=13 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
-[ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/machines/tutorial/bg_tile_blue_lines.png" id="1_dl1bo"]
-[ext_resource type="Texture2D" uid="uid://c1hsu6ff3h4lg" path="res://art/machines/tutorial/bg_clouds.png" id="2_ld3sr"]
-[ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/machines/tutorial/machine_bounds.png" id="2_uya77"]
-[ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/machines/tutorial/bg_doodles.png" id="3_2ba6w"]
-[ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/machines/tutorial/flipper_lane.png" id="3_4874o"]
-[ext_resource type="PackedScene" uid="uid://bx5wqcdtukyv5" path="res://game/flipper.tscn" id="4_6pi0p"]
-[ext_resource type="PackedScene" uid="uid://c7qeo0om0wc7l" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
-[ext_resource type="PackedScene" uid="uid://ds72loqfvudw5" path="res://game/tutorial/bumper_circle.tscn" id="9_my46d"]
-[ext_resource type="PackedScene" uid="uid://v6xqepvlhyjv" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
-[ext_resource type="PackedScene" uid="uid://dlc8sof8w0pi4" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]
+[ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
+[ext_resource type="Texture2D" uid="uid://c1hsu6ff3h4lg" path="res://art/game/tutorial/bg_clouds.png" id="3_0e6op"]
+[ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/game/tutorial/bg_doodles.png" id="4_5dxhy"]
+[ext_resource type="PackedScene" uid="uid://dw1vps7k815gg" path="res://game/flipper.tscn" id="4_6pi0p"]
+[ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/game/tutorial/machine_bounds.png" id="5_addj0"]
+[ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/game/tutorial/flipper_lane.png" id="6_lvykr"]
+[ext_resource type="PackedScene" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
+[ext_resource type="PackedScene" path="res://game/tutorial/bumper_circle.tscn" id="9_my46d"]
+[ext_resource type="PackedScene" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
+[ext_resource type="PackedScene" uid="uid://byehi30jmar2b" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvr46"]
 size = Vector2(90, 12)
@@ -25,24 +25,24 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_dl1bo")
+texture = ExtResource("2_jtvk6")
 stretch_mode = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.294118)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ld3sr")
+texture = ExtResource("3_0e6op")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_2ba6w")
+texture = ExtResource("4_5dxhy")
 centered = false
 
 [node name="Box" type="StaticBody2D" parent="."]
 z_index = 50
 
 [node name="Sprite2D_Box" type="Sprite2D" parent="Box"]
-texture = ExtResource("2_uya77")
+texture = ExtResource("5_addj0")
 centered = false
 
 [node name="Collisions_Top" type="CollisionPolygon2D" parent="Box"]
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_uvr46")
 
 [node name="Sprite2D_LeftGuide" type="Sprite2D" parent="LeftGuide"]
 position = Vector2(89.3, 595.2)
-texture = ExtResource("3_4874o")
+texture = ExtResource("6_lvykr")
 
 [node name="Collisions_LeftGuide" type="CollisionPolygon2D" parent="LeftGuide"]
 position = Vector2(233.3, 384.2)
@@ -75,7 +75,7 @@ scale = Vector2(-1, 1)
 
 [node name="Sprite2D_LeftGuide" type="Sprite2D" parent="RightGuide"]
 position = Vector2(87.7, 594.2)
-texture = ExtResource("3_4874o")
+texture = ExtResource("6_lvykr")
 
 [node name="Collisions_LeftGuide" type="CollisionPolygon2D" parent="RightGuide"]
 position = Vector2(231.7, 383.2)

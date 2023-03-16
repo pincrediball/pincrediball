@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://588loi4efqgk"
-path="res://.godot/imported/bg_tile_blue_lines.png-9b448daee141c932d56d0fa2f9523152.ctex"
+uid="uid://dmcfrw3oe1auf"
+path="res://.godot/imported/machine_bounds.png-e301f10cff7d6beee6842d5065f0b089.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/bg_tile_blue_lines.png"
-dest_files=["res://.godot/imported/bg_tile_blue_lines.png-9b448daee141c932d56d0fa2f9523152.ctex"]
+source_file="res://art/game/tutorial/machine_bounds.png"
+dest_files=["res://.godot/imported/machine_bounds.png-e301f10cff7d6beee6842d5065f0b089.ctex"]
 
 [params]
 

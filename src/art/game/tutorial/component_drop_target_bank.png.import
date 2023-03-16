@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pmtyabwubb8u"
-path="res://.godot/imported/run_playbook_button.png-5ef8fcb83532bf5095b615fd1033c45c.ctex"
+uid="uid://ivuvlyep3afi"
+path="res://.godot/imported/component_drop_target_bank.png-60b8005423fd40405692d890592d9e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/run_playbook_button.png"
-dest_files=["res://.godot/imported/run_playbook_button.png-5ef8fcb83532bf5095b615fd1033c45c.ctex"]
+source_file="res://art/game/tutorial/component_drop_target_bank.png"
+dest_files=["res://.godot/imported/component_drop_target_bank.png-60b8005423fd40405692d890592d9e04.ctex"]
 
 [params]
 

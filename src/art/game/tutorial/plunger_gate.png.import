@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ivuvlyep3afi"
-path="res://.godot/imported/component_drop_target_bank.png-0fdbcbadee057b873cefa8a814586e17.ctex"
+uid="uid://bow6uwf786rd2"
+path="res://.godot/imported/plunger_gate.png-41f74b5c5e6c49920caa08b443398176.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/component_drop_target_bank.png"
-dest_files=["res://.godot/imported/component_drop_target_bank.png-0fdbcbadee057b873cefa8a814586e17.ctex"]
+source_file="res://art/game/tutorial/plunger_gate.png"
+dest_files=["res://.godot/imported/plunger_gate.png-41f74b5c5e6c49920caa08b443398176.ctex"]
 
 [params]
 

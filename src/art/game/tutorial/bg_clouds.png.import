@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0uymxosrxkko"
-path="res://.godot/imported/component_bumper_pill.png-d04b10289c3d370ca9fd5a6c6b06dca7.ctex"
+uid="uid://c1hsu6ff3h4lg"
+path="res://.godot/imported/bg_clouds.png-1a192c765be5b30e95e0190a4cad599e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/component_bumper_pill.png"
-dest_files=["res://.godot/imported/component_bumper_pill.png-d04b10289c3d370ca9fd5a6c6b06dca7.ctex"]
+source_file="res://art/game/tutorial/bg_clouds.png"
+dest_files=["res://.godot/imported/bg_clouds.png-1a192c765be5b30e95e0190a4cad599e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6v4wgckwjtxt"
-path="res://.godot/imported/component_bumper_circle.png-c3197a5f186f95bb0a197b0d67107d73.ctex"
+uid="uid://pmtyabwubb8u"
+path="res://.godot/imported/run_playbook_button.png-dced3646570c102edebe86a504f57a4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/component_bumper_circle.png"
-dest_files=["res://.godot/imported/component_bumper_circle.png-c3197a5f186f95bb0a197b0d67107d73.ctex"]
+source_file="res://art/game/run_playbook_button.png"
+dest_files=["res://.godot/imported/run_playbook_button.png-dced3646570c102edebe86a504f57a4a.ctex"]
 
 [params]
 

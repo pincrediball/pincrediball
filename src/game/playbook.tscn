@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfcf7eveokcg5"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cyexvvfl6ervy" path="res://art/machines/tutorial/plunger_icon.png" id="1_mkqa7"]
+[ext_resource type="Texture2D" uid="uid://cyexvvfl6ervy" path="res://art/game/plunger_icon.png" id="1_mkqa7"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_7nqg1"]
-[ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/machines/tutorial/flipper.png" id="3_xlenw"]
-[ext_resource type="Texture2D" uid="uid://5eh86sk4bsq1" path="res://art/machines/tutorial/tilt_symbol.png" id="4_lbtrl"]
+[ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/game/flipper.png" id="3_xlenw"]
+[ext_resource type="Texture2D" uid="uid://5eh86sk4bsq1" path="res://art/game/tilt_symbol.png" id="4_lbtrl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rj0p8"]
 font_size = 28

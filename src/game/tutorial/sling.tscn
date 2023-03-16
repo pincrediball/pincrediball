@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7qeo0om0wc7l"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_3egyw"]
-[ext_resource type="Texture2D" uid="uid://clkwn12rb1iu1" path="res://art/machines/tutorial/component_sling.png" id="1_h8wmd"]
+[ext_resource type="Texture2D" uid="uid://clkwn12rb1iu1" path="res://art/game/tutorial/component_sling.png" id="1_h8wmd"]
 [ext_resource type="Script" path="res://game/tutorial/sling.gd" id="1_jew7a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oshty"]

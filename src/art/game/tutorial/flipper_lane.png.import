@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1hsu6ff3h4lg"
-path="res://.godot/imported/bg_clouds.png-a2f071a34d329aade1b7f358994f964b.ctex"
+uid="uid://cs603d3w4khyh"
+path="res://.godot/imported/flipper_lane.png-db9fd496523a3163314cb05edca81d04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/bg_clouds.png"
-dest_files=["res://.godot/imported/bg_clouds.png-a2f071a34d329aade1b7f358994f964b.ctex"]
+source_file="res://art/game/tutorial/flipper_lane.png"
+dest_files=["res://.godot/imported/flipper_lane.png-db9fd496523a3163314cb05edca81d04.ctex"]
 
 [params]
 

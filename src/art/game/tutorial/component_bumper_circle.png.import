@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://covbjuco7o203"
-path="res://.godot/imported/ball.png-5641bf100beb84da7dcf7bbac70eceb4.ctex"
+uid="uid://6v4wgckwjtxt"
+path="res://.godot/imported/component_bumper_circle.png-5fe0f750fcc122a9cd5f07d3c9f25f43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/ball.png"
-dest_files=["res://.godot/imported/ball.png-5641bf100beb84da7dcf7bbac70eceb4.ctex"]
+source_file="res://art/game/tutorial/component_bumper_circle.png"
+dest_files=["res://.godot/imported/component_bumper_circle.png-5fe0f750fcc122a9cd5f07d3c9f25f43.ctex"]
 
 [params]
 

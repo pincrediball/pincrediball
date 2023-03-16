@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmcfrw3oe1auf"
-path="res://.godot/imported/machine_bounds.png-a714eb1e868d891f1946cf8746980e25.ctex"
+uid="uid://clkwn12rb1iu1"
+path="res://.godot/imported/component_sling.png-ff124d8ecd645422425ab53e2fc8db3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/machine_bounds.png"
-dest_files=["res://.godot/imported/machine_bounds.png-a714eb1e868d891f1946cf8746980e25.ctex"]
+source_file="res://art/game/tutorial/component_sling.png"
+dest_files=["res://.godot/imported/component_sling.png-ff124d8ecd645422425ab53e2fc8db3b.ctex"]
 
 [params]
 

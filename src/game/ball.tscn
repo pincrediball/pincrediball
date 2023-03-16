@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8udor3evj7v7"]
+[gd_scene load_steps=5 format=3 uid="uid://bjupscgakjqbf"]
 
-[ext_resource type="Texture2D" uid="uid://covbjuco7o203" path="res://art/machines/tutorial/ball.png" id="1_hp7w1"]
 [ext_resource type="Script" path="res://game/ball.gd" id="1_mbqm6"]
+[ext_resource type="Texture2D" uid="uid://covbjuco7o203" path="res://art/game/ball.png" id="2_5jw0c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ugwhi"]
 bounce = 0.1
@@ -17,7 +17,7 @@ contact_monitor = true
 script = ExtResource("1_mbqm6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hp7w1")
+texture = ExtResource("2_5jw0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ptw7t")

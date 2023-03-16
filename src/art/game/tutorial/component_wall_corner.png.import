@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byjmha21vcftx"
-path="res://.godot/imported/bg_center_box_rails.png-f679a816ce8a8718529a036978bcd602.ctex"
+uid="uid://2pqd1y4kcswx"
+path="res://.godot/imported/component_wall_corner.png-4706aeaa0b17bb5b0520a70748c9eae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/bg_center_box_rails.png"
-dest_files=["res://.godot/imported/bg_center_box_rails.png-f679a816ce8a8718529a036978bcd602.ctex"]
+source_file="res://art/game/tutorial/component_wall_corner.png"
+dest_files=["res://.godot/imported/component_wall_corner.png-4706aeaa0b17bb5b0520a70748c9eae8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diac5e0c0x4lo"
-path="res://.godot/imported/component_gate.png-dea4898c65a5554c0907a59f8aba1337.ctex"
+uid="uid://dq1x1suwefv5n"
+path="res://.godot/imported/component_gate_rollover.png-3af6575bddb9bdb4e11cdba076d1df95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/tutorial/component_gate.png"
-dest_files=["res://.godot/imported/component_gate.png-dea4898c65a5554c0907a59f8aba1337.ctex"]
+source_file="res://art/game/tutorial/component_gate_rollover.png"
+dest_files=["res://.godot/imported/component_gate_rollover.png-3af6575bddb9bdb4e11cdba076d1df95.ctex"]
 
 [params]
 
