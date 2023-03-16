@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/game/tutorial/machine_bounds.png" id="5_addj0"]
 [ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/game/tutorial/flipper_lane.png" id="6_lvykr"]
 [ext_resource type="Texture2D" uid="uid://bow6uwf786rd2" path="res://art/game/tutorial/plunger_gate.png" id="7_tk6d3"]
-[ext_resource type="PackedScene" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
+[ext_resource type="PackedScene" uid="uid://c2ikokn6p8d5d" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
 [ext_resource type="PackedScene" path="res://game/tutorial/bumper_circle.tscn" id="9_my46d"]
 [ext_resource type="PackedScene" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
 [ext_resource type="PackedScene" uid="uid://byehi30jmar2b" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]

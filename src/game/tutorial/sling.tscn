@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c2ikokn6p8d5d"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_3egyw"]
 [ext_resource type="Texture2D" uid="uid://clkwn12rb1iu1" path="res://art/game/tutorial/component_sling.png" id="1_h8wmd"]
