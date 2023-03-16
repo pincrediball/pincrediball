@@ -128,13 +128,6 @@ text = "Run Playbook"
 icon = ExtResource("7_cys07")
 
 [node name="machine" parent="." instance=ExtResource("1_b3inv")]
-clip_contents = false
-layout_mode = 2
-offset_left = 550.0
-offset_top = 50.0
-offset_right = 1050.0
-offset_bottom = 850.0
-grow_horizontal = 2
-grow_vertical = 2
+position = Vector2(550, 50)
 
 [connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/Button" to="." method="_on_button_button_up"]

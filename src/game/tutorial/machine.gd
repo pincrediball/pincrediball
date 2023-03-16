@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Node2D
 
 var ballScene = preload("res://game/ball.tscn")
 var ballStartPosition: Vector2 = Vector2(485, 730)
@@ -9,6 +9,7 @@ func _ready():
 
 func play(levelPlaybook):
 	get_tree().paused = false
+	get_tree().call_group("isResettablePinballComponent", "resetPinballComponent")
 	$FlipperLeft.reset(levelPlaybook.flipper_left_interval)
 	$FlipperRight.reset(levelPlaybook.flipper_right_interval)
 	get_tree().create_timer(levelPlaybook.plunge_delay).connect("timeout", plunge)
