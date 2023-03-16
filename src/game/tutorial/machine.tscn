@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpseboohqxgou"]
+[gd_scene load_steps=16 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://kvmadlhddsv6" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
 [ext_resource type="PackedScene" uid="uid://byehi30jmar2b" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]
 [ext_resource type="PackedScene" uid="uid://b8u0euuf01b5s" path="res://game/tutorial/wall_corner.tscn" id="12_i07d3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bg44k"]
+friction = 0.75
+bounce = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvr46"]
 size = Vector2(90, 12)
@@ -42,6 +46,7 @@ centered = false
 
 [node name="Box" type="StaticBody2D" parent="."]
 z_index = 50
+physics_material_override = SubResource("PhysicsMaterial_bg44k")
 
 [node name="Sprite2D_Box" type="Sprite2D" parent="Box"]
 texture = ExtResource("5_addj0")
@@ -136,13 +141,13 @@ position = Vector2(411, 390)
 rotation = -2.32426
 
 [node name="Gate" parent="." groups=["PlayerControlledComponent"] instance=ExtResource("12_g6mh8")]
-position = Vector2(120, 208)
+position = Vector2(119, 212)
 
 [node name="Gate2" parent="." groups=["PlayerControlledComponent"] instance=ExtResource("12_g6mh8")]
-position = Vector2(158, 208)
+position = Vector2(157, 212)
 
 [node name="Gate3" parent="." groups=["PlayerControlledComponent"] instance=ExtResource("12_g6mh8")]
-position = Vector2(196, 208)
+position = Vector2(195, 212)
 
 [node name="WallCorner" parent="." groups=["PlayerControlledComponent"] instance=ExtResource("12_i07d3")]
 position = Vector2(85, 166)

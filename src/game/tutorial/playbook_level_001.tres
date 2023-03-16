@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_v84le")
-plunge_delay = 0.3
-flipper_left_interval = 0.95
-flipper_right_interval = 1.0
+plunge_delay = 0.4
+flipper_left_interval = 1.0
+flipper_right_interval = 1.2
