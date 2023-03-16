@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpseboohqxgou"]
+[gd_scene load_steps=14 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://game/tutorial/bumper_circle.tscn" id="9_my46d"]
 [ext_resource type="PackedScene" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
 [ext_resource type="PackedScene" uid="uid://byehi30jmar2b" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]
+[ext_resource type="PackedScene" uid="uid://b8u0euuf01b5s" path="res://game/tutorial/wall_corner.tscn" id="12_i07d3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvr46"]
 size = Vector2(90, 12)
@@ -105,11 +106,11 @@ position = Vector2(379, 304)
 position = Vector2(323, 335)
 
 [node name="BumperPill" parent="." instance=ExtResource("10_jp6k0")]
-position = Vector2(128, 377)
+position = Vector2(260, 387)
 rotation = -0.747004
 
 [node name="BumperPill2" parent="." instance=ExtResource("10_jp6k0")]
-position = Vector2(404, 377)
+position = Vector2(411, 390)
 rotation = -2.32426
 
 [node name="Gate" parent="." instance=ExtResource("12_g6mh8")]
@@ -120,5 +121,14 @@ position = Vector2(157, 208)
 
 [node name="Gate3" parent="." instance=ExtResource("12_g6mh8")]
 position = Vector2(195, 208)
+
+[node name="WallCorner" parent="." instance=ExtResource("12_i07d3")]
+position = Vector2(85, 166)
+rotation = 0.858154
+
+[node name="WallCorner2" parent="." instance=ExtResource("12_i07d3")]
+position = Vector2(406, 247)
+rotation = -0.507242
+scale = Vector2(-1, 1)
 
 [connection signal="body_entered" from="DrainGutterArea2D" to="." method="_on_drain_gutter_area_2d_body_entered"]
