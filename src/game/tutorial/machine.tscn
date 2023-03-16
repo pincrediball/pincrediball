@@ -133,13 +133,13 @@ position = Vector2(411, 390)
 rotation = -2.32426
 
 [node name="Gate" parent="." instance=ExtResource("12_g6mh8")]
-position = Vector2(119, 208)
+position = Vector2(120, 208)
 
 [node name="Gate2" parent="." instance=ExtResource("12_g6mh8")]
-position = Vector2(157, 208)
+position = Vector2(158, 208)
 
 [node name="Gate3" parent="." instance=ExtResource("12_g6mh8")]
-position = Vector2(195, 208)
+position = Vector2(196, 208)
 
 [node name="WallCorner" parent="." instance=ExtResource("12_i07d3")]
 position = Vector2(85, 166)

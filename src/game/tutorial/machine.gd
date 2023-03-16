@@ -5,17 +5,18 @@ var ballStartPosition: Vector2 = Vector2(485, 730)
 var ballPlungeVelocity: Vector2 = Vector2(0, -1500)
 
 func _ready():
-	get_tree().paused = true
+	stop()
 
-func play():
+func play(levelPlaybook):
 	get_tree().paused = false
-	plunge()
-	$FlipperLeft.isRunning = true
-	$FlipperRight.isRunning = true
+	$FlipperLeft.reset(levelPlaybook.flipper_left_interval)
+	$FlipperRight.reset(levelPlaybook.flipper_right_interval)
+	get_tree().create_timer(levelPlaybook.plunge_delay).connect("timeout", plunge)
 
 func stop():
-	$FlipperLeft.isRunning = false
-	$FlipperRight.isRunning = false
+	get_tree().paused = true
+	$FlipperLeft.stop()
+	$FlipperRight.stop()
 
 func plunge():
 	var ball: RigidBody2D = ballScene.instantiate()

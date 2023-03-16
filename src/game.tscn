@@ -1,21 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
-[ext_resource type="Texture2D" uid="uid://cpe6kddf874bs" path="res://art/bg_zinc_gradient.png" id="1_tgpce"]
+[ext_resource type="Script" path="res://game.gd" id="1_hdvhs"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_ksjyh"]
+[ext_resource type="Texture2D" uid="uid://cop3ke6r1ehak" path="res://art/bg_game_screen.png" id="2_yhopt"]
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
 [ext_resource type="Texture2D" uid="uid://pmtyabwubb8u" path="res://art/game/run_playbook_button.png" id="7_cys07"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
-
-[sub_resource type="GDScript" id="GDScript_2jvih"]
-script/source = "extends Control
-
-func _on_button_button_up():
-	Scoring.reset_score()
-	$machine.play()
-"
 
 [sub_resource type="FontVariation" id="FontVariation_2drok"]
 
@@ -31,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_2jvih")
+script = ExtResource("1_hdvhs")
 metadata/_edit_horizontal_guides_ = []
 metadata/_edit_vertical_guides_ = [550.0, 1050.0]
 
@@ -45,13 +38,12 @@ grow_vertical = 2
 color = Color(0.0941176, 0.0941176, 0.105882, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 1600.0
+offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_tgpce")
+texture = ExtResource("2_yhopt")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 process_mode = 3
@@ -66,7 +58,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="LeftSide" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(550, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
 [node name="LeftSideContent" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide"]
@@ -104,7 +96,7 @@ layout_mode = 2
 color = Color(1, 0.976471, 0.768627, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(550, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
@@ -137,16 +129,11 @@ icon = ExtResource("7_cys07")
 
 [node name="machine" parent="." instance=ExtResource("1_b3inv")]
 clip_contents = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -400.0
-offset_right = 250.0
-offset_bottom = 400.0
+layout_mode = 2
+offset_left = 550.0
+offset_top = 50.0
+offset_right = 1050.0
+offset_bottom = 850.0
 grow_horizontal = 2
 grow_vertical = 2
 
