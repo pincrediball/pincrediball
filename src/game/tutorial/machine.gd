@@ -23,7 +23,6 @@ func plunge():
 	ball.linear_velocity = ballPlungeVelocity
 	add_child(ball)
 
-
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):
 		body.queue_free()
@@ -31,3 +30,8 @@ func _on_drain_gutter_area_2d_body_entered(body):
 		var size = balls.size()
 		if size == 0 or (size == 1 and balls[0] == body):
 			stop()
+
+func _on_plunger_area_2d_body_exited(body):
+	if body.is_in_group("isBall"):
+		var ball = body as RigidBody2D
+		ball.set_collision_mask_value(2, true)
