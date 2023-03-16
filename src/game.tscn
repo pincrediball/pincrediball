@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1ttwwf710egt"]
+[gd_scene load_steps=12 format=3 uid="uid://b1ttwwf710egt"]
 
 [ext_resource type="PackedScene" uid="uid://tk4ot5vnv8t5" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Texture2D" uid="uid://cpe6kddf874bs" path="res://art/bg_zinc_gradient.png" id="1_tgpce"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" uid="uid://cfcf7eveokcg5" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
+[ext_resource type="Texture2D" uid="uid://pmtyabwubb8u" path="res://art/run_playbook_button.png" id="7_rqn42"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
 
 [sub_resource type="GDScript" id="GDScript_2jvih"]
 script/source = "extends Control
 
 func _on_button_button_up():
+	Scoring.reset_score()
 	$machine.play()
 "
 
@@ -123,20 +125,15 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/MarginContainer"]
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.45098, 0.819608, 0.45098, 1)
 theme_override_colors/font_hover_color = Color(0.45098, 0.819608, 0.45098, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270588, 1)
+theme_override_constants/h_separation = 8
 text = "Run Playbook"
+icon = ExtResource("7_rqn42")
 
 [node name="machine" parent="." instance=ExtResource("1_b3inv")]
 clip_contents = false
@@ -153,4 +150,4 @@ offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/HBoxContainer/Button" to="." method="_on_button_button_up"]

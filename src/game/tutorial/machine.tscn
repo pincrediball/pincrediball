@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tk4ot5vnv8t5"]
+[gd_scene load_steps=13 format=3 uid="uid://tk4ot5vnv8t5"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/machines/tutorial/bg_tile_blue_lines.png" id="1_dl1bo"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://ds72loqfvudw5" path="res://game/tutorial/bumper_circle.tscn" id="9_my46d"]
 [ext_resource type="PackedScene" uid="uid://v6xqepvlhyjv" path="res://game/tutorial/bumper_pill.tscn" id="10_jp6k0"]
 [ext_resource type="PackedScene" uid="uid://dlc8sof8w0pi4" path="res://game/tutorial/gate.tscn" id="12_g6mh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvr46"]
+size = Vector2(90, 12)
 
 [node name="Machine" type="PanelContainer"]
 clip_contents = true
@@ -36,6 +39,7 @@ texture = ExtResource("3_2ba6w")
 centered = false
 
 [node name="Box" type="StaticBody2D" parent="."]
+z_index = 50
 
 [node name="Sprite2D_Box" type="Sprite2D" parent="Box"]
 texture = ExtResource("2_uya77")
@@ -47,7 +51,13 @@ polygon = PackedVector2Array(-245, -219, -243, -240, -235, -260, -221, -280, -20
 
 [node name="Collisions_Bottom" type="CollisionPolygon2D" parent="Box"]
 position = Vector2(250, 400)
-polygon = PackedVector2Array(-245, -60, -250, -60, -250, 400, 250, 400, 250, -60, 245, -60, 245, 354, 225, 354, 225, 180.176, 225, -225, 220, -225, 220, 180, 212, 200, 199, 220, 184, 240, 167, 260, 148, 280, 128, 300, 105, 320, 81, 340, 53, 360, 37, 369, 19, 376, -45, 376, -63, 369, -79, 360, -107, 340, -131, 320, -153, 300, -173, 280, -192, 260, -209, 240, -224, 220, -237, 200, -245, 180)
+polygon = PackedVector2Array(-245, -60, -250, -60, -250, 400, 250, 400, 250, -60, 245, -60, 245, 354, 225, 354, 225, 180.176, 225, -225, 220, -225, 220, 180, 212, 200, 199, 220, 184, 240, 167, 260, 148, 280, 128, 300, 105, 320, 81, 340, 53, 360, 37, 369, 19, 376, 13, 397, -40, 397, -45, 376, -63, 369, -79, 360, -107, 340, -131, 320, -153, 300, -173, 280, -192, 260, -209, 240, -224, 220, -237, 200, -245, 180)
+
+[node name="DrainGutterArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrainGutterArea2D"]
+position = Vector2(236, 794)
+shape = SubResource("RectangleShape2D_uvr46")
 
 [node name="LeftGuide" type="StaticBody2D" parent="."]
 
@@ -110,3 +120,5 @@ position = Vector2(157, 208)
 
 [node name="Gate3" parent="." instance=ExtResource("12_g6mh8")]
 position = Vector2(195, 208)
+
+[connection signal="body_entered" from="DrainGutterArea2D" to="." method="_on_drain_gutter_area_2d_body_entered"]

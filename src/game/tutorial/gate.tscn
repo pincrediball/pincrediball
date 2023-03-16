@@ -9,7 +9,7 @@ radius = 3.0
 height = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk03s"]
-size = Vector2(31, 27)
+size = Vector2(31, 16)
 
 [node name="Gate" type="StaticBody2D"]
 script = ExtResource("1_am2rc")
@@ -32,7 +32,7 @@ shape = SubResource("CapsuleShape2D_lj2cv")
 [node name="RollOverArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollOverArea2D"]
-position = Vector2(0.5, 2.5)
+position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_sk03s")
 
 [connection signal="body_exited" from="RollOverArea2D" to="." method="_on_roll_over_area_2d_body_exited"]

@@ -1,20 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx5wqcdtukyv5"]
 
 [ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/machines/tutorial/flipper.png" id="1_5pvjj"]
+[ext_resource type="Script" path="res://game/flipper.gd" id="1_rv37f"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1iujl"]
-bounce = 0.5
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rv37f")
 
-[node name="RigidBody2D" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_1iujl")
-continuous_cd = 2
-freeze = true
-freeze_mode = 1
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+rotation = 0.610865
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(31, 0)
 texture = ExtResource("1_5pvjj")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
 position = Vector2(31, 0)
 polygon = PackedVector2Array(-40, 3, -40, -3, -39, -6, -37, -8, -33, -10, -29, -10, 36, -5, 39, -4, 40, -2, 40, 1, 39, 3, 37, 4, -28, 9, -32, 9, -36, 8, -39, 6)
