@@ -28,3 +28,5 @@ shape = SubResource("CapsuleShape2D_oya8u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlingArea2D"]
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_crhwx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

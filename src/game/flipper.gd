@@ -1,5 +1,13 @@
 extends Node2D
 
+const sounds = [
+	preload("res://sound/flipper-001.wav"),
+	preload("res://sound/flipper-002.wav"),
+	preload("res://sound/flipper-003.wav"),
+	preload("res://sound/flipper-004.wav"),
+	preload("res://sound/flipper-005.wav"),
+]
+
 # Settings:
 var max_rotation: float = -85
 var rest_angle: float = 35
@@ -45,3 +53,5 @@ func _physics_process(delta):
 func _on_timer_timeout():
 	assert(state == FlipperState.Resting, "Flipper should fire but was not yet resting!")
 	state = FlipperState.GoingUp
+	$AudioStreamPlayer.stream = sounds[randi() % len(sounds)]
+	$AudioStreamPlayer.play()

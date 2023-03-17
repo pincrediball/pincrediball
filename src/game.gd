@@ -16,6 +16,7 @@ var currentLevelPlaybook: Resource
 func _ready():
 	currentLevel = 1
 	%Playbook.playbookResource = currentLevelPlaybook
+	Music.startGameMusic()
 
 func _on_button_button_up():
 	Scoring.reset_score()
