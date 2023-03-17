@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://v1wcljtmj368"]
+
+[sub_resource type="SystemFont" id="SystemFont_birc7"]
+font_names = PackedStringArray("Consolas", "Courier New")
+subpixel_positioning = 0
+
+[resource]
+font = SubResource("SystemFont_birc7")
+font_size = 38

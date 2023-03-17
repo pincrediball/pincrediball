@@ -4,9 +4,19 @@ var playbooksByLevel = {
 	1: preload("res://game/tutorial/playbook_level_001.tres"),
 }
 
-var currentLevel: int = 1
+@export var currentLevel: int:
+	get:
+		return currentLevel
+	set(value):
+		currentLevel = value
+		currentLevelPlaybook = playbooksByLevel[currentLevel]
+
+var currentLevelPlaybook: Resource
+
+func _ready():
+	currentLevel = 1
+	%Playbook.playbookResource = currentLevelPlaybook
 
 func _on_button_button_up():
 	Scoring.reset_score()
-	var levelPlaybook = playbooksByLevel[currentLevel]
-	$machine.play(levelPlaybook)
+	%machine.play(currentLevelPlaybook)
