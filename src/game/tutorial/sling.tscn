@@ -24,3 +24,5 @@ polygon = PackedVector2Array(-33, -71, -32, -74, -29, -75, -26, -74, -24, -72, -
 position = Vector2(4, -2)
 rotation = -0.382798
 shape = SubResource("CapsuleShape2D_oshty")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

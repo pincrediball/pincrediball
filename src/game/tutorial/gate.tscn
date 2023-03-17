@@ -11,7 +11,7 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk03s"]
 size = Vector2(31, 16)
 
-[node name="Gate" type="StaticBody2D" groups=["isResettablePinballComponent"]]
+[node name="Gate" type="StaticBody2D" groups=["isResettablePinballComponent", "isWall"]]
 script = ExtResource("1_am2rc")
 
 [node name="Sprite2DWalls" type="Sprite2D" parent="."]
@@ -34,5 +34,7 @@ shape = SubResource("CapsuleShape2D_lj2cv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollOverArea2D"]
 position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_sk03s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_exited" from="RollOverArea2D" to="." method="_on_roll_over_area_2d_body_exited"]

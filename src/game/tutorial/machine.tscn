@@ -44,7 +44,7 @@ centered = false
 texture = ExtResource("4_5dxhy")
 centered = false
 
-[node name="Box" type="StaticBody2D" parent="."]
+[node name="Box" type="StaticBody2D" parent="." groups=["isWall"]]
 z_index = 50
 physics_material_override = SubResource("PhysicsMaterial_bg44k")
 
@@ -66,7 +66,7 @@ polygon = PackedVector2Array(-245, -60, -250, -60, -250, 400, 250, 400, 250, -60
 position = Vector2(236, 794)
 shape = SubResource("RectangleShape2D_uvr46")
 
-[node name="LeftGuide" type="StaticBody2D" parent="."]
+[node name="LeftGuide" type="StaticBody2D" parent="." groups=["isWall"]]
 
 [node name="Sprite2D_LeftGuide" type="Sprite2D" parent="LeftGuide"]
 position = Vector2(89.3, 595.2)
@@ -76,7 +76,7 @@ texture = ExtResource("6_lvykr")
 position = Vector2(233.3, 384.2)
 polygon = PackedVector2Array(-190, 113.015, -190, 193, -84, 299, -84, 303, -88, 309, -94, 313, -100, 313, -107, 309, -205, 199, -205, 113, -204, 110, -202, 109, -197.3, 108.8, -193, 109, -191, 110)
 
-[node name="RightGuide" type="StaticBody2D" parent="."]
+[node name="RightGuide" type="StaticBody2D" parent="." groups=["isWall"]]
 position = Vector2(475, 0)
 rotation = -3.14159
 scale = Vector2(1, -1)
@@ -157,6 +157,9 @@ rotation = 0.858154
 position = Vector2(406, 247)
 rotation = 2.63435
 scale = Vector2(1, -1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 
 [connection signal="body_entered" from="DrainGutterArea2D" to="." method="_on_drain_gutter_area_2d_body_entered"]
 [connection signal="body_exited" from="PlungerArea2D" to="." method="_on_plunger_area_2d_body_exited"]
