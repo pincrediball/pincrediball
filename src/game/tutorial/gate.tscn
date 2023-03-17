@@ -11,7 +11,7 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk03s"]
 size = Vector2(31, 16)
 
-[node name="Gate" type="StaticBody2D"]
+[node name="Gate" type="StaticBody2D" groups=["isResettablePinballComponent"]]
 script = ExtResource("1_am2rc")
 
 [node name="Sprite2DWalls" type="Sprite2D" parent="."]

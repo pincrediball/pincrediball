@@ -4,7 +4,7 @@ func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
 
 func _on_score_changed(_from: int, to: int):
-	$VBoxContainer/MarginContainer2/ScoreLabel.text = "%s points" % format_score(to)
+	%ScoreLabel.text = "%s points" % format_score(to)
 	
 # Whelp! GDScript doesn't have much formatting, does it? Apparently we 
 # have to write this stuff ourselves? Also no StringBuilder or similar

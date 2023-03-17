@@ -17,3 +17,6 @@ func _on_roll_over_area_2d_body_exited(body):
 	if not isActivated and body.is_in_group("isBall") && (body as RigidBody2D).linear_velocity.y > 0:
 		isActivated = true
 		Scoring.add_score(BASE_SCORE)
+
+func resetPinballComponent():
+	isActivated = false

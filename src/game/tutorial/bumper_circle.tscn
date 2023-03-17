@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://dc105khs43s1f"]
 
 [ext_resource type="Texture2D" uid="uid://6v4wgckwjtxt" path="res://art/game/tutorial/component_bumper_circle.png" id="1_5uneb"]
 [ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_7mnp0"]

@@ -1,11 +1,22 @@
 extends Control
 
+var playbooksByLevel = {
+	1: preload("res://game/tutorial/playbook_level_001.tres"),
+}
 
-# Called when the node enters the scene tree for the first time.
+@export var currentLevel: int:
+	get:
+		return currentLevel
+	set(value):
+		currentLevel = value
+		currentLevelPlaybook = playbooksByLevel[currentLevel]
+
+var currentLevelPlaybook: Resource
+
 func _ready():
-	pass # Replace with function body.
+	currentLevel = 1
+	%Playbook.playbookResource = currentLevelPlaybook
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_button_button_up():
+	Scoring.reset_score()
+	%machine.play(currentLevelPlaybook)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpe6kddf874bs"
-path="res://.godot/imported/bg_zinc_gradient.png-aa64d65c99cb3d6953278f99da1d050d.ctex"
+uid="uid://cop3ke6r1ehak"
+path="res://.godot/imported/bg_game_screen.png-0593346b374bb460c78c8ed0401d5c56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bg_zinc_gradient.png"
-dest_files=["res://.godot/imported/bg_zinc_gradient.png-aa64d65c99cb3d6953278f99da1d050d.ctex"]
+source_file="res://art/bg_game_screen.png"
+dest_files=["res://.godot/imported/bg_game_screen.png-0593346b374bb460c78c8ed0401d5c56.ctex"]
 
 [params]
 

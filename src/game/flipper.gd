@@ -1,34 +1,47 @@
 extends Node2D
 
-@export
-var max_rotation = -85
+# Settings:
+var max_rotation: float = -85
+var rest_angle: float = 35
+var up_time: float = 0.06
+const down_time: float = 0.3
+var isRunning: bool = false
 
-var rest_angle = 35
+# State:
+enum FlipperState { Resting, GoingUp, GoingDown }
+var state: FlipperState = FlipperState.Resting
+var time_moving: float = 0.0
 
-@export
-var up_time = 0.06
+func reset(interval: float):
+	$Timer.wait_time = interval
+	$Timer.start()
+	isRunning = true
+	state = FlipperState.Resting
+	time_moving = 0.0
+	$CharacterBody2D.rotation_degrees = rest_angle
 
-@export
-var isRunning = false
-
-var is_going_up = true
-var time_moving = 0.0
-const down_time = 0.3
+func stop():
+	$Timer.stop()
+	isRunning = false
 
 func _physics_process(delta):
-	if !isRunning:
+	if !isRunning or state == FlipperState.Resting:
 		return
 	
 	time_moving += delta
 	
-	if is_going_up:
+	if state == FlipperState.GoingUp:
 		$CharacterBody2D.rotation_degrees = max_rotation * (time_moving / up_time) + rest_angle
 		if time_moving > up_time:
-			is_going_up = false
+			state = FlipperState.GoingDown
 			time_moving = 0.0
 
 	else:
 		$CharacterBody2D.rotation_degrees = max_rotation * (1 - (time_moving / down_time)) + rest_angle
 		if time_moving > down_time:
-			is_going_up = true
+			state = FlipperState.Resting
 			time_moving = 0.0
+
+func _on_timer_timeout():
+	assert(state == FlipperState.Resting, "Flipper should fire but was not yet resting!")
+	state = FlipperState.GoingUp
