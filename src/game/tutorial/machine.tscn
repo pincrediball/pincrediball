@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpseboohqxgou"]
+[gd_scene load_steps=14 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
@@ -16,6 +16,27 @@ bounce = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvr46"]
 size = Vector2(90, 12)
+
+[sub_resource type="Animation" id="Animation_6f4o4"]
+resource_name = "drop_zone_glow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bu2oj"]
+_data = {
+"drop_zone_glow": SubResource("Animation_6f4o4")
+}
 
 [node name="Machine" type="SubViewportContainer"]
 offset_right = 512.0
@@ -134,5 +155,18 @@ position = Vector2(365, 567)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
+[node name="DropZonePolygon2D" type="Polygon2D" parent="SubViewport/MachineNode2D"]
+unique_name_in_owner = true
+color = Color(0, 0.541176, 0.188235, 0.172549)
+polygon = PackedVector2Array(241, 81, 161, 81, 81, 121, 28, 181, 28, 441, 140, 441, 160, 500, 240, 541, 320, 500, 341, 441, 441, 440, 441, 180, 400, 120, 320, 80)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/MachineNode2D/DropZonePolygon2D"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_bu2oj")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="SubViewport/MachineNode2D/DrainGutterArea2D" to="." method="_on_drain_gutter_area_2d_body_entered"]
 [connection signal="body_exited" from="SubViewport/MachineNode2D/PlungerArea2D" to="." method="_on_plunger_area_2d_body_exited"]

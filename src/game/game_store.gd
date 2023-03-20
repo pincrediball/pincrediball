@@ -1,6 +1,6 @@
 extends Node
 
-signal level_changed(to: int)
+@export var drag_data: Dictionary
 
 @export var currentLevel: int = 1:
 	get:
@@ -20,3 +20,6 @@ func _readStageJson(stage: String):
 
 func getCurrentStage():
 	return currentStage
+
+func clearDragData():
+	drag_data = { }

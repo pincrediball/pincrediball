@@ -23,6 +23,7 @@ var ballStartPosition: Vector2 = Vector2(485, 730)
 var ballPlungeVelocity: Vector2 = Vector2(0, -1500)
 
 func _ready():
+	%DropZonePolygon2D.visible = false
 	stop()
 
 func play(levelPlaybook):
@@ -47,15 +48,6 @@ func plunge():
 	ball.linear_velocity = ballPlungeVelocity
 	%MachineNode2D.add_child(ball)
 
-func _can_drop_data(_at_position, data):
-	# TODO: Prevent overlaps
-	return data.is_toolbox_item
-
-func _drop_data(at_position, data):
-	var component = component_scenes[data.component_id].instantiate() as Node2D
-	component.position = at_position
-	%MachineNode2D.add_child(component)
-
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):
 		$AudioStreamPlayer.stream = soundsDrain[randi() % len(soundsDrain)]
@@ -70,3 +62,23 @@ func _on_plunger_area_2d_body_exited(body):
 	if body.is_in_group("isBall"):
 		var ball = body as RigidBody2D
 		ball.set_collision_mask_value(2, true)
+
+func _can_drop_data(at_position, data):
+	var is_in_allowed_area = Geometry2D.is_point_in_polygon(at_position, %DropZonePolygon2D.polygon)
+	return data.is_toolbox_item && is_in_allowed_area
+
+func _drop_data(at_position, data):
+	var component = component_scenes[data.component_id].instantiate() as Node2D
+	component.position = at_position
+	%MachineNode2D.add_child(component)
+	%DropZonePolygon2D.visible = false
+	GameStore.clearDragData()
+
+func _on_mouse_entered():
+	if GameStore.drag_data.has("is_toolbox_item"):
+		%DropZonePolygon2D.visible = true
+		%DropZonePolygon2D/AnimationPlayer.seek(0)
+		%DropZonePolygon2D/AnimationPlayer.play("drop_zone_glow")
+
+func _on_mouse_exited():
+	%DropZonePolygon2D.visible = false

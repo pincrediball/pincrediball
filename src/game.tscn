@@ -132,4 +132,5 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="button_up" from="RightSide/RightSideContent/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]

@@ -31,4 +31,7 @@ func _get_drag_data(_position):
 	preview.add_child(icon)
 	preview.z_index = 60
 	set_drag_preview(preview)
-	return { component_id = component_id, is_toolbox_item = true }
+	var drag_data = { component_id = component_id, is_toolbox_item = true }
+	GameStore.drag_data = drag_data
+	return drag_data
+

@@ -15,5 +15,3 @@ func loadStage(stage):
 		var toolboxItem: Control = toolboxItemScene.instantiate()
 		toolboxItem.load(entry)
 		%ItemsVBox.add_child(toolboxItem)
-
-
