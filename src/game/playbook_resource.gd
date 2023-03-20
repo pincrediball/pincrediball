@@ -1,3 +1,4 @@
+class_name PlaybookResource
 extends Resource
 
 @export var plunge_delay: float = 0.0

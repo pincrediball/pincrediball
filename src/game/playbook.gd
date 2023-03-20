@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@export var playbookResource: Resource:
+@export var playbookResource: PlaybookResource:
 	get:
 		return playbookResource
 	set(value):
