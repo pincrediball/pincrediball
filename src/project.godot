@@ -22,6 +22,7 @@ boot_splash/minimum_display_time=1000
 
 Scoring="*res://game/scoring.gd"
 Music="*res://music.tscn"
+GameStore="*res://game/game_store.gd"
 
 [display]
 

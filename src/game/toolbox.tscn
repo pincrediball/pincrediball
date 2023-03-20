@@ -1,11 +1,18 @@
-[gd_scene format=3 uid="uid://fmi417501t64"]
+[gd_scene load_steps=3 format=3 uid="uid://fmi417501t64"]
+
+[ext_resource type="Script" path="res://game/toolbox.gd" id="1_rpnjc"]
+[ext_resource type="PackedScene" uid="uid://d3itbo4eksw1g" path="res://game/toolbox_item.tscn" id="2_rc5ph"]
 
 [node name="Toolbox" type="MarginContainer"]
+offset_right = 441.0
+offset_bottom = 116.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 0
+script = ExtResource("1_rpnjc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.913725, 0.92549, 0.968627, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -16,95 +23,16 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ItemsVBox" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(1, 1, 0.964706, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.490196)
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="ToolboxItem" parent="MarginContainer/ItemsVBox" instance=ExtResource("2_rc5ph")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Some control name"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "ICON"
-
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer2"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.490196)
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+[node name="ToolboxItem2" parent="MarginContainer/ItemsVBox" instance=ExtResource("2_rc5ph")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="ToolboxItem3" parent="MarginContainer/ItemsVBox" instance=ExtResource("2_rc5ph")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Some control name"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "ICON"
-
-[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer3"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.490196)
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer3"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer3/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Some control name"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "ICON"
