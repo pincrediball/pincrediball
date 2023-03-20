@@ -11,8 +11,6 @@ func _ready():
 	%Playbook.playbookResource = currentLevelPlaybook
 	Music.startGameMusic()
 
-func _on_button_button_up():
+func _on_run_playbook_button_button_up():
 	Scoring.reset_score()
 	%machine.play(currentLevelPlaybook)
-
-	

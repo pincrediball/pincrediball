@@ -1,4 +1,4 @@
-extends Node2D
+extends SubViewportContainer
 
 const soundsPlunge = [
 	preload("res://sound/plunge-001.wav"),
@@ -29,14 +29,14 @@ func play(levelPlaybook):
 	Music.suppress()
 	get_tree().paused = false
 	get_tree().call_group("isResettablePinballComponent", "resetPinballComponent")
-	$FlipperLeft.reset(levelPlaybook.flipper_left_interval)
-	$FlipperRight.reset(levelPlaybook.flipper_right_interval)
+	%FlipperLeft.reset(levelPlaybook.flipper_left_interval)
+	%FlipperRight.reset(levelPlaybook.flipper_right_interval)
 	get_tree().create_timer(levelPlaybook.plunge_delay).connect("timeout", plunge)
 
 func stop():
 	get_tree().paused = true
-	$FlipperLeft.stop()
-	$FlipperRight.stop()
+	%FlipperLeft.stop()
+	%FlipperRight.stop()
 	Music.unsuppress()
 
 func plunge():
@@ -45,18 +45,16 @@ func plunge():
 	var ball: RigidBody2D = ballScene.instantiate()
 	ball.position = ballStartPosition
 	ball.linear_velocity = ballPlungeVelocity
-	add_child(ball)
+	%MachineNode2D.add_child(ball)
 
 func _can_drop_data(_at_position, data):
 	# TODO: Prevent overlaps
-	# return data.is_toolbox_item
-	return true
-	
+	return data.is_toolbox_item
 
 func _drop_data(at_position, data):
 	var component = component_scenes[data.component_id].instantiate() as Node2D
 	component.position = at_position
-	add_child(component)
+	%MachineNode2D.add_child(component)
 
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):
