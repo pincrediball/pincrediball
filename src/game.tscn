@@ -44,6 +44,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yhopt")
 
+[node name="machine" parent="." instance=ExtResource("1_b3inv")]
+unique_name_in_owner = true
+position = Vector2(550, 50)
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 process_mode = 3
 layout_mode = 1
@@ -131,9 +135,5 @@ layout_mode = 2
 [node name="Medals" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("6_18ytx")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="machine" parent="." instance=ExtResource("1_b3inv")]
-unique_name_in_owner = true
-position = Vector2(550, 50)
 
 [connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_button_button_up"]

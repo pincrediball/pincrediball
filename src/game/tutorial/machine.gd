@@ -11,6 +11,13 @@ const soundsDrain = [
 	preload("res://sound/drain-002.wav"),
 ]
 
+const component_scenes = {
+	"bumper_circle": preload("res://game/tutorial/bumper_circle.tscn"),
+	"bumper_pill": preload("res://game/tutorial/bumper_pill.tscn"),
+	"wall_corner": preload("res://game/tutorial/wall_corner.tscn"),
+	"gate": preload("res://game/tutorial/gate.tscn"),
+}
+
 var ballScene = preload("res://game/ball.tscn")
 var ballStartPosition: Vector2 = Vector2(485, 730)
 var ballPlungeVelocity: Vector2 = Vector2(0, -1500)
@@ -39,6 +46,17 @@ func plunge():
 	ball.position = ballStartPosition
 	ball.linear_velocity = ballPlungeVelocity
 	add_child(ball)
+
+func _can_drop_data(_at_position, data):
+	# TODO: Prevent overlaps
+	# return data.is_toolbox_item
+	return true
+	
+
+func _drop_data(at_position, data):
+	var component = component_scenes[data.component_id].instantiate() as Node2D
+	component.position = at_position
+	add_child(component)
 
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):

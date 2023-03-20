@@ -48,7 +48,7 @@ layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer2/AspectRatioContainer"]
 layout_mode = 2
-color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+color = Color(0.0666667, 0.0666667, 0.0666667, 0.196078)
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer2/AspectRatioContainer"]
 layout_mode = 2
