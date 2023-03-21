@@ -9,7 +9,9 @@
 [node name="Game" parent="." instance=ExtResource("4_npa4v")]
 
 [node name="Menu" parent="." instance=ExtResource("1_6nel3")]
+process_mode = 3
 visible = false
 
 [node name="Splash" parent="." instance=ExtResource("1_pbgtx")]
+process_mode = 3
 visible = false

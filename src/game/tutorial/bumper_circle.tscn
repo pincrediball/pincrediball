@@ -8,6 +8,8 @@
 radius = 19.0
 
 [node name="BumperCircle" type="StaticBody2D"]
+process_mode = 3
+input_pickable = true
 physics_material_override = ExtResource("1_7mnp0")
 script = ExtResource("1_cjumq")
 
@@ -19,3 +21,5 @@ shape = SubResource("CircleShape2D_v3sfw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"PinballSFX"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

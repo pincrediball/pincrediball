@@ -2,6 +2,9 @@ extends Node
 
 @export var drag_data: Dictionary
 
+@export var is_dragging: bool:
+	get: return drag_data.size() > 0
+
 @export var currentLevel: int = 1:
 	get:
 		return currentLevel

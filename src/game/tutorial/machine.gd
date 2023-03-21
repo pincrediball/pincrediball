@@ -48,6 +48,9 @@ func plunge():
 	ball.linear_velocity = ballPlungeVelocity
 	%MachineNode2D.add_child(ball)
 
+func is_in_allowed_area(at_position: Vector2):
+	return Geometry2D.is_point_in_polygon(at_position, %DropZonePolygon2D.polygon)
+
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):
 		$AudioStreamPlayer.stream = soundsDrain[randi() % len(soundsDrain)]
@@ -64,21 +67,34 @@ func _on_plunger_area_2d_body_exited(body):
 		ball.set_collision_mask_value(2, true)
 
 func _can_drop_data(at_position, data):
-	var is_in_allowed_area = Geometry2D.is_point_in_polygon(at_position, %DropZonePolygon2D.polygon)
-	return data.is_toolbox_item && is_in_allowed_area
+	return data.is_toolbox_item && is_in_allowed_area(at_position)
 
 func _drop_data(at_position, data):
 	var component = component_scenes[data.component_id].instantiate() as Node2D
 	component.position = at_position
-	%MachineNode2D.add_child(component)
+	component.move_by_player_ended.connect(on_move_by_player_ended)
+	%PlayerComponents.add_child(component)
 	%DropZonePolygon2D.visible = false
 	GameStore.clearDragData()
 
-func _on_mouse_entered():
-	if GameStore.drag_data.has("is_toolbox_item"):
-		%DropZonePolygon2D.visible = true
+func set_drop_zone_glow_enabled(is_enabled: bool):
+	%DropZonePolygon2D.visible = is_enabled
+	if is_enabled:
 		%DropZonePolygon2D/AnimationPlayer.seek(0)
 		%DropZonePolygon2D/AnimationPlayer.play("drop_zone_glow")
 
+func _on_mouse_entered():
+	if GameStore.is_dragging:
+		set_drop_zone_glow_enabled(true)
+
 func _on_mouse_exited():
-	%DropZonePolygon2D.visible = false
+	set_drop_zone_glow_enabled(false)
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		set_drop_zone_glow_enabled(event.is_pressed())
+
+func on_move_by_player_ended(node: Node2D):
+	if not is_in_allowed_area(node.position):
+		node.move_to_last_known_position()
+	
