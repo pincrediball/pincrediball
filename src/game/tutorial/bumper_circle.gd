@@ -4,7 +4,7 @@ const BASE_SCORE = 25
 
 func _ready():
 	super._ready()
-	sounds = [
+	sounds_default = [
 		preload("res://sound/bumper-001.wav"),
 		preload("res://sound/bumper-002.wav"),
 		preload("res://sound/bumper-003.wav"),

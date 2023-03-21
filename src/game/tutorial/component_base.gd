@@ -2,7 +2,7 @@ class_name PlayerControlledStaticBody2D extends StaticBody2D
 
 signal move_by_player_ended(node: Node2D)
 
-var sounds = []
+var sounds_default = []
 var selected := false
 var previous_position: Vector2
 var audio_stream_player = AudioStreamPlayer.new()
@@ -15,7 +15,9 @@ func _ready():
 func on_ball_exit(ball: RigidBody2D):
 	play_random_sound()
 
-func play_random_sound():
+func play_random_sound(sounds = null):
+	if sounds == null:
+		sounds = sounds_default
 	if sounds.size() > 0:
 		audio_stream_player.stream = sounds[randi() % len(sounds)]
 		audio_stream_player.play()

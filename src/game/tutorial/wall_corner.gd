@@ -2,7 +2,7 @@ extends PlayerControlledStaticBody2D
 
 func _ready():
 	super._ready()
-	sounds = [
+	sounds_default = [
 		preload("res://sound/wall-001.wav"),
 		preload("res://sound/wall-002.wav"),
 		preload("res://sound/wall-003.wav"),
