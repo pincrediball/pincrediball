@@ -35,7 +35,4 @@ shape = SubResource("CapsuleShape2D_lj2cv")
 position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_sk03s")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"PinballSFX"
-
 [connection signal="body_exited" from="RollOverArea2D" to="." method="_on_roll_over_area_2d_body_exited"]

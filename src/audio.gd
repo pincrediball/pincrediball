@@ -9,8 +9,11 @@ const tracks = [
 const music_volume_default = -5.0
 const music_volume_suppressed = -18.0
 
-var bus_id_music := AudioServer.get_bus_index("Music")
-var bus_id_pinball_sfx := AudioServer.get_bus_index("PinballSFX")
+const bus_name_music = "Music"
+const bus_name_pinball_sfx = "PinballSFX"
+
+var bus_id_music := AudioServer.get_bus_index(bus_name_music)
+var bus_id_pinball_sfx := AudioServer.get_bus_index(bus_name_pinball_sfx)
 var trackIndex = randi() % tracks.size()
 
 func startGameMusic():

@@ -5,7 +5,7 @@ extends Node
 @export var is_dragging: bool:
 	get: return drag_data.size() > 0
 
-@export var currentLevel: int = 1:
+@export var currentLevel: int = 6:
 	get:
 		return currentLevel
 

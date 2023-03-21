@@ -48,6 +48,12 @@ func plunge():
 	ball.linear_velocity = ballPlungeVelocity
 	%MachineNode2D.add_child(ball)
 
+func set_drop_zone_glow_enabled(is_enabled: bool):
+	%DropZonePolygon2D.visible = is_enabled
+	if is_enabled:
+		%DropZonePolygon2D/AnimationPlayer.seek(0)
+		%DropZonePolygon2D/AnimationPlayer.play("drop_zone_glow")
+
 func is_in_allowed_area(at_position: Vector2):
 	return Geometry2D.is_point_in_polygon(at_position, %DropZonePolygon2D.polygon)
 
@@ -74,14 +80,8 @@ func _drop_data(at_position, data):
 	component.position = at_position
 	component.move_by_player_ended.connect(on_move_by_player_ended)
 	%PlayerComponents.add_child(component)
-	%DropZonePolygon2D.visible = false
+	set_drop_zone_glow_enabled(false)
 	GameStore.clearDragData()
-
-func set_drop_zone_glow_enabled(is_enabled: bool):
-	%DropZonePolygon2D.visible = is_enabled
-	if is_enabled:
-		%DropZonePolygon2D/AnimationPlayer.seek(0)
-		%DropZonePolygon2D/AnimationPlayer.play("drop_zone_glow")
 
 func _on_mouse_entered():
 	if GameStore.is_dragging:
@@ -97,4 +97,3 @@ func _on_gui_input(event):
 func on_move_by_player_ended(node: Node2D):
 	if not is_in_allowed_area(node.position):
 		node.move_to_last_known_position()
-	

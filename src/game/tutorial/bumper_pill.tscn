@@ -13,6 +13,7 @@ radius = 5.0
 height = 94.0
 
 [node name="BumperPill" type="StaticBody2D"]
+input_pickable = true
 physics_material_override = ExtResource("1_f6wnl")
 script = ExtResource("1_hxuug")
 
@@ -28,6 +29,3 @@ shape = SubResource("CapsuleShape2D_oya8u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlingArea2D"]
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_crhwx")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"PinballSFX"
