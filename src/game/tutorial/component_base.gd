@@ -22,6 +22,11 @@ func play_random_sound(sounds = null):
 		audio_stream_player.stream = sounds[randi() % len(sounds)]
 		audio_stream_player.play()
 
+func end_move():
+	if selected:
+			selected = false
+			move_by_player_ended.emit(self)
+
 func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), delta * 25)

@@ -109,6 +109,9 @@ func _on_mouse_exited():
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		set_drop_zone_glow_enabled(event.is_pressed())
+		if not event.is_pressed():
+			for child in %PlayerComponents.get_children():
+				child.end_move()
 
 func on_move_by_player_ended(node: Node2D):
 	if not is_in_allowed_area(node.position):
