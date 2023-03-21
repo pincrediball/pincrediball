@@ -175,8 +175,12 @@ libraries = {
 unique_name_in_owner = true
 process_mode = 3
 
+[node name="BallPlungeTimer" type="Timer" parent="SubViewport/MachineNode2D"]
+unique_name_in_owner = true
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="SubViewport/MachineNode2D/GameComponents/DrainGutterArea2D" to="." method="_on_drain_gutter_area_2d_body_entered"]
 [connection signal="body_exited" from="SubViewport/MachineNode2D/GameComponents/PlungerArea2D" to="." method="_on_plunger_area_2d_body_exited"]
+[connection signal="timeout" from="SubViewport/MachineNode2D/BallPlungeTimer" to="." method="_on_ball_plunge_timer_timeout"]

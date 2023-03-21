@@ -20,10 +20,17 @@ func _ready():
 
 func _on_run_playbook_button_button_up():
 	Scoring.reset_score()
+	Scoring.set_enabled(true)
 	%machine.play(currentLevelPlaybook)
+
+func _on_stress_test_button_button_up():
+	Scoring.reset_score()
+	Scoring.set_enabled(false)
+	%machine.stress_test(currentLevelPlaybook)
 
 func _on_music_check_button_toggled(button_pressed):
 	Audio.set_mute_music(not button_pressed)
 
 func _on_sound_check_button_toggled(button_pressed):
 	Audio.set_mute_pinball_sfx(not button_pressed)
+

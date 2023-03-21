@@ -21,18 +21,29 @@ const component_scenes = {
 var ballScene = preload("res://game/ball.tscn")
 var ballStartPosition: Vector2 = Vector2(485, 730)
 var ballPlungeVelocity: Vector2 = Vector2(0, -1500)
+var ballsToPlunge := 0
 
 func _ready():
 	%DropZonePolygon2D.visible = false
 	stop()
 
-func play(levelPlaybook):
+func init_play(levelPlaybook):
+	%BallPlungeTimer.start(levelPlaybook.plunge_delay)
 	Audio.set_suppressed_music(true)
+	for ball in get_tree().get_nodes_in_group("isBall"):
+		ball.queue_free()
 	get_tree().paused = false
 	get_tree().call_group("isResettablePinballComponent", "resetPinballComponent")
 	%FlipperLeft.reset(levelPlaybook.flipper_left_interval)
 	%FlipperRight.reset(levelPlaybook.flipper_right_interval)
-	get_tree().create_timer(levelPlaybook.plunge_delay).connect("timeout", plunge)
+
+func play(levelPlaybook):
+	ballsToPlunge = 1
+	init_play(levelPlaybook)
+
+func stress_test(levelPlaybook):
+	ballsToPlunge = 10
+	init_play(levelPlaybook)
 
 func stop():
 	get_tree().paused = true
@@ -41,12 +52,14 @@ func stop():
 	Audio.set_suppressed_music(false)
 
 func plunge():
-	$AudioStreamPlayer.stream = soundsPlunge[randi() % len(soundsPlunge)]
-	$AudioStreamPlayer.play()
-	var ball: RigidBody2D = ballScene.instantiate()
-	ball.position = ballStartPosition
-	ball.linear_velocity = ballPlungeVelocity
-	%MachineNode2D.add_child(ball)
+	if ballsToPlunge > 0:
+		ballsToPlunge -= 1
+		$AudioStreamPlayer.stream = soundsPlunge[randi() % len(soundsPlunge)]
+		$AudioStreamPlayer.play()
+		var ball: RigidBody2D = ballScene.instantiate()
+		ball.position = ballStartPosition
+		ball.linear_velocity = ballPlungeVelocity
+		%MachineNode2D.add_child(ball)
 
 func set_drop_zone_glow_enabled(is_enabled: bool):
 	%DropZonePolygon2D.visible = is_enabled
@@ -56,6 +69,9 @@ func set_drop_zone_glow_enabled(is_enabled: bool):
 
 func is_in_allowed_area(at_position: Vector2):
 	return Geometry2D.is_point_in_polygon(at_position, %DropZonePolygon2D.polygon)
+
+func _on_ball_plunge_timer_timeout():
+	plunge()
 
 func _on_drain_gutter_area_2d_body_entered(body):
 	if body.is_in_group("isBall"):

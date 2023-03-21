@@ -41,3 +41,23 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0 points"
 label_settings = ExtResource("2_rq23l")
+
+[node name="DisabledOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+color = Color(0, 0, 0, 0.882353)
+
+[node name="CenterContainer" type="CenterContainer" parent="DisabledOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DisabledOverlay/CenterContainer"]
+layout_mode = 2
+text = "Scoring disabled
+while stress testing"
+horizontal_alignment = 1

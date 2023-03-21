@@ -2,9 +2,13 @@ extends PanelContainer
 
 func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
+	Scoring.toggled_enabled.connect(_on_toggled_enabled)
 
 func _on_score_changed(_from: int, to: int):
 	%ScoreLabel.text = "%s points" % format_score(to)
+	
+func _on_toggled_enabled(enabled: bool):
+	%DisabledOverlay.visible = not enabled
 	
 # Whelp! GDScript doesn't have much formatting, does it? Apparently we 
 # have to write this stuff ourselves? Also no StringBuilder or similar
