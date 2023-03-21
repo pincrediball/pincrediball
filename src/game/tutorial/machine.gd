@@ -27,7 +27,7 @@ func _ready():
 	stop()
 
 func play(levelPlaybook):
-	Music.suppress()
+	Audio.set_suppressed_music(true)
 	get_tree().paused = false
 	get_tree().call_group("isResettablePinballComponent", "resetPinballComponent")
 	%FlipperLeft.reset(levelPlaybook.flipper_left_interval)
@@ -38,7 +38,7 @@ func stop():
 	get_tree().paused = true
 	%FlipperLeft.stop()
 	%FlipperRight.stop()
-	Music.unsuppress()
+	Audio.set_suppressed_music(false)
 
 func plunge():
 	$AudioStreamPlayer.stream = soundsPlunge[randi() % len(soundsPlunge)]

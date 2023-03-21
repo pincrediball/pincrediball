@@ -23,5 +23,6 @@ wait_time = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -3.5
+bus = &"PinballSFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

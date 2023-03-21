@@ -45,6 +45,7 @@ script = ExtResource("1_07uey")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
+bus = &"PinballSFX"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false

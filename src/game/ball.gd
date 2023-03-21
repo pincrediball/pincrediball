@@ -13,6 +13,7 @@ const soundsWalls = [
 
 func _on_body_entered(body):
 	if body.is_in_group("isWall"):
+		# TODO: Use self.velocity to change loudness of sounds
 		$AudioStreamPlayer.stream = soundsWalls[randi() % len(soundsWalls)]
 		$AudioStreamPlayer.play()
 		

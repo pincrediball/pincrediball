@@ -18,3 +18,4 @@ texture = ExtResource("1_5uneb")
 shape = SubResource("CircleShape2D_v3sfw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"PinballSFX"

@@ -26,3 +26,4 @@ rotation = -0.382798
 shape = SubResource("CapsuleShape2D_oshty")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"PinballSFX"

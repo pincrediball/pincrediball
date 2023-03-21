@@ -44,41 +44,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yhopt")
 
-[node name="LeftSide" type="MarginContainer" parent="."]
+[node name="LeftSide" type="VBoxContainer" parent="."]
 process_mode = 3
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 offset_left = 34.0
 offset_top = 44.0
 offset_right = 534.0
 offset_bottom = 855.0
 
-[node name="LeftSideContent" type="VBoxContainer" parent="LeftSide"]
-layout_mode = 2
-
-[node name="LevelHeader" type="MarginContainer" parent="LeftSide/LeftSideContent"]
+[node name="LevelHeader" type="MarginContainer" parent="LeftSide"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LeftSide/LeftSideContent/LevelHeader"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftSide/LevelHeader"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+[node name="Header" type="Label" parent="LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Tutorial - Level 1"
 label_settings = SubResource("LabelSettings_h6tt2")
 
-[node name="Explanation" type="Label" parent="LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+[node name="Explanation" type="Label" parent="LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Drag and drop components to get a high score!"
 label_settings = ExtResource("2_ksjyh")
 autowrap_mode = 2
 
-[node name="Toolbox" parent="LeftSide/LeftSideContent" instance=ExtResource("3_5lpl1")]
+[node name="Toolbox" parent="LeftSide" instance=ExtResource("3_5lpl1")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -90,29 +86,25 @@ offset_top = 50.0
 offset_right = 1050.0
 offset_bottom = 850.0
 
-[node name="RightSide" type="MarginContainer" parent="."]
+[node name="RightSide" type="VBoxContainer" parent="."]
 process_mode = 3
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 offset_left = 1066.0
 offset_top = 44.0
 offset_right = 1566.0
 offset_bottom = 855.0
-
-[node name="RightSideContent" type="VBoxContainer" parent="RightSide"]
-layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Playbook" parent="RightSide/RightSideContent" instance=ExtResource("5_t5wa1")]
+[node name="Playbook" parent="RightSide" instance=ExtResource("5_t5wa1")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="RightSide/RightSideContent"]
+[node name="GridContainer" type="GridContainer" parent="RightSide"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 columns = 2
 
-[node name="RunPlaybookButton" type="Button" parent="RightSide/RightSideContent/GridContainer"]
+[node name="RunPlaybookButton" type="Button" parent="RightSide/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -124,13 +116,28 @@ theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270
 theme_override_font_sizes/font_size = 24
 text = "Run Playbook"
 
-[node name="Score" parent="RightSide/RightSideContent" instance=ExtResource("7_ydt4m")]
+[node name="Score" parent="RightSide" instance=ExtResource("7_ydt4m")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Medals" parent="RightSide/RightSideContent" instance=ExtResource("6_18ytx")]
+[node name="Medals" parent="RightSide" instance=ExtResource("6_18ytx")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightSide"]
+layout_mode = 2
+
+[node name="MusicCheckButton" type="CheckButton" parent="RightSide/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🎵 Mucic"
+
+[node name="SoundCheckButton" type="CheckButton" parent="RightSide/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🔊 Sound"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="button_up" from="RightSide/RightSideContent/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
+[connection signal="button_up" from="RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
+[connection signal="toggled" from="RightSide/HBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
+[connection signal="toggled" from="RightSide/HBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
