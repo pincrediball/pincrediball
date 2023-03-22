@@ -12,6 +12,8 @@ height = 50.0
 size = Vector2(31, 16)
 
 [node name="Gate" type="StaticBody2D" groups=["isResettablePinballComponent", "isWall"]]
+process_mode = 3
+input_pickable = true
 script = ExtResource("1_am2rc")
 
 [node name="Sprite2DWalls" type="Sprite2D" parent="."]
