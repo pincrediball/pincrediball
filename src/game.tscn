@@ -110,6 +110,7 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.45098, 0.819608, 0.45098, 1)
 theme_override_colors/font_hover_color = Color(0.45098, 0.819608, 0.45098, 1)
@@ -122,6 +123,7 @@ text = "Run Playbook"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.85098, 0.423529, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.82, 0.6355, 0.451, 1)
 theme_override_colors/font_hover_color = Color(0.82, 0.4674, 0.1148, 1)
@@ -154,13 +156,14 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "🔊 Sound"
 
-[node name="Button" type="Button" parent="RightSide/HBoxContainer"]
+[node name="BackToMenuButton" type="Button" parent="RightSide/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
 text = "    Back to menu...    "
 
 [connection signal="button_up" from="RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
 [connection signal="button_up" from="RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
 [connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
 [connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
-[connection signal="pressed" from="RightSide/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
