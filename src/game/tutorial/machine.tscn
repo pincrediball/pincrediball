@@ -177,6 +177,7 @@ process_mode = 3
 
 [node name="BallPlungeTimer" type="Timer" parent="SubViewport/MachineNode2D"]
 unique_name_in_owner = true
+process_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

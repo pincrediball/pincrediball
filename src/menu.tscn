@@ -1,4 +1,30 @@
-[gd_scene format=3 uid="uid://b285vl84brpq4"]
+[gd_scene load_steps=24 format=3 uid="uid://b285vl84brpq4"]
+
+[ext_resource type="Shader" path="res://menu.gdshader" id="1_fuy8x"]
+[ext_resource type="Script" path="res://menu.gd" id="1_wostc"]
+[ext_resource type="Texture2D" uid="uid://crkpribybiqyn" path="res://art/menu/menu_button_new_normal.png" id="2_6qn2j"]
+[ext_resource type="Texture2D" uid="uid://pg2pmejmai2g" path="res://art/menu/menu_button_new_pressed.png" id="3_2epd5"]
+[ext_resource type="Texture2D" uid="uid://du1vtwesdqirl" path="res://art/menu/menu_button_new_hover.png" id="4_xlhr0"]
+[ext_resource type="Texture2D" uid="uid://dv3wxpfrl0g8" path="res://art/menu/menu_button_new_disabled.png" id="5_xudfb"]
+[ext_resource type="Texture2D" uid="uid://cgfaxwfqlx7wu" path="res://art/menu/menu_button_continue_normal.png" id="6_ftvb1"]
+[ext_resource type="Texture2D" uid="uid://dp7etyfteo7xf" path="res://art/menu/menu_button_continue_pressed.png" id="7_msfeh"]
+[ext_resource type="Texture2D" uid="uid://c3jnw7hnk5tj3" path="res://art/menu/menu_button_continue_hover.png" id="8_bldkh"]
+[ext_resource type="Texture2D" uid="uid://c0a3bwotta78" path="res://art/menu/menu_button_continue_disabled.png" id="9_cl4yb"]
+[ext_resource type="Texture2D" uid="uid://s0kdwim2aeuq" path="res://art/menu/menu_button_options_normal.png" id="10_780f3"]
+[ext_resource type="Texture2D" uid="uid://bsf73snrhfvm3" path="res://art/menu/menu_button_options_pressed.png" id="11_wpy1m"]
+[ext_resource type="Texture2D" uid="uid://cwtqwqtf2wayt" path="res://art/menu/menu_button_options_hover.png" id="12_tx642"]
+[ext_resource type="Texture2D" uid="uid://bko3wrs2lw3ft" path="res://art/menu/menu_button_options_disabled.png" id="13_lbx6j"]
+[ext_resource type="Texture2D" uid="uid://ckrev6dk1qiu8" path="res://art/menu/menu_button_credits_normal.png" id="14_7i1sk"]
+[ext_resource type="Texture2D" uid="uid://itjo3nup4aq7" path="res://art/menu/menu_button_credits_pressed.png" id="15_tlngg"]
+[ext_resource type="Texture2D" uid="uid://dks56ku66ereh" path="res://art/menu/menu_button_credits_hover.png" id="16_p847k"]
+[ext_resource type="Texture2D" uid="uid://muwxhcb1i0e0" path="res://art/menu/menu_button_credits_disabled.png" id="17_temhq"]
+[ext_resource type="Texture2D" uid="uid://bs1bq1yp5qux3" path="res://art/menu/menu_button_exit_normal.png" id="18_7dq86"]
+[ext_resource type="Texture2D" uid="uid://p7084f6q23xm" path="res://art/menu/menu_button_exit_pressed.png" id="19_xthid"]
+[ext_resource type="Texture2D" uid="uid://bplrxfhcod6fy" path="res://art/menu/menu_button_exit_hover.png" id="20_cbc4j"]
+[ext_resource type="Texture2D" uid="uid://bygvwkl0lsiou" path="res://art/menu/menu_button_exit_disabled.png" id="21_dbtut"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00t86"]
+shader = ExtResource("1_fuy8x")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -7,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wostc")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -17,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_00t86")
 layout_mode = 2
 color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 
@@ -28,6 +56,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-text = "TODO: Create a menu."
+theme_override_constants/separation = 16
+
+[node name="NewGameButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_6qn2j")
+texture_pressed = ExtResource("3_2epd5")
+texture_hover = ExtResource("4_xlhr0")
+texture_disabled = ExtResource("5_xudfb")
+
+[node name="ContinueGameButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("6_ftvb1")
+texture_pressed = ExtResource("7_msfeh")
+texture_hover = ExtResource("8_bldkh")
+texture_disabled = ExtResource("9_cl4yb")
+
+[node name="OptionsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_780f3")
+texture_pressed = ExtResource("11_wpy1m")
+texture_hover = ExtResource("12_tx642")
+texture_disabled = ExtResource("13_lbx6j")
+
+[node name="CreditsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_7i1sk")
+texture_pressed = ExtResource("15_tlngg")
+texture_hover = ExtResource("16_p847k")
+texture_disabled = ExtResource("17_temhq")
+
+[node name="ExitButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_7dq86")
+texture_pressed = ExtResource("19_xthid")
+texture_hover = ExtResource("20_cbc4j")
+texture_disabled = ExtResource("21_dbtut")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

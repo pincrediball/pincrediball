@@ -141,17 +141,26 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="RightSide"]
 layout_mode = 2
 
-[node name="MusicCheckButton" type="CheckButton" parent="RightSide/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RightSide/HBoxContainer"]
+layout_mode = 2
+
+[node name="MusicCheckButton" type="CheckButton" parent="RightSide/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🎵 Mucic"
 
-[node name="SoundCheckButton" type="CheckButton" parent="RightSide/HBoxContainer"]
+[node name="SoundCheckButton" type="CheckButton" parent="RightSide/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🔊 Sound"
 
+[node name="Button" type="Button" parent="RightSide/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "    Back to menu...    "
+
 [connection signal="button_up" from="RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
 [connection signal="button_up" from="RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
-[connection signal="toggled" from="RightSide/HBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
-[connection signal="toggled" from="RightSide/HBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
+[connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
+[connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
+[connection signal="pressed" from="RightSide/HBoxContainer/Button" to="." method="_on_button_pressed"]
