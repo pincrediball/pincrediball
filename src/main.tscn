@@ -28,3 +28,4 @@ process_mode = 3
 layout_mode = 1
 
 [connection signal="menu_open_requested" from="Game" to="." method="_on_game_menu_open_requested"]
+[connection signal="credits_roll_requested" from="Menu" to="." method="_on_menu_credits_roll_requested"]

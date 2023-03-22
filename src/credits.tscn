@@ -1,0 +1,215 @@
+[gd_scene load_steps=10 format=3 uid="uid://wftgkp3jtlqw"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_oqnvk"]
+[ext_resource type="Shader" path="res://menu.gdshader" id="1_peus8"]
+[ext_resource type="Texture2D" uid="uid://ce5fufair5xt5" path="res://art/menu/menu_button_tl_arrow_normal.png" id="3_ehho1"]
+[ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="4_b5yqk"]
+[ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="5_80gnd"]
+[ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="6_vdw73"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_giwih"]
+shader = ExtResource("1_peus8")
+
+[sub_resource type="Animation" id="Animation_c638r"]
+resource_name = "credits_scroll_animation"
+length = 140.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 140),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -7000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h818m"]
+_data = {
+"credits_scroll_animation": SubResource("Animation_c638r")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_oqnvk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_giwih")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1595.0
+offset_bottom = 8347.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[center]
+Game Director
+[color=#f59e0b][font_size=48]Jeroen Heijmans[/font_size][/color]
+
+
+
+
+
+
+
+Producer
+[color=#f59e0b][font_size=48]Jeroen Heijmans[/font_size][/color]
+
+
+
+
+
+
+
+Engineering
+[color=#f59e0b][font_size=48]Jeroen Heijmans[/font_size][/color]
+
+
+
+
+
+
+
+Artwork
+[color=#f59e0b][font_size=48]Jeroen Heijmans[/font_size][/color]
+
+
+
+
+
+
+
+Sound Effects
+[color=#f59e0b][font_size=48]Jeroen Heijmans[/font_size][/color]
+
+
+
+
+
+
+
+Music
+[color=#f59e0b][font_size=48]
+ONE COOL MINUTE
+Loyalty Freak Music
+(licensed CC0 1.0 Universal)
+
+
+WAITING TTTT
+Loyalty Freak Music
+(licensed CC0 1.0 Universal)
+
+
+AMAZING GRACE
+Timo Versemann
+(licensed CC0 1.0 Universal)
+
+
+DEAR MR SUPER COMPUTER
+HoliznaCC0
+(licensed CC0 1.0 Universal)
+[/font_size][/color]
+
+
+
+
+
+
+
+Special Thanks
+
+[color=#f59e0b][font_size=48]My beautiful, loving, patient, and forgiving wife
+
+Friends on Slack, for advice and listening
+
+Mastodon followers, for all the encouragement
+
+Nespresso
+
+Broodje Ben
+
+GDQuest
+
+The GameDev.StackExchange.com Community
+
+The Godot Team and Community
+[/font_size][/color]
+
+
+
+
+
+
+
+
+
+
+
+
+
+And Thank YOU for playing!
+[/center]"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 90.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_ehho1")
+texture_pressed = ExtResource("4_b5yqk")
+texture_hover = ExtResource("5_80gnd")
+texture_disabled = ExtResource("6_vdw73")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RichTextLabel")
+autoplay = "credits_scroll_animation"
+libraries = {
+"": SubResource("AnimationLibrary_h818m")
+}
+
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

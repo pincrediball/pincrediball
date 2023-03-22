@@ -6,6 +6,8 @@ const tracks = [
 	preload("res://music/amazing-grace.mp3"),
 ]
 
+const credits_track = preload("res://music/dear-mr-super-computer.mp3")
+
 const music_volume_default = -5.0
 const music_volume_suppressed = -18.0
 
@@ -19,6 +21,14 @@ var trackIndex = randi() % tracks.size()
 func startGameMusic():
 	Audio.stream = tracks[trackIndex]
 	Audio.play()
+
+func startCreditsMusic():
+	set_suppressed_music(false)
+	Audio.stream = credits_track
+	Audio.play()
+
+func set_credits_music_speed(speed: float):
+	Audio.pitch_scale = speed
 
 func _on_finished():
 	trackIndex = (trackIndex + 1) % tracks.size()

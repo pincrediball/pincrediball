@@ -11,3 +11,7 @@ func _input(event: InputEvent):
 
 func _on_game_menu_open_requested():
 	open_menu()
+
+func _on_menu_credits_roll_requested():
+	var credits = load("res://credits.tscn").instantiate()
+	add_child(credits)
