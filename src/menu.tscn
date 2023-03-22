@@ -80,6 +80,7 @@ texture_disabled = ExtResource("9_cl4yb")
 [node name="OptionsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+disabled = true
 texture_normal = ExtResource("10_780f3")
 texture_pressed = ExtResource("11_wpy1m")
 texture_hover = ExtResource("12_tx642")
