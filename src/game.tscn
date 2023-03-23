@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkm8htnfe2j7g"]
+[gd_scene load_steps=15 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Script" path="res://game.gd" id="1_hdvhs"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cokkri2jg0cfk" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
+[ext_resource type="Texture2D" uid="uid://ce5fufair5xt5" path="res://art/menu/menu_button_tl_arrow_normal.png" id="9_d6dyj"]
+[ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="10_42wxf"]
+[ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="11_8gol2"]
+[ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="12_sqthh"]
 
 [sub_resource type="FontVariation" id="FontVariation_2drok"]
 
@@ -50,9 +54,9 @@ texture = ExtResource("2_yhopt")
 process_mode = 3
 layout_mode = 2
 offset_left = 34.0
-offset_top = 44.0
+offset_top = 50.0
 offset_right = 534.0
-offset_bottom = 855.0
+offset_bottom = 850.0
 
 [node name="LevelHeader" type="MarginContainer" parent="LeftSide"]
 layout_mode = 2
@@ -92,10 +96,10 @@ offset_bottom = 850.0
 process_mode = 3
 layout_mode = 2
 offset_left = 1066.0
-offset_top = 44.0
+offset_top = 50.0
 offset_right = 1566.0
-offset_bottom = 855.0
-theme_override_constants/separation = 16
+offset_bottom = 850.0
+theme_override_constants/separation = 8
 
 [node name="Playbook" parent="RightSide" instance=ExtResource("5_t5wa1")]
 unique_name_in_owner = true
@@ -142,28 +146,17 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RightSide"]
 layout_mode = 2
+size_flags_vertical = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RightSide/HBoxContainer"]
-layout_mode = 2
-
-[node name="MusicCheckButton" type="CheckButton" parent="RightSide/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "🎵 Mucic"
-
-[node name="SoundCheckButton" type="CheckButton" parent="RightSide/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "🔊 Sound"
-
-[node name="BackToMenuButton" type="Button" parent="RightSide/HBoxContainer"]
+[node name="BackToMenuButton" type="TextureButton" parent="RightSide/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_default_cursor_shape = 2
-text = "    Back to menu...    "
+texture_normal = ExtResource("9_d6dyj")
+texture_pressed = ExtResource("10_42wxf")
+texture_hover = ExtResource("11_8gol2")
+texture_disabled = ExtResource("12_sqthh")
 
 [connection signal="button_up" from="RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
 [connection signal="button_up" from="RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
-[connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
-[connection signal="toggled" from="RightSide/HBoxContainer/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
 [connection signal="pressed" from="RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
