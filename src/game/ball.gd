@@ -21,5 +21,8 @@ func _on_body_entered(body):
 		body.on_ball_entered(self)
 
 func _on_body_exited(body):
+	# TODO: This code is quite fragile and needs a better solution...
 	if body.has_method(&"on_ball_exit"):
 		body.on_ball_exit(self)
+	elif body.get_parent().has_method(&"on_ball_exit"):
+		body.get_parent().on_ball_exit(self)

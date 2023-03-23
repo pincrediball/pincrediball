@@ -1,4 +1,4 @@
-extends PlayerControlledStaticBody2D
+extends PlayerControlledComponent
 
 const BASE_SCORE = 100
 
@@ -15,7 +15,7 @@ var isActivated: bool = false:
 		return isActivated
 	set(value):
 		if value != isActivated:
-			$Sprite2DRollOver.modulate = Color(1, 1, 1, 1) if value else Color(0.16, 0.16, 0.16, 1)
+			%Sprite2DRollOver.modulate = Color(1, 1, 1, 1) if value else Color(0.16, 0.16, 0.16, 1)
 			isActivated = value
 			if value:
 				play_random_sound(sounds_for_rollover)
@@ -23,6 +23,7 @@ var isActivated: bool = false:
 
 func _ready():
 	super._ready()
+	$ComponentArea2D.input_event.connect(_on_input_event_for_drag_hitbox)
 	sounds_default = [
 		preload("res://sound/wall-001.wav"),
 		preload("res://sound/wall-002.wav"),
