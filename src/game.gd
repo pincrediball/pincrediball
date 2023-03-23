@@ -3,7 +3,7 @@ extends Control
 signal menu_open_requested()
 
 func _ready():
-	Audio.startGameMusic()
+	pass
 
 func _on_run_playbook_button_button_up():
 	Audio.play_random_menu_button_sound()

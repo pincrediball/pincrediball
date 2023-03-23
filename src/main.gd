@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	Audio.startGameMusic()
 	GameStore.new_game_started.connect(_on_new_game_started)
 	GameStore.continue_game_requested.connect(_on_continue_game_requested)
 	GameStore.menu_open_requested.connect(_on_game_menu_open_requested)
