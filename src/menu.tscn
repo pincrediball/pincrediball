@@ -33,6 +33,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00t86"]
 shader = ExtResource("1_fuy8x")
+shader_parameter/base_scroll_speed = 50.0
 
 [node name="Menu" type="Control"]
 layout_mode = 3

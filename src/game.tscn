@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkm8htnfe2j7g"]
+[gd_scene load_steps=16 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Script" path="res://game.gd" id="1_hdvhs"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_ksjyh"]
-[ext_resource type="Texture2D" uid="uid://cop3ke6r1ehak" path="res://art/bg_game_screen.png" id="2_yhopt"]
+[ext_resource type="Shader" path="res://menu.gdshader" id="2_wjxbc"]
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" uid="uid://cokkri2jg0cfk" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="10_42wxf"]
 [ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="11_8gol2"]
 [ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="12_sqthh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoqc3"]
+shader = ExtResource("2_wjxbc")
+shader_parameter/base_scroll_speed = 40.0
 
 [sub_resource type="FontVariation" id="FontVariation_2drok"]
 
@@ -33,32 +37,41 @@ script = ExtResource("1_hdvhs")
 metadata/_edit_horizontal_guides_ = []
 metadata/_edit_vertical_guides_ = [550.0, 1050.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0941176, 0.0941176, 0.105882, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_uoqc3")
 layout_mode = 2
-offset_right = 1600.0
-offset_bottom = 900.0
+color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_yhopt")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="LeftSide" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LeftSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
-offset_left = 34.0
-offset_top = 50.0
-offset_right = 534.0
-offset_bottom = 850.0
+size_flags_horizontal = 3
 
-[node name="LevelHeader" type="MarginContainer" parent="LeftSide"]
+[node name="LevelHeader" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftSide"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 8
@@ -66,51 +79,45 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LeftSide/LevelHeader"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="LeftSide/LevelHeader/VBoxContainer"]
+[node name="Header" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Tutorial - Level 1"
 label_settings = SubResource("LabelSettings_h6tt2")
 
-[node name="Explanation" type="Label" parent="LeftSide/LevelHeader/VBoxContainer"]
+[node name="Explanation" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Drag and drop components to get a high score!"
 label_settings = ExtResource("2_ksjyh")
 autowrap_mode = 2
 
-[node name="Toolbox" parent="LeftSide" instance=ExtResource("3_5lpl1")]
+[node name="Toolbox" parent="MarginContainer/HBoxContainer/LeftSide" instance=ExtResource("3_5lpl1")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="machine" parent="." instance=ExtResource("1_b3inv")]
+[node name="machine" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_b3inv")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 550.0
-offset_top = 50.0
-offset_right = 1050.0
-offset_bottom = 850.0
+layout_mode = 2
+size_flags_vertical = 8
 
-[node name="RightSide" type="VBoxContainer" parent="."]
+[node name="RightSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
-offset_left = 1066.0
-offset_top = 50.0
-offset_right = 1566.0
-offset_bottom = 850.0
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Playbook" parent="RightSide" instance=ExtResource("5_t5wa1")]
+[node name="Playbook" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("5_t5wa1")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="RightSide"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/RightSide"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 columns = 2
 
-[node name="RunPlaybookButton" type="Button" parent="RightSide/GridContainer"]
+[node name="RunPlaybookButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -123,7 +130,7 @@ theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270
 theme_override_font_sizes/font_size = 24
 text = "Run Playbook"
 
-[node name="StressTestButton" type="Button" parent="RightSide/GridContainer"]
+[node name="StressTestButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -136,19 +143,19 @@ theme_override_colors/font_hover_pressed_color = Color(0.82, 0.5453, 0.2706, 1)
 theme_override_font_sizes/font_size = 24
 text = "Stress Test"
 
-[node name="Score" parent="RightSide" instance=ExtResource("7_ydt4m")]
+[node name="Score" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("7_ydt4m")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Medals" parent="RightSide" instance=ExtResource("6_18ytx")]
+[node name="Medals" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("6_18ytx")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RightSide"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSide"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="BackToMenuButton" type="TextureButton" parent="RightSide/HBoxContainer"]
+[node name="BackToMenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_default_cursor_shape = 2
@@ -157,6 +164,6 @@ texture_pressed = ExtResource("10_42wxf")
 texture_hover = ExtResource("11_8gol2")
 texture_disabled = ExtResource("12_sqthh")
 
-[connection signal="button_up" from="RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
-[connection signal="button_up" from="RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
-[connection signal="pressed" from="RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

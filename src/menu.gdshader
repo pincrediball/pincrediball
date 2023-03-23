@@ -4,13 +4,13 @@
 
 shader_type canvas_item;
 
+uniform float base_scroll_speed : hint_range(10, 100) = 50.0;
+
 const vec2 texture_dimensions = vec2(1600.0, 900.0);
 const vec2 star_dimensions = vec2(1.5, 1.5);
 const float stars = 400.0;
 const vec3 star_color = vec3(0.95, 0.9, 0.7);
-const float base_scroll_speed = 50.0;
 const float additional_scroll_speed = 15.0;
-const float preprocess = base_scroll_speed * (base_scroll_speed - additional_scroll_speed) * 3.0;
 const vec2 adjusted_star_dimensions = vec2(
 	1.0 / texture_dimensions.x * star_dimensions.x,
 	1.0 / texture_dimensions.y * star_dimensions.y * stars
@@ -21,6 +21,7 @@ float greater_than(float x, float y) {
 }
 
 void fragment() {
+	float preprocess = base_scroll_speed * (base_scroll_speed - additional_scroll_speed) * 3.0;
 	float random_value = fract(sin(dot(floor(UV * vec2(1.0, stars)), vec2(12.9898,78.233))) * 43758.5453123);
 	float first = mod(UV.x + (preprocess + TIME) / (base_scroll_speed - random_value * additional_scroll_speed), 1.0);
 	float second = fract(UV.y * stars);
