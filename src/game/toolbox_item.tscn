@@ -15,6 +15,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_3w5fw")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 1, 1, 0.909804)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 16
@@ -78,8 +82,8 @@ stretch_mode = 5
 
 [node name="Overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.882353)
 layout_mode = 2
+color = Color(0.105882, 0.105882, 0.105882, 0.960784)
 
 [node name="CenterContainer" type="CenterContainer" parent="Overlay"]
 layout_mode = 1
@@ -92,6 +96,6 @@ grow_vertical = 2
 [node name="UnlocksAtLabel" type="Label" parent="Overlay/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 0.588235)
+theme_override_colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
 theme_override_font_sizes/font_size = 20
 text = "Unlocks at level X"

@@ -79,8 +79,8 @@ func _on_drain_gutter_area_2d_body_entered(body):
 		$AudioStreamPlayer.play()
 		body.queue_free()
 		var balls = get_tree().get_nodes_in_group("isBall")
-		var size = balls.size()
-		if size == 0 or (size == 1 and balls[0] == body):
+		var nr_of_balls = balls.size()
+		if nr_of_balls == 0 or (nr_of_balls == 1 and balls[0] == body):
 			stop()
 
 func _on_plunger_area_2d_body_exited(body):

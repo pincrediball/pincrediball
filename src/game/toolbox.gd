@@ -4,7 +4,7 @@ var stage;
 var toolboxItemScene = preload("res://game/toolbox_item.tscn")
 
 func _ready():
-	var stage = GameStore.getCurrentStage()
+	stage = GameStore.getCurrentStage()
 	loadStage(stage)
 
 func loadStage(stage):
@@ -13,5 +13,5 @@ func loadStage(stage):
 	
 	for entry in stage.toolbox.items:
 		var toolboxItem: Control = toolboxItemScene.instantiate()
-		toolboxItem.load(entry)
+		toolboxItem.load_pinball_component(entry)
 		%ItemsVBox.add_child(toolboxItem)

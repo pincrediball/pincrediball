@@ -12,7 +12,7 @@ script = ExtResource("1_rpnjc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.913725, 0.92549, 0.968627, 1)
+color = Color(0.109804, 0.109804, 0.109804, 0.705882)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

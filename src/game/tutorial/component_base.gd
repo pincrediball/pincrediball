@@ -12,7 +12,7 @@ func _ready():
 	audio_stream_player.bus = Audio.bus_name_pinball_sfx
 	add_child(audio_stream_player)
 
-func on_ball_exit(ball: RigidBody2D):
+func on_ball_exit(_ball: RigidBody2D):
 	play_random_sound()
 
 func play_random_sound(sounds = null):
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), delta * 25)
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if selected and not event.is_pressed():
 			selected = false

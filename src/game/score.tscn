@@ -8,6 +8,8 @@ font_size = 28
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [node name="Score" type="PanelContainer"]
+offset_right = 527.0
+offset_bottom = 132.0
 script = ExtResource("1_dmxya")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -48,16 +50,39 @@ visible = false
 layout_mode = 2
 color = Color(0, 0, 0, 0.882353)
 
-[node name="CenterContainer" type="CenterContainer" parent="DisabledOverlay"]
+[node name="MarginContainer" type="MarginContainer" parent="DisabledOverlay"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -44.0
+offset_right = 192.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="DisabledOverlay/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DisabledOverlay/MarginContainer"]
 layout_mode = 2
-text = "Scoring disabled
-while stress testing"
-horizontal_alignment = 1
+theme_override_constants/separation = 16
+
+[node name="Label2" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "⚠"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DisabledOverlay/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scoring disabled while stress testing
+or when moving components."
+
+[node name="Label2" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Run Playbook to get a Score."

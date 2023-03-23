@@ -6,13 +6,18 @@ func _ready():
 	%SoundCheckButton.set_pressed_no_signal(not Audio.has_muted_pinball_sfx())
 	%MusicCheckButton.set_pressed_no_signal(not Audio.has_muted_music())
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel") and $OptionsMenu.visible:
+		$MainMenu.visible = true
+		$OptionsMenu.visible = false
+
 func _on_new_game_button_pressed():
 	Audio.play_random_menu_button_sound()
-	self.visible = false
+	GameStore.start_new_game()
 
 func _on_continue_game_button_pressed():
 	Audio.play_random_menu_button_sound()
-	pass # Replace with function body.
+	GameStore.continue_game()
 
 func _on_options_button_pressed():
 	Audio.play_random_menu_button_sound()
@@ -40,3 +45,6 @@ func _on_sound_check_button_toggled(button_pressed):
 func _on_music_check_button_toggled(button_pressed):
 	Audio.play_random_menu_button_sound()
 	Audio.set_mute_music(not button_pressed)
+
+func _on_visibility_changed():
+	%ContinueGameButton.disabled = not GameStore.can_continue_game

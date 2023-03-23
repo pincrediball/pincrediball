@@ -16,7 +16,7 @@ var is_disabled := false:
 
 var component_id: String
 
-func load(data):
+func load_pinball_component(data):
 	%RichTextLabel.text = "[b]%s[/b]\n[font_size=10]%s[/font_size]" % [data.title, data.description]
 	%TextureRect.texture = textures[data.component_id]
 	%UnlocksAtLabel.text = "Unlocks at level %s" % data.unlocks_at
