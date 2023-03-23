@@ -32,16 +32,10 @@ label_settings = SubResource("LabelSettings_5rvfl")
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="MedalLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.0980392)
-layout_mode = 2
-text = "🥉"
-label_settings = ExtResource("2_rq23l")
-
 [node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0 points"
+text = "🥉 0 points"
 label_settings = ExtResource("2_rq23l")
 
 [node name="DisabledOverlay" type="ColorRect" parent="."]

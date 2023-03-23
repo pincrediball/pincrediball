@@ -3,6 +3,7 @@ extends Node
 signal new_game_started()
 signal continue_game_requested()
 signal menu_open_requested()
+signal level_changed()
 
 @export var drag_data: Dictionary
 
@@ -43,6 +44,12 @@ func get_current_playbook():
 			return playbook
 	return null
 
+func get_current_medal_targets():
+	for medal_target in current_stage.medal_targets:
+		if medal_target.level == current_level:
+			return medal_target
+	return null
+	
 func start_new_game():
 	current_level = 1
 	new_game_started.emit()

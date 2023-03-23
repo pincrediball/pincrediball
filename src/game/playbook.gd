@@ -1,6 +1,10 @@
 extends PanelContainer
 
 func _ready():
+	load_current_playbook()
+	GameStore.level_changed.connect(load_current_playbook)
+	
+func load_current_playbook():
 	var data = GameStore.get_current_playbook()
 	%LabelPlungeDelay.text = "Plunge: after %s seconds" % data.plunge_delay
 	%LabelLeftFlipperInterval.text = "Left flipper: every %s seconds" % data.flipper_left_interval

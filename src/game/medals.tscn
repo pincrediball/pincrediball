@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb02onpxm2r7x"]
+[gd_scene load_steps=4 format=3 uid="uid://cb02onpxm2r7x"]
 
 [ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/score_points_label.tres" id="1_3x1qd"]
+[ext_resource type="Script" path="res://game/medals.gd" id="1_uj2qn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5f13i"]
 font_size = 28
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [node name="Medals" type="PanelContainer"]
+script = ExtResource("1_uj2qn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -24,17 +26,20 @@ layout_mode = 2
 text = "Score Targets"
 label_settings = SubResource("LabelSettings_5f13i")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelGold" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "🥇 1,500 points"
 label_settings = ExtResource("1_3x1qd")
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelSilver" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "🥈 1,000 points"
 label_settings = ExtResource("1_3x1qd")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelBronze" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "🥉   500 points"
 label_settings = ExtResource("1_3x1qd")

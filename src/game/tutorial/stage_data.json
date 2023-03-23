@@ -7,6 +7,14 @@
 		{ "level": 5, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
 		{ "level": 6, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 }
 	],
+	"medal_targets": [
+		{ "level": 1, "bronze": 25, "silver": 50, "gold": 100 },
+		{ "level": 2, "bronze": 25, "silver": 50, "gold": 100 },
+		{ "level": 3, "bronze": 25, "silver": 50, "gold": 100 },
+		{ "level": 4, "bronze": 25, "silver": 50, "gold": 100 },
+		{ "level": 5, "bronze": 25, "silver": 50, "gold": 100 },
+		{ "level": 6, "bronze": 25, "silver": 50, "gold": 100 }
+	],
 	"toolbox_items": [
 		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Place it in the path of the ball that will be launched.", "unlocks_at": 1 },
 		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
