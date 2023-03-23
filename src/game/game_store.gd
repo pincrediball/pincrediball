@@ -59,3 +59,7 @@ func continue_game():
 	# TODO: Build loading game from user folder
 	# For now this only works if there is a game running
 	continue_game_requested.emit()
+
+func jump_to_level(level: int):
+	current_level = level
+	level_changed.emit()
