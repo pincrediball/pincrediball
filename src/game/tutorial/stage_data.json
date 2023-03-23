@@ -1,16 +1,22 @@
 {
-	"toolbox": {
-		"items": [
-			{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Place it in the path of the ball that will be launched.", "unlocks_at": 1 },
-			{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
-			{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
-			{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
-			{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
-			{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
-			{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
-			{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: Place in the initial plunged ball's path.", "unlocks_at": 5 },
-			{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 },
-			{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 }
-		]
-	}
+	"playbooks": [
+		{ "level": 1, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 2, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 3, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 4, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 5, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 6, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 }
+	],
+	"toolbox_items": [
+		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Place it in the path of the ball that will be launched.", "unlocks_at": 1 },
+		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
+		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
+		{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
+		{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
+		{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
+		{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
+		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: Place in the initial plunged ball's path.", "unlocks_at": 5 },
+		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 },
+		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 }
+	]
 }

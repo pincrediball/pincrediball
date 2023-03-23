@@ -9,27 +9,21 @@ signal menu_open_requested()
 @export var is_dragging: bool:
 	get: return drag_data.size() > 0
 
-@export var currentLevel: int = 1:
-	get:
-		return currentLevel
-
-@export var can_continue_game: bool = false:
+@export var can_continue_game := false:
 	get: return can_continue_game
 
-var currentStage
+var current_level := 6
+var current_stage
 
 func _ready():
-	currentStage = _readStageJson("tutorial")
+	current_stage = _read_stage("tutorial")
 
-func _readStageJson(stage: String):
+func _read_stage(stage: String):
 	var fileName = "res://game/%s/stage_data.json" % stage # Hardcoded for now
 	var file = FileAccess.open(fileName, FileAccess.READ)
 	var contents = file.get_as_text()
 	file.close()
 	return JSON.parse_string(contents)
-
-func getCurrentStage():
-	return currentStage
 
 func clearDragData():
 	drag_data = { }
@@ -37,8 +31,20 @@ func clearDragData():
 func request_menu_open():
 	menu_open_requested.emit()
 
+func get_current_stage():
+	return current_stage
+	
+func get_current_level():
+	return current_level
+
+func get_current_playbook():
+	for playbook in current_stage.playbooks:
+		if playbook.level == current_level:
+			return playbook
+	return null
+
 func start_new_game():
-	currentLevel = 1
+	current_level = 1
 	new_game_started.emit()
 	can_continue_game = true
 

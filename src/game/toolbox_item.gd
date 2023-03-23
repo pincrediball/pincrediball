@@ -20,7 +20,7 @@ func load_pinball_component(data):
 	%RichTextLabel.text = "[b]%s[/b]\n[font_size=10]%s[/font_size]" % [data.title, data.description]
 	%TextureRect.texture = textures[data.component_id]
 	%UnlocksAtLabel.text = "Unlocks at level %s" % data.unlocks_at
-	is_disabled = data.unlocks_at > GameStore.currentLevel
+	is_disabled = data.unlocks_at > GameStore.get_current_level()
 	component_id = data.component_id
 
 func _get_drag_data(_position):

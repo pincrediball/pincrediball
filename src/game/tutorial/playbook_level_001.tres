@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="PlaybookResource" load_steps=2 format=3 uid="uid://mlxwaavqxmlq"]
-
-[ext_resource type="Script" path="res://game/playbook_resource.gd" id="1_v84le"]
-
-[resource]
-script = ExtResource("1_v84le")
-plunge_delay = 0.4
-flipper_left_interval = 1.0
-flipper_right_interval = 1.2
