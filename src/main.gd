@@ -8,6 +8,11 @@ func _ready():
 	GameStore.menu_open_requested.connect(_on_game_menu_open_requested)
 
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel"):
+		set_menu_opened(true)
+
+
 func set_menu_opened(menu_should_be_open: bool):
 	get_tree().paused = menu_should_be_open
 	$Menu.visible = menu_should_be_open
@@ -21,11 +26,6 @@ func reset_game_scene():
 	var game_scene = load("res://game.tscn").instantiate() as Control
 	game_scene.set_anchors_preset(Control.PRESET_FULL_RECT)
 	$GameContainer.add_child(game_scene)
-
-
-func _input(event: InputEvent):
-	if event.is_action_pressed("ui_cancel"):
-		set_menu_opened(true)
 
 
 func _on_game_menu_open_requested():
