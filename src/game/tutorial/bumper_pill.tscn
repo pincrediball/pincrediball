@@ -1,7 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kvmadlhddsv6"]
 
 [ext_resource type="Texture2D" uid="uid://c0uymxosrxkko" path="res://art/game/tutorial/component_bumper_pill.png" id="1_b71sv"]
-[ext_resource type="PhysicsMaterial" uid="uid://bb6n2li1maglm" path="res://game/tutorial/bumper_physics_material.tres" id="1_f6wnl"]
 [ext_resource type="Script" path="res://game/tutorial/bumper_pill.gd" id="1_hxuug"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oya8u"]
@@ -12,21 +11,35 @@ height = 100.0
 radius = 5.0
 height = 94.0
 
-[node name="BumperPill" type="StaticBody2D"]
-physics_material_override = ExtResource("1_f6wnl")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pk55l"]
+radius = 13.0
+height = 108.0
+
+[node name="BumperPill" type="Node2D"]
 script = ExtResource("1_hxuug")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_b71sv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_oya8u")
 
-[node name="SlingArea2D" type="Area2D" parent="."]
+[node name="SlingArea2D" type="Area2D" parent="StaticBody2D"]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlingArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/SlingArea2D"]
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_crhwx")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ComponentArea2D" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentArea2D"]
+shape = SubResource("CapsuleShape2D_pk55l")
+
+[connection signal="mouse_entered" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_exited"]

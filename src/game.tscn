@@ -1,13 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkm8htnfe2j7g"]
+[gd_scene load_steps=16 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Script" path="res://game.gd" id="1_hdvhs"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_ksjyh"]
-[ext_resource type="Texture2D" uid="uid://cop3ke6r1ehak" path="res://art/bg_game_screen.png" id="2_yhopt"]
+[ext_resource type="Shader" path="res://menu.gdshader" id="2_wjxbc"]
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" uid="uid://cokkri2jg0cfk" path="res://game/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/medals.tscn" id="6_18ytx"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/score.tscn" id="7_ydt4m"]
+[ext_resource type="Texture2D" uid="uid://ce5fufair5xt5" path="res://art/menu/menu_button_tl_arrow_normal.png" id="9_d6dyj"]
+[ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="10_42wxf"]
+[ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="11_8gol2"]
+[ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="12_sqthh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoqc3"]
+shader = ExtResource("2_wjxbc")
+shader_parameter/base_scroll_speed = 40.0
 
 [sub_resource type="FontVariation" id="FontVariation_2drok"]
 
@@ -17,35 +25,19 @@ font_size = 44
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [node name="Game" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_hdvhs")
 metadata/_edit_horizontal_guides_ = []
 metadata/_edit_vertical_guides_ = [550.0, 1050.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0941176, 0.0941176, 0.105882, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-offset_right = 1600.0
-offset_bottom = 900.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_yhopt")
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-process_mode = 3
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,69 +45,83 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_uoqc3")
 layout_mode = 2
+color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 
-[node name="LeftSide" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-
-[node name="LeftSideContent" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide"]
-layout_mode = 2
-
-[node name="LevelHeader" type="MarginContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 20
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LeftSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelHeader" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftSide"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+[node name="Header" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
 text = "Tutorial - Level 1"
 label_settings = SubResource("LabelSettings_h6tt2")
 
-[node name="Explanation" type="Label" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent/LevelHeader/VBoxContainer"]
+[node name="Explanation" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/LevelHeader/VBoxContainer"]
 layout_mode = 2
-text = "Drag and drop a maximum of three bumpers onto the playfield to get the highest possible score!"
+text = "Drag and drop components to get a high score!"
 label_settings = ExtResource("2_ksjyh")
 autowrap_mode = 2
 
-[node name="Toolbox" parent="CenterContainer/HBoxContainer/LeftSide/LeftSideContent" instance=ExtResource("3_5lpl1")]
-layout_mode = 2
-
-[node name="Placeholder" type="Control" parent="CenterContainer/HBoxContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(500, 800)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="RightSide" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Playbook" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("5_t5wa1")]
+[node name="Toolbox" parent="MarginContainer/HBoxContainer/LeftSide" instance=ExtResource("3_5lpl1")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide"]
+[node name="machine" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_b3inv")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="RightSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Playbook" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("5_t5wa1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/RightSide"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 columns = 2
 
-[node name="RunPlaybookButton" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide/GridContainer"]
+[node name="RunPlaybookButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.45098, 0.819608, 0.45098, 1)
 theme_override_colors/font_hover_color = Color(0.45098, 0.819608, 0.45098, 1)
@@ -124,16 +130,45 @@ theme_override_colors/font_hover_pressed_color = Color(0.270588, 0.819608, 0.270
 theme_override_font_sizes/font_size = 24
 text = "Run Playbook"
 
-[node name="Score" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("7_ydt4m")]
+[node name="StressTestButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.85098, 0.423529, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.6355, 0.451, 1)
+theme_override_colors/font_hover_color = Color(0.82, 0.4674, 0.1148, 1)
+theme_override_colors/font_focus_color = Color(1, 0.56, 0.12, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.5453, 0.2706, 1)
+theme_override_font_sizes/font_size = 24
+text = "Stress Test"
+
+[node name="Score" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("7_ydt4m")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Medals" parent="CenterContainer/HBoxContainer/MarginContainer/RightSide" instance=ExtResource("6_18ytx")]
+[node name="Medals" parent="MarginContainer/HBoxContainer/RightSide" instance=ExtResource("6_18ytx")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="machine" parent="." instance=ExtResource("1_b3inv")]
-unique_name_in_owner = true
-position = Vector2(550, 50)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSide"]
+layout_mode = 2
+size_flags_vertical = 10
 
-[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_button_button_up"]
+[node name="DebugOptionUnlockAllLevelsButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
+layout_mode = 2
+text = "DEBUG OPTION: Unlock all levels."
+
+[node name="BackToMenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_d6dyj")
+texture_pressed = ExtResource("10_42wxf")
+texture_hover = ExtResource("11_8gol2")
+texture_disabled = ExtResource("12_sqthh")
+
+[connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/DebugOptionUnlockAllLevelsButton" to="." method="_on_debug_option_unlock_all_levels_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

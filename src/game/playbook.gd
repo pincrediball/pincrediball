@@ -1,12 +1,12 @@
 extends PanelContainer
 
-@export var playbookResource: PlaybookResource:
-	get:
-		return playbookResource
-	set(value):
-		playbookResource = value
-		if value:
-			%LabelPlungeDelay.text = "Plunge: after %s seconds" % value.plunge_delay
-			%LabelLeftFlipperInterval.text = "Left flipper: every %s seconds" % value.flipper_left_interval
-			%LabelRightFlipperInterval.text = "Right flipper: every %s seconds" % value.flipper_right_interval
-			%LabelTiltTimings.text = "Tilt machine: never"
+func _ready():
+	load_current_playbook()
+	GameStore.level_changed.connect(load_current_playbook)
+	
+func load_current_playbook():
+	var data = GameStore.get_current_playbook()
+	%LabelPlungeDelay.text = "Plunge: after %s seconds" % data.plunge_delay
+	%LabelLeftFlipperInterval.text = "Left flipper: every %s seconds" % data.flipper_left_interval
+	%LabelRightFlipperInterval.text = "Right flipper: every %s seconds" % data.flipper_right_interval
+	%LabelTiltTimings.text = "Tilt machine: never"

@@ -13,115 +13,66 @@ font_color = Color(0.984314, 0.74902, 0.141176, 1)
 [node name="Playbook" type="PanelContainer"]
 script = ExtResource("1_kolcx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 0
-
-[node name="VFlowContainer" type="VFlowContainer" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VFlowContainer"]
-layout_mode = 2
-text = "Automata Playbook"
-label_settings = SubResource("LabelSettings_rj0p8")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Automata Playbook"
+label_settings = SubResource("LabelSettings_rj0p8")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("1_mkqa7")
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="LabelPlungeDelay" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+[node name="LabelPlungeDelay" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Plunge: after X seconds"
 label_settings = ExtResource("2_7nqg1")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer4/MarginContainer1"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("3_xlenw")
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-
-[node name="LabelLeftFlipperInterval" type="Label" parent="VBoxContainer/HBoxContainer4/MarginContainer2"]
+[node name="LabelLeftFlipperInterval" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Left flipper: every Y seconds"
 label_settings = ExtResource("2_7nqg1")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/MarginContainer1"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("3_xlenw")
 flip_h = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="LabelRightFlipperInterval" type="Label" parent="VBoxContainer/HBoxContainer2/MarginContainer2"]
+[node name="LabelRightFlipperInterval" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Right flipper: every Z seconds
 "
 label_settings = ExtResource("2_7nqg1")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer3/MarginContainer1"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("4_lbtrl")
 flip_h = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-
-[node name="LabelTiltTimings" type="Label" parent="VBoxContainer/HBoxContainer3/MarginContainer2"]
+[node name="LabelTiltTimings" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Tilt machine: never

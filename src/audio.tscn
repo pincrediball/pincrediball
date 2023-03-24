@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddcewupuptsyx"]
+
+[ext_resource type="Script" path="res://audio.gd" id="2_nyhck"]
+
+[node name="Music" type="Node"]
+process_mode = 3
+script = ExtResource("2_nyhck")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="GenericSFX" type="AudioStreamPlayer" parent="."]
+bus = &"PinballSFX"
+
+[connection signal="finished" from="Music" to="." method="_on_game_music_finished"]

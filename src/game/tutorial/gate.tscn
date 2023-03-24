@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://byehi30jmar2b"]
+[gd_scene load_steps=7 format=3 uid="uid://byehi30jmar2b"]
 
 [ext_resource type="Script" path="res://game/tutorial/gate.gd" id="1_am2rc"]
 [ext_resource type="Texture2D" uid="uid://diac5e0c0x4lo" path="res://art/game/tutorial/component_gate.png" id="2_2mxoy"]
@@ -11,21 +11,28 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk03s"]
 size = Vector2(31, 16)
 
-[node name="Gate" type="StaticBody2D" groups=["isResettablePinballComponent", "isWall"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf7id"]
+size = Vector2(60, 62)
+
+[node name="Gate" type="Node2D" groups=["isResettablePinballComponent", "isWall"]]
+process_mode = 3
 script = ExtResource("1_am2rc")
 
-[node name="Sprite2DWalls" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2DWalls" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("2_2mxoy")
 
-[node name="Sprite2DRollOver" type="Sprite2D" parent="."]
+[node name="Sprite2DRollOver" type="Sprite2D" parent="StaticBody2D"]
+unique_name_in_owner = true
 modulate = Color(0.16, 0.16, 0.16, 1)
 texture = ExtResource("3_rbk1e")
 
-[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-18, 0)
 shape = SubResource("CapsuleShape2D_lj2cv")
 
-[node name="CollisionShape2DRight" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(19, 0)
 shape = SubResource("CapsuleShape2D_lj2cv")
 
@@ -35,6 +42,13 @@ shape = SubResource("CapsuleShape2D_lj2cv")
 position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_sk03s")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ComponentArea2D" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentArea2D"]
+shape = SubResource("RectangleShape2D_lf7id")
 
 [connection signal="body_exited" from="RollOverArea2D" to="." method="_on_roll_over_area_2d_body_exited"]
+[connection signal="mouse_entered" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_exited"]

@@ -16,12 +16,14 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 boot_splash/image="res://art/header.png"
 config/icon="res://art/logo.png"
+config/windows_native_icon="res://art/logo.ico"
 boot_splash/minimum_display_time=1000
 
 [autoload]
 
 Scoring="*res://game/scoring.gd"
-Music="*res://music.tscn"
+Audio="*res://audio.tscn"
+GameStore="*res://game/game_store.gd"
 
 [display]
 
@@ -30,6 +32,14 @@ window/size/viewport_height=900
 window/size/transparent=true
 window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
+
+[input]
+
+action_left_mouse_button={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 

@@ -8,42 +8,75 @@ font_size = 28
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [node name="Score" type="PanelContainer"]
+offset_right = 527.0
+offset_bottom = 132.0
 script = ExtResource("1_dmxya")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 0
-
-[node name="HeaderLabel" type="Label" parent="VBoxContainer/MarginContainer1"]
-layout_mode = 2
-text = "Your Score"
-label_settings = SubResource("LabelSettings_5rvfl")
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your Score"
+label_settings = SubResource("LabelSettings_5rvfl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="MedalLabel" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.0980392)
-layout_mode = 2
-text = "🥉"
-label_settings = ExtResource("2_rq23l")
-
-[node name="ScoreLabel" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0 points"
+text = "🥉 0 points"
 label_settings = ExtResource("2_rq23l")
+
+[node name="DisabledOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+color = Color(0, 0, 0, 0.882353)
+
+[node name="MarginContainer" type="MarginContainer" parent="DisabledOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -44.0
+offset_right = 192.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DisabledOverlay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label2" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "⚠"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DisabledOverlay/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scoring disabled while stress testing
+or when moving components."
+
+[node name="Label2" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Run Playbook to get a Score."
