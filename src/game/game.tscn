@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
-[ext_resource type="Script" path="res://game.gd" id="1_hdvhs"]
+[ext_resource type="Script" path="res://game/game.gd" id="1_hdvhs"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_ksjyh"]
-[ext_resource type="Shader" path="res://menu.gdshader" id="2_wjxbc"]
+[ext_resource type="Shader" path="res://menu/menu.gdshader" id="2_wjxbc"]
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/core/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" uid="uid://cokkri2jg0cfk" path="res://game/core/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/core/medals.tscn" id="6_18ytx"]

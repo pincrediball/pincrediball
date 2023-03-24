@@ -23,7 +23,7 @@ func set_menu_opened(menu_should_be_open: bool):
 func reset_game_scene():
 	for child in $GameContainer.get_children():
 		child.queue_free()
-	var game_scene = load("res://game.tscn").instantiate() as Control
+	var game_scene = load("res://game/game.tscn").instantiate() as Control
 	game_scene.set_anchors_preset(Control.PRESET_FULL_RECT)
 	$GameContainer.add_child(game_scene)
 
@@ -33,7 +33,7 @@ func _on_game_menu_open_requested():
 
 
 func _on_menu_credits_roll_requested():
-	var credits = load("res://credits.tscn").instantiate() as Control
+	var credits = load("res://menu/credits.tscn").instantiate() as Control
 	add_child(credits)
 
 

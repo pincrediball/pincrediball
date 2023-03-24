@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cd8bandoml7hl"]
 
-[ext_resource type="PackedScene" uid="uid://b285vl84brpq4" path="res://menu.tscn" id="1_6nel3"]
+[ext_resource type="PackedScene" uid="uid://b285vl84brpq4" path="res://menu/menu.tscn" id="1_6nel3"]
 [ext_resource type="Script" path="res://main.gd" id="1_lt888"]
-[ext_resource type="PackedScene" uid="uid://cnu62qte2aflp" path="res://splash.tscn" id="1_pbgtx"]
+[ext_resource type="PackedScene" uid="uid://cnu62qte2aflp" path="res://menu/splash.tscn" id="1_pbgtx"]
 
 [node name="Main" type="Control"]
 process_mode = 3

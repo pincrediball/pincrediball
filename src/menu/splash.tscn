@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnu62qte2aflp"]
 
-[ext_resource type="Script" path="res://splash.gd" id="1_cbbfe"]
+[ext_resource type="Script" path="res://menu/splash.gd" id="1_cbbfe"]
 [ext_resource type="Texture2D" uid="uid://bak7iofircbyq" path="res://art/header.png" id="1_wdsuv"]
 
 [sub_resource type="Animation" id="Animation_p2ewb"]
