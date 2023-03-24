@@ -2,7 +2,6 @@ extends PlayerControlledComponent
 
 func _ready():
 	super._ready()
-	$ComponentArea2D.input_event.connect(_on_input_event_for_drag_hitbox)
 	sounds_default = [
 		preload("res://sound/wall-001.wav"),
 		preload("res://sound/wall-002.wav"),
@@ -10,3 +9,6 @@ func _ready():
 		preload("res://sound/wall-004.wav"),
 	]
 
+func _unhandled_input(event): handle_unhandled_input(event)
+func _on_component_area_2d_mouse_entered(): is_mouse_over_body = true
+func _on_component_area_2d_mouse_exited(): is_mouse_over_body = false

@@ -3,7 +3,9 @@ class_name PlayerControlledComponent extends Node2D
 signal move_by_player_ended(node: Node2D)
 
 var sounds_default = []
+var is_mouse_over_body := false
 var selected := false
+var lerp_offset := Vector2.ZERO
 var previous_position: Vector2
 var audio_stream_player = AudioStreamPlayer.new()
 
@@ -28,16 +30,19 @@ func end_move():
 
 func _physics_process(delta):
 	if selected:
-		global_position = lerp(global_position, get_global_mouse_position(), delta * 25)
+		var target = get_global_mouse_position() - lerp_offset
+		global_position = lerp(global_position, target, delta * 20)
 
-func _on_input_event_for_drag_hitbox(_viewport: Node, event: InputEvent, _shape_idx: int):
+func handle_unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if selected and not event.is_pressed():
 			selected = false
 			move_by_player_ended.emit(self)
-		if not selected and event.is_pressed():
+		elif is_mouse_over_body and not selected and event.is_pressed():
 			selected = true
 			previous_position = global_position
+			lerp_offset = get_local_mouse_position()
+			get_viewport().set_input_as_handled()
 
 func move_to_last_known_position():
 	global_position = previous_position

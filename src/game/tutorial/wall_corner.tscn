@@ -27,3 +27,4 @@ position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_hnero")
 
 [connection signal="mouse_entered" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ComponentArea2D" to="." method="_on_component_area_2d_mouse_exited"]
