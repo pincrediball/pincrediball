@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3itbo4eksw1g"]
 
-[ext_resource type="Script" path="res://game/toolbox_item.gd" id="1_3w5fw"]
+[ext_resource type="Script" path="res://game/core/toolbox_item.gd" id="1_3w5fw"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b83oe"]
 

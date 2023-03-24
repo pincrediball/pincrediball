@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb02onpxm2r7x"]
 
-[ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/score_points_label.tres" id="1_3x1qd"]
-[ext_resource type="Script" path="res://game/medals.gd" id="1_uj2qn"]
+[ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/core/score_points_label.tres" id="1_3x1qd"]
+[ext_resource type="Script" path="res://game/core/medals.gd" id="1_uj2qn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5f13i"]
 font_size = 28

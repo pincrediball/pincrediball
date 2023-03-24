@@ -1,6 +1,6 @@
 extends Control
 
-const ToolboxItem = preload("res://game/toolbox_item.tscn")
+const ToolboxItem = preload("res://game/core/toolbox_item.tscn")
 
 var stage = null
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cokkri2jg0cfk"]
 
-[ext_resource type="Script" path="res://game/playbook.gd" id="1_kolcx"]
+[ext_resource type="Script" path="res://game/core/playbook.gd" id="1_kolcx"]
 [ext_resource type="Texture2D" uid="uid://cyexvvfl6ervy" path="res://art/game/plunger_icon.png" id="1_mkqa7"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_7nqg1"]
 [ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/game/flipper.png" id="3_xlenw"]

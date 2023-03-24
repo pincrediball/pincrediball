@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://fmi417501t64"]
 
-[ext_resource type="Script" path="res://game/toolbox.gd" id="1_rpnjc"]
-[ext_resource type="PackedScene" uid="uid://d3itbo4eksw1g" path="res://game/toolbox_item.tscn" id="2_rc5ph"]
+[ext_resource type="Script" path="res://game/core/toolbox.gd" id="1_rpnjc"]
+[ext_resource type="PackedScene" uid="uid://d3itbo4eksw1g" path="res://game/core/toolbox_item.tscn" id="2_rc5ph"]
 
 [node name="Toolbox" type="MarginContainer"]
 offset_right = 441.0

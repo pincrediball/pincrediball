@@ -18,7 +18,7 @@ const COMPONENT_SCENES = {
 	"gate": preload("res://game/tutorial/gate.tscn"),
 }
 
-const Ball = preload("res://game/ball.tscn")
+const Ball = preload("res://game/core/ball.tscn")
 
 const BALL_START_POSITION: Vector2 = Vector2(485, 730)
 const BALL_PLUNGE_VELOCITY: Vector2 = Vector2(0, -1500)

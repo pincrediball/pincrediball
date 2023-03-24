@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
 [ext_resource type="Texture2D" uid="uid://c1hsu6ff3h4lg" path="res://art/game/tutorial/bg_clouds.png" id="3_0e6op"]
 [ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/game/tutorial/bg_doodles.png" id="4_5dxhy"]
-[ext_resource type="PackedScene" uid="uid://dw1vps7k815gg" path="res://game/flipper.tscn" id="4_6pi0p"]
+[ext_resource type="PackedScene" uid="uid://dw1vps7k815gg" path="res://game/core/flipper.tscn" id="4_6pi0p"]
 [ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/game/tutorial/machine_bounds.png" id="5_addj0"]
 [ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/game/tutorial/flipper_lane.png" id="6_lvykr"]
 [ext_resource type="Texture2D" uid="uid://bow6uwf786rd2" path="res://art/game/tutorial/plunger_gate.png" id="7_tk6d3"]

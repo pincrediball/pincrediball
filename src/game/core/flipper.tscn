@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw1vps7k815gg"]
 
-[ext_resource type="Script" path="res://game/flipper.gd" id="1_rv37f"]
+[ext_resource type="Script" path="res://game/core/flipper.gd" id="1_rv37f"]
 [ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/game/flipper.png" id="2_wuth4"]
 
 [node name="Node2D" type="Node2D"]
