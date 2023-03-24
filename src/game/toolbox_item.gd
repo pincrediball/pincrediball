@@ -16,8 +16,10 @@ var is_disabled := false:
 
 var stage_data
 
+
 func _ready():
 	GameStore.level_changed.connect(_on_level_changed)
+
 
 func load_pinball_component(data):
 	%RichTextLabel.text = "[b]%s[/b]\n[font_size=10]%s[/font_size]" % [data.title, data.description]
@@ -26,8 +28,10 @@ func load_pinball_component(data):
 	is_disabled = data.unlocks_at > GameStore.get_current_level()
 	stage_data = data
 
+
 func _on_level_changed():
 	is_disabled = stage_data.unlocks_at > GameStore.get_current_level()
+
 
 func _get_drag_data(_position):
 	var icon = TextureRect.new()

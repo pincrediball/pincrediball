@@ -8,50 +8,53 @@ const sounds = [
 	preload("res://sound/flipper-005.wav"),
 ]
 
-# Settings:
-var max_rotation: float = -85
-var rest_angle: float = 35
-var up_time: float = 0.06
-const down_time: float = 0.3
-var isRunning: bool = false
+enum FlipperState { RESTING, GOING_UP, GOING_DOWN }
 
-# State:
-enum FlipperState { Resting, GoingUp, GoingDown }
-var state: FlipperState = FlipperState.Resting
-var time_moving: float = 0.0
+const MAX_ROTATION := -85.0
+const REST_ANGLE := 35.0
+const TIME_TO_MOVE_UP := 0.06
+const TIME_TO_MOVE_DOWN := 0.3
+
+var state := FlipperState.RESTING
+var time_moving := 0.0
+var is_running := false
+
 
 func reset(interval: float):
 	$Timer.wait_time = interval
 	$Timer.start()
-	isRunning = true
-	state = FlipperState.Resting
+	is_running = true
+	state = FlipperState.RESTING
 	time_moving = 0.0
-	$CharacterBody2D.rotation_degrees = rest_angle
+	$CharacterBody2D.rotation_degrees = REST_ANGLE
+
 
 func stop():
 	$Timer.stop()
-	isRunning = false
+	is_running = false
+
 
 func _physics_process(delta):
-	if !isRunning or state == FlipperState.Resting:
+	if !is_running or state == FlipperState.RESTING:
 		return
 	
 	time_moving += delta
 	
-	if state == FlipperState.GoingUp:
-		$CharacterBody2D.rotation_degrees = max_rotation * (time_moving / up_time) + rest_angle
-		if time_moving > up_time:
-			state = FlipperState.GoingDown
+	if state == FlipperState.GOING_UP:
+		$CharacterBody2D.rotation_degrees = MAX_ROTATION * (time_moving / TIME_TO_MOVE_UP) + REST_ANGLE
+		if time_moving > TIME_TO_MOVE_UP:
+			state = FlipperState.GOING_DOWN
 			time_moving = 0.0
 
 	else:
-		$CharacterBody2D.rotation_degrees = max_rotation * (1 - (time_moving / down_time)) + rest_angle
-		if time_moving > down_time:
-			state = FlipperState.Resting
+		$CharacterBody2D.rotation_degrees = MAX_ROTATION * (1 - (time_moving / TIME_TO_MOVE_DOWN)) + REST_ANGLE
+		if time_moving > TIME_TO_MOVE_DOWN:
+			state = FlipperState.RESTING
 			time_moving = 0.0
 
+
 func _on_timer_timeout():
-	assert(state == FlipperState.Resting, "Flipper should fire but was not yet resting!")
-	state = FlipperState.GoingUp
+	assert(state == FlipperState.RESTING, "Flipper should fire but was not yet resting!")
+	state = FlipperState.GOING_UP
 	$AudioStreamPlayer.stream = sounds[randi() % len(sounds)]
 	$AudioStreamPlayer.play()

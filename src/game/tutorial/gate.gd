@@ -1,25 +1,23 @@
 extends PlayerControlledComponent
 
 const BASE_SCORE = 100
-
-const sounds_for_rollover = [
+const SOUNDS_FOR_ROLLOVER: Array[Resource] = [
 	preload("res://sound/rollover-001.wav"),
 	preload("res://sound/rollover-002.wav"),
 	preload("res://sound/rollover-003.wav"),
 	preload("res://sound/rollover-004.wav"),
 ]
 
-signal was_activated()
-var isActivated: bool = false:
+var is_activated: bool = false:
 	get:
-		return isActivated
+		return is_activated
 	set(value):
-		if value != isActivated:
+		if value != is_activated:
 			%Sprite2DRollOver.modulate = Color(1, 1, 1, 1) if value else Color(0.16, 0.16, 0.16, 1)
-			isActivated = value
+			is_activated = value
 			if value:
-				play_random_sound(sounds_for_rollover)
-				was_activated.emit()
+				play_random_sound(SOUNDS_FOR_ROLLOVER)
+
 
 func _ready():
 	super._ready()
@@ -29,14 +27,17 @@ func _ready():
 		preload("res://sound/wall-003.wav"),
 		preload("res://sound/wall-004.wav"),
 	]
-	
+
+
 func _on_roll_over_area_2d_body_exited(body):
-	if not isActivated and body.is_in_group("isBall") && (body as RigidBody2D).linear_velocity.y > 0:
-		isActivated = true
+	if not is_activated and body.is_in_group("isBall") and body.linear_velocity.y > 0:
+		is_activated = true
 		Scoring.add_score(BASE_SCORE)
 
+
 func resetPinballComponent():
-	isActivated = false
+	is_activated = false
+
 
 func _unhandled_input(event): handle_unhandled_input(event)
 func _on_component_area_2d_mouse_entered(): is_mouse_over_body = true

@@ -33,6 +33,10 @@ window/size/transparent=true
 window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="D:/git/pincrediball/movies-from-godot/pincrediball-v1-20230324-demo.avi"
+
 [input]
 
 action_left_mouse_button={

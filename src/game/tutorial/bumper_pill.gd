@@ -2,6 +2,7 @@ extends PlayerControlledComponent
 
 const BASE_SCORE = 10
 
+
 func _ready():
 	super._ready()
 	sounds_default = [
@@ -9,6 +10,7 @@ func _ready():
 		preload("res://sound/bumper-102.wav"),
 		preload("res://sound/bumper-103.wav"),
 	]
+
 
 func on_ball_exit(ball: RigidBody2D):
 	if %SlingArea2D.overlaps_body(ball):
@@ -18,6 +20,7 @@ func on_ball_exit(ball: RigidBody2D):
 		var impulse = baseForce * 1000
 		ball.apply_impulse(impulse)
 		Scoring.add_score(BASE_SCORE)
+
 
 func _unhandled_input(event): handle_unhandled_input(event)
 func _on_component_area_2d_mouse_entered(): is_mouse_over_body = true

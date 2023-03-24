@@ -1,10 +1,11 @@
 extends Node
 
 signal score_changed(from: int, to: int)
-signal toggled_enabled(enabled: bool)
+signal scoring_mode_toggled(enabled: bool)
 
 var currentScore: int = 0
 var is_enabled: bool = true
+
 
 func add_score(score: int = 0):
 	if is_enabled:
@@ -12,11 +13,13 @@ func add_score(score: int = 0):
 		currentScore += score
 		score_changed.emit(oldScore, currentScore)
 
+
 func reset_score():
 	var oldScore = currentScore
 	currentScore = 0
 	score_changed.emit(oldScore, 0)
 
+
 func set_enabled(value: bool):
 	is_enabled = value
-	toggled_enabled.emit(value)
+	scoring_mode_toggled.emit(value)
