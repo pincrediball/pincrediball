@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7gnqdufk7u88"]
+[gd_scene load_steps=11 format=3 uid="uid://b7gnqdufk7u88"]
 
 [ext_resource type="Script" path="res://game/core/score.gd" id="1_dmxya"]
 [ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/core/score_points_label.tres" id="2_rq23l"]
@@ -6,6 +6,46 @@
 [sub_resource type="LabelSettings" id="LabelSettings_5rvfl"]
 font_size = 28
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
+
+[sub_resource type="Gradient" id="Gradient_a82wn"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.292237, 1)
+colors = PackedColorArray(1, 0.668435, 0.619761, 1, 0.999997, 0.555785, 0.496989, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_twyf3"]
+gradient = SubResource("Gradient_a82wn")
+
+[sub_resource type="Curve" id="Curve_4mejp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7vm5x"]
+curve = SubResource("Curve_4mejp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rce7g"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_7vm5x")
+color = Color(0.305882, 0.803922, 0.0901961, 1)
+color_ramp = SubResource("GradientTexture1D_twyf3")
+
+[sub_resource type="Gradient" id="Gradient_lp6w4"]
+offsets = PackedFloat32Array(0, 0.755747)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k127a"]
+gradient = SubResource("Gradient_lp6w4")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Score" type="PanelContainer"]
 offset_right = 527.0
@@ -32,11 +72,7 @@ layout_mode = 2
 text = "Current Score"
 label_settings = SubResource("LabelSettings_5rvfl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1/HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
@@ -52,11 +88,20 @@ layout_mode = 2
 text = "Best Score"
 label_settings = SubResource("LabelSettings_5rvfl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 20
+[node name="CelebrationParticles" type="GPUParticles2D" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+self_modulate = Color(0.184314, 0.878431, 0.196078, 1)
+position = Vector2(76, 58)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_rce7g")
+texture = SubResource("GradientTexture2D_k127a")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
 
-[node name="HighScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
@@ -104,3 +149,6 @@ or when moving components."
 [node name="Label2" type="Label" parent="DisabledOverlay/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Run Playbook to get a Score."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"PinballSFX"
