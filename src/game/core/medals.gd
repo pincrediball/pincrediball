@@ -8,6 +8,6 @@ func _ready():
 
 func _load_current_playbook():
 	var data = GameStore.get_current_medal_targets()
-	%LabelGold.text = "🥇 %s points" % data.gold
-	%LabelSilver.text = "🥈 %s points" % data.silver
-	%LabelBronze.text = "🥉 %s points" % data.bronze
+	%LabelGold.text = "🥇 %s points" % Scoring.format_score(data.gold)
+	%LabelSilver.text = "🥈 %s points" % Scoring.format_score(data.silver)
+	%LabelBronze.text = "🥉 %s points" % Scoring.format_score(data.bronze)

@@ -37,7 +37,7 @@ func _set_score(to: int):
 
 
 func _set_high_score(to: int):
-	%HighScoreLabel.text = "%s %s" % [_format_medal(to), Scoring.format_score(to)]
+	%HighScoreLabel.text = "%s%s" % [_format_medal(to), Scoring.format_score(to)]
 	if to > _last_known_high_score:
 		get_tree().create_timer(0.5).timeout.connect(_celebrate_high_score)
 	_last_known_high_score = to
@@ -51,10 +51,10 @@ func _celebrate_high_score():
 
 func _format_medal(score: int) -> String:
 	if score >= _medal_data.gold:
-		return "🥇"
+		return "🥇 "
 	elif score >= _medal_data.silver:
-		return "🥈"
+		return "🥈 "
 	elif score >= _medal_data.bronze:
-		return "🥉"
+		return "🥉 "
 	else:
 		return ""

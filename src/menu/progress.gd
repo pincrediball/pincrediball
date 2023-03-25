@@ -2,12 +2,15 @@ extends Control
 
 const STAGES := [
 	"Tutorial",
-	"Stage 1 (to be released!)",
-	"Stage 2 (to be released!)",
-	"Stage 3 (to be released!)",
+	"Newbie Stage",
+	"Normie Stage",
+	"Nasty Stage",
+	"Nightmare Stage"
 ]
 
 const ProgressRow = preload("res://menu/progress_row.tscn")
+
+var _stage_shown_index := 0
 
 
 func _on_back_button_pressed():
@@ -26,3 +29,30 @@ func _on_visibility_changed():
 			var row = ProgressRow.instantiate()
 			row.progress_for_level = progress_for_level
 			%ProgressionRows.add_child(row)
+	
+	_switch_to_stage(0)
+
+
+func _switch_to_stage(index):
+	if index != _stage_shown_index:
+		$StageSwapAnimationPlayer.play("progression_rows_fade_out")
+		await $StageSwapAnimationPlayer.animation_finished
+		%StageLabel.text = STAGES[index]
+		%ButtonPreviousStage.disabled = index == 0
+		%ButtonNextStage.disabled = index == (len(STAGES) - 1)
+		%ProgressionRows.visible = index == 0
+		%StageEmptyContainer.visible = index != 0
+		$StageSwapAnimationPlayer.play_backwards("progression_rows_fade_out")
+		_stage_shown_index = index
+
+
+func _on_button_next_stage_pressed():
+	Audio.play_menu_button_sound_next()
+	if _stage_shown_index < len(STAGES) - 1:
+		_switch_to_stage(_stage_shown_index + 1)
+
+
+func _on_button_previous_stage_pressed():
+	Audio.play_menu_button_sound_back()
+	if _stage_shown_index > 0:
+		_switch_to_stage(_stage_shown_index - 1)

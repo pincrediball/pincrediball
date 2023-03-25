@@ -8,12 +8,12 @@
 		{ "level": 6, "max_run_time": 60, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 }
 	],
 	"medal_targets": [
-		{ "level": 1, "bronze":  25, "silver":  50, "gold":  100 },
-		{ "level": 2, "bronze":  50, "silver":  75, "gold":  150 },
-		{ "level": 3, "bronze":  75, "silver": 100, "gold":  175 },
-		{ "level": 4, "bronze": 125, "silver": 175, "gold":  250 },
-		{ "level": 5, "bronze": 200, "silver": 275, "gold":  400 },
-		{ "level": 6, "bronze": 300, "silver": 500, "gold": 1000 }
+		{ "level": 1, "bronze":  25, "silver":  50, "gold":  100, "title": "Bumping" },
+		{ "level": 2, "bronze":  50, "silver":  75, "gold":  150, "title": "Bumping some more" },
+		{ "level": 3, "bronze":  75, "silver": 100, "gold":  175, "title": "Wall's that?!" },
+		{ "level": 4, "bronze": 125, "silver": 175, "gold":  250, "title": "Blue pills" },
+		{ "level": 5, "bronze": 200, "silver": 275, "gold":  400, "title": "Gate One" },
+		{ "level": 6, "bronze": 300, "silver": 500, "gold": 1000, "title": "Gate Trio" }
 	],
 	"toolbox_items": [
 		{ "unlocks_at": 1, "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Place it in the path of the ball that will be launched." },
