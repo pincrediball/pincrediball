@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cokkri2jg0cfk"]
+[gd_scene load_steps=8 format=3 uid="uid://cokkri2jg0cfk"]
 
 [ext_resource type="Script" path="res://game/core/playbook.gd" id="1_kolcx"]
 [ext_resource type="Texture2D" uid="uid://cyexvvfl6ervy" path="res://art/game/plunger_icon.png" id="1_mkqa7"]
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="2_7nqg1"]
 [ext_resource type="Texture2D" uid="uid://gob458i4oe0x" path="res://art/game/flipper.png" id="3_xlenw"]
 [ext_resource type="Texture2D" uid="uid://5eh86sk4bsq1" path="res://art/game/tilt_symbol.png" id="4_lbtrl"]
+[ext_resource type="Texture2D" uid="uid://etl68d64fko" path="res://art/game/drain_icon.png" id="6_2a1w1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rj0p8"]
 font_size = 28
@@ -76,5 +77,17 @@ flip_h = true
 unique_name_in_owner = true
 layout_mode = 2
 text = "Tilt machine: never
+"
+label_settings = ExtResource("2_7nqg1")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_2a1w1")
+flip_h = true
+
+[node name="LabelMaxRunTime" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Time to drain the ball: N seconds
 "
 label_settings = ExtResource("2_7nqg1")

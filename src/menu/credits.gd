@@ -18,7 +18,7 @@ func _input(event: InputEvent):
 
 
 func _on_texture_button_pressed():
-	Audio.play_random_menu_button_sound()
+	Audio.play_menu_button_sound_back()
 	close()
 
 

@@ -10,7 +10,8 @@ const MUSIC_TRACKS_GAME: Array[Resource] = [
 	preload("res://music/amazing-grace.mp3"),
 ]
 
-const MENU_BUTTON_SOUND := preload("res://sound/menu-button-001.wav")
+const MENU_BUTTON_SOUND_NEXT := preload("res://sound/menu-button-001.wav")
+const MENU_BUTTON_SOUND_BACK := preload("res://sound/menu-button-002.wav")
 const MUSIC_TRACK_CREDITS = preload("res://music/dear-mr-super-computer.mp3")
 
 const music_volume_default := -5.0
@@ -66,7 +67,12 @@ func has_muted_pinball_sfx():
 	return AudioServer.is_bus_mute(bus_id_pinball_sfx)
 
 
-func play_random_menu_button_sound():
-	$GenericSFX.stream = MENU_BUTTON_SOUND
+func play_menu_button_sound_next():
+	$GenericSFX.stream = MENU_BUTTON_SOUND_NEXT
+	$GenericSFX.play()
+
+
+func play_menu_button_sound_back():
+	$GenericSFX.stream = MENU_BUTTON_SOUND_BACK
 	$GenericSFX.play()
 	

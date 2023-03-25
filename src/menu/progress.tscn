@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp5niqamgmbpl"]
+
+[ext_resource type="Script" path="res://menu/progress.gd" id="1_3yf8h"]
+[ext_resource type="Shader" path="res://menu/menu.gdshader" id="1_162qt"]
+[ext_resource type="PackedScene" uid="uid://cy0jqclcruh0k" path="res://menu/progress_row.tscn" id="2_j6hh4"]
+[ext_resource type="Texture2D" uid="uid://ce5fufair5xt5" path="res://art/menu/menu_button_tl_arrow_normal.png" id="4_h84t3"]
+[ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="5_ol1y1"]
+[ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="6_bd6ir"]
+[ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="7_tr1c7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt3le"]
+shader = ExtResource("1_162qt")
+shader_parameter/base_scroll_speed = 40.0
+
+[node name="Progress" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3yf8h")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_jt3le")
+layout_mode = 2
+color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 48
+
+[node name="ButtonPreviouisStage" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "    ◀    "
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_colors/font_outline_color = Color(0.847059, 0.705882, 0.996078, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+text = "Tutorial Stage"
+
+[node name="ButtonNextStage" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "    ▶    "
+
+[node name="ProgressionRows" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProgressRow" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow2" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow3" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow4" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow5" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow6" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="ProgressRow7" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_h84t3")
+texture_pressed = ExtResource("5_ol1y1")
+texture_hover = ExtResource("6_bd6ir")
+texture_disabled = ExtResource("7_tr1c7")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

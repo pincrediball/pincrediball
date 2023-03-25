@@ -12,3 +12,4 @@ func _load_current_playbook():
 	%LabelLeftFlipperInterval.text = "Left flipper: every %s seconds" % data.flipper_left_interval
 	%LabelRightFlipperInterval.text = "Right flipper: every %s seconds" % data.flipper_right_interval
 	%LabelTiltTimings.text = "Tilt machine: never"
+	%LabelMaxRunTime.text = "Time to drain ball: %s seconds" % data.max_run_time

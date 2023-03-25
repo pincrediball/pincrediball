@@ -19,23 +19,47 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
-text = "Your Score"
+text = "Current Score"
 label_settings = SubResource("LabelSettings_5rvfl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "🥉 0 points"
+text = "🥉 0"
+label_settings = ExtResource("2_rq23l")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Best Score"
+label_settings = SubResource("LabelSettings_5rvfl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🥉 0"
 label_settings = ExtResource("2_rq23l")
 
 [node name="DisabledOverlay" type="ColorRect" parent="."]

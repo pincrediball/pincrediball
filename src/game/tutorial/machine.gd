@@ -62,6 +62,7 @@ func _on_drain_gutter_area_2d_body_entered(body: Node2D):
 		var nr_of_balls = balls.size()
 		if nr_of_balls == 0 or (nr_of_balls == 1 and balls[0] == body):
 			stop()
+			GameStore.persist_progress()
 
 
 func _on_mouse_entered():

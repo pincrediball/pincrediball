@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b285vl84brpq4"]
+[gd_scene load_steps=37 format=3 uid="uid://b285vl84brpq4"]
 
 [ext_resource type="Shader" path="res://menu/menu.gdshader" id="1_fuy8x"]
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_wostc"]
@@ -11,10 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://c3jnw7hnk5tj3" path="res://art/menu/menu_button_continue_hover.png" id="8_bldkh"]
 [ext_resource type="Texture2D" uid="uid://c0a3bwotta78" path="res://art/menu/menu_button_continue_disabled.png" id="9_cl4yb"]
 [ext_resource type="Texture2D" uid="uid://s0kdwim2aeuq" path="res://art/menu/menu_button_options_normal.png" id="10_780f3"]
+[ext_resource type="Texture2D" uid="uid://bq326a8n61qna" path="res://art/menu/menu_button_progress_normal.png" id="11_fkemn"]
 [ext_resource type="Texture2D" uid="uid://bsf73snrhfvm3" path="res://art/menu/menu_button_options_pressed.png" id="11_wpy1m"]
+[ext_resource type="Texture2D" uid="uid://c2g1kvppvkqf8" path="res://art/menu/menu_button_progress_pressed.png" id="12_h3wup"]
 [ext_resource type="Texture2D" uid="uid://cwtqwqtf2wayt" path="res://art/menu/menu_button_options_hover.png" id="12_tx642"]
 [ext_resource type="Texture2D" uid="uid://bko3wrs2lw3ft" path="res://art/menu/menu_button_options_disabled.png" id="13_lbx6j"]
+[ext_resource type="Texture2D" uid="uid://cj6cu5ws7ht76" path="res://art/menu/menu_button_progress_hover.png" id="13_nqsic"]
 [ext_resource type="Texture2D" uid="uid://ckrev6dk1qiu8" path="res://art/menu/menu_button_credits_normal.png" id="14_7i1sk"]
+[ext_resource type="Texture2D" uid="uid://m2yoq167uceo" path="res://art/menu/menu_button_progress_disabled.png" id="14_nexo3"]
 [ext_resource type="Texture2D" uid="uid://itjo3nup4aq7" path="res://art/menu/menu_button_credits_pressed.png" id="15_tlngg"]
 [ext_resource type="Texture2D" uid="uid://dks56ku66ereh" path="res://art/menu/menu_button_credits_hover.png" id="16_p847k"]
 [ext_resource type="Texture2D" uid="uid://muwxhcb1i0e0" path="res://art/menu/menu_button_credits_disabled.png" id="17_temhq"]
@@ -30,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://c6u6vmr03c7ag" path="res://art/menu/menu_button_back_pressed.png" id="28_yg5uj"]
 [ext_resource type="Texture2D" uid="uid://ctnbxgblmfc5x" path="res://art/menu/menu_button_back_hover.png" id="29_rtrop"]
 [ext_resource type="Texture2D" uid="uid://150oerf6jhrw" path="res://art/menu/menu_button_back_disabled.png" id="30_684ur"]
+[ext_resource type="PackedScene" uid="uid://dp5niqamgmbpl" path="res://menu/progress.tscn" id="35_ru3bc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00t86"]
 shader = ExtResource("1_fuy8x")
@@ -44,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wostc")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MainMenu" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,24 +57,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
 material = SubResource("ShaderMaterial_00t86")
 layout_mode = 2
 color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 
-[node name="MainMenu" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="NewGameButton" type="TextureButton" parent="MainMenu/VBoxContainer"]
+[node name="NewGameButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_6qn2j")
@@ -77,7 +77,7 @@ texture_pressed = ExtResource("3_2epd5")
 texture_hover = ExtResource("4_xlhr0")
 texture_disabled = ExtResource("5_xudfb")
 
-[node name="ContinueGameButton" type="TextureButton" parent="MainMenu/VBoxContainer"]
+[node name="ContinueGameButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -87,7 +87,17 @@ texture_pressed = ExtResource("7_msfeh")
 texture_hover = ExtResource("8_bldkh")
 texture_disabled = ExtResource("9_cl4yb")
 
-[node name="OptionsButton" type="TextureButton" parent="MainMenu/VBoxContainer"]
+[node name="ProgressButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("11_fkemn")
+texture_pressed = ExtResource("12_h3wup")
+texture_hover = ExtResource("13_nqsic")
+texture_disabled = ExtResource("14_nexo3")
+
+[node name="OptionsButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("10_780f3")
@@ -95,7 +105,7 @@ texture_pressed = ExtResource("11_wpy1m")
 texture_hover = ExtResource("12_tx642")
 texture_disabled = ExtResource("13_lbx6j")
 
-[node name="CreditsButton" type="TextureButton" parent="MainMenu/VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_7i1sk")
@@ -103,7 +113,7 @@ texture_pressed = ExtResource("15_tlngg")
 texture_hover = ExtResource("16_p847k")
 texture_disabled = ExtResource("17_temhq")
 
-[node name="ExitButton" type="TextureButton" parent="MainMenu/VBoxContainer"]
+[node name="ExitButton" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("18_7dq86")
@@ -111,7 +121,11 @@ texture_pressed = ExtResource("19_xthid")
 texture_hover = ExtResource("20_cbc4j")
 texture_disabled = ExtResource("21_dbtut")
 
-[node name="OptionsMenu" type="CenterContainer" parent="."]
+[node name="Progress" parent="." instance=ExtResource("35_ru3bc")]
+visible = false
+layout_mode = 1
+
+[node name="OptionsMenu" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -120,27 +134,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+[node name="ColorRect" type="ColorRect" parent="OptionsMenu"]
+material = SubResource("ShaderMaterial_00t86")
+layout_mode = 2
+color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="OptionsMenu"]
 layout_mode = 2
 
-[node name="SoundCheckButton" type="CheckButton" parent="OptionsMenu/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="SoundCheckButton" type="CheckButton" parent="OptionsMenu/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_icons/checked = ExtResource("23_h8lnj")
 theme_override_icons/unchecked = ExtResource("24_vmjke")
 
-[node name="MusicCheckButton" type="CheckButton" parent="OptionsMenu/VBoxContainer"]
+[node name="MusicCheckButton" type="CheckButton" parent="OptionsMenu/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_icons/checked = ExtResource("25_wruwq")
 theme_override_icons/unchecked = ExtResource("26_nqq2l")
 
-[node name="EmptyLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+[node name="EmptyLabel" type="Label" parent="OptionsMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ExitOptionsButton" type="TextureButton" parent="OptionsMenu/VBoxContainer"]
+[node name="ExitOptionsButton" type="TextureButton" parent="OptionsMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
@@ -150,11 +172,12 @@ texture_hover = ExtResource("29_rtrop")
 texture_disabled = ExtResource("30_684ur")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="toggled" from="OptionsMenu/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
-[connection signal="toggled" from="OptionsMenu/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
-[connection signal="pressed" from="OptionsMenu/VBoxContainer/ExitOptionsButton" to="." method="_on_exit_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ProgressButton" to="." method="_on_progress_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="OptionsMenu/CenterContainer/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
+[connection signal="toggled" from="OptionsMenu/CenterContainer/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
+[connection signal="pressed" from="OptionsMenu/CenterContainer/VBoxContainer/ExitOptionsButton" to="." method="_on_exit_options_button_pressed"]
