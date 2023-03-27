@@ -29,6 +29,7 @@ func _get_drag_data(_position):
 	icon.position = icon.texture.get_size() * -0.5
 	preview.add_child(icon)
 	preview.z_index = 60
+	preview.modulate = Color(1, 1, 1, 0.5)
 	set_drag_preview(preview)
 	var drag_data = { component_id = _stage_data.component_id, is_toolbox_item = true }
 	GameStore.drag_data = drag_data

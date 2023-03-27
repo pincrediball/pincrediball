@@ -15,10 +15,11 @@ func _input(event: InputEvent):
 
 
 func set_menu_opened(menu_should_be_open: bool):
-	get_tree().paused = menu_should_be_open
 	$Menu.visible = menu_should_be_open
 	if menu_should_be_open:
 		Audio.set_suppressed_music(false)
+	if not menu_should_be_open:
+		$GameContainer.get_child(0).reset_pause_state()
 
 
 func reset_game_scene():

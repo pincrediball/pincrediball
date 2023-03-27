@@ -12,7 +12,7 @@ func _ready():
 	GameStore.level_changed.connect(_on_level_changed)
 	GameStore.high_score_changed.connect(_on_high_score_changed)
 	_set_score(0)
-	_set_high_score(0)
+	_set_high_score(GameStore.get_current_level_high_score())
 
 
 func _on_level_changed(_level: int):
