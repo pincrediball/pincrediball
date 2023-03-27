@@ -42,5 +42,5 @@ func load_pinball_component(data):
 	stage_data = data
 
 
-func _on_level_changed():
-	is_disabled = stage_data.unlocks_at > GameStore.get_current_level()
+func _on_level_changed(level: int):
+	is_disabled = stage_data.unlocks_at > level

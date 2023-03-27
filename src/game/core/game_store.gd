@@ -3,7 +3,7 @@ extends Node
 signal new_game_started()
 signal continue_game_requested()
 signal menu_open_requested()
-signal level_changed()
+signal level_changed(level: int)
 signal high_score_changed(to: int)
 
 var drag_data: Dictionary = { }
@@ -16,6 +16,10 @@ var can_continue_game := false:
 
 var _stages = {
 	"tutorial": null,
+	"newb": null,
+	"normie": null,
+	"nasty": null,
+	"nightmare": null,
 }
 
 var _current_level := 6
@@ -42,6 +46,13 @@ func get_current_stage():
 
 func get_current_level() -> int:
 	return _current_level
+	
+
+func get_current_level_high_score() -> int:
+	for level_progress in _progress.levels:
+		if level_progress.level == _current_level:
+			return level_progress.high_score
+	return 0
 
 
 func get_current_playbook():
@@ -62,6 +73,14 @@ func get_progress() -> Progress:
 	return _progress
 
 
+func is_at_max_stage_level() -> bool:
+	return _current_level >= len(_current_stage.medal_targets)
+
+
+func is_at_max_progression_level() -> bool:
+	return _current_level >= _progress.max_level_per_stage[_current_stage.key]
+
+
 func start_new_game() -> void:
 	_current_level = 1
 	can_continue_game = true
@@ -76,8 +95,9 @@ func continue_game() -> void:
 
 
 func jump_to_level(level: int) -> void:
+	assert(level > 0)
 	_current_level = level
-	level_changed.emit()
+	level_changed.emit(level)
 
 
 func persist_progress() -> void:
@@ -88,6 +108,8 @@ func persist_progress() -> void:
 				var medal_targets = get_current_medal_targets()
 				var was_new_high_score = score > level_progress.high_score
 				level_progress.update_for(score, medal_targets)
+				if level_progress.medals > 0 and _current_level >= _progress.max_level_per_stage[_current_stage.key]:
+					_progress.max_level_per_stage[_current_stage.key] = _current_level + 1
 				if was_new_high_score:
 					high_score_changed.emit(score)
 
