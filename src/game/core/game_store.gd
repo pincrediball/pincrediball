@@ -7,6 +7,8 @@ signal level_changed(level: int)
 signal high_score_changed(to: int)
 signal next_level_unlocked()
 
+const SAVE_PROGRESS_FILE_PATH = "user://progress.tres"
+
 var drag_data: Dictionary = { }
 
 var is_dragging: bool:
@@ -23,7 +25,7 @@ var _stages = {
 	"nightmare": null,
 }
 
-var _current_level := 6
+var _current_level := 1
 var _current_stage = null # TODO: Consider typing this
 var _progress: Progress
 
@@ -31,6 +33,7 @@ var _progress: Progress
 func _ready():
 	_stages.tutorial = _read_stage("tutorial")
 	_current_stage = _stages.tutorial
+	_load_progress_for_user()
 
 
 func clear_drag_data() -> void:
@@ -90,8 +93,6 @@ func start_new_game() -> void:
 
 
 func continue_game() -> void:
-	# TODO: Build loading game from user folder
-	# For now this only works if there is a game running
 	continue_game_requested.emit()
 
 
@@ -119,12 +120,27 @@ func persist_progress() -> void:
 				
 				if is_new_level_unlocked:
 					_progress.max_level_per_stage[_current_stage.key] = _current_level + 1
-
+					
+				_save_progress_for_user()
+				
 				# Emit signals as the last thing, and in the right order:
 				if was_new_high_score:
 					high_score_changed.emit(score)
 				if is_new_level_unlocked:
 					next_level_unlocked.emit()
+
+
+func _save_progress_for_user():
+	ResourceSaver.save(_progress, SAVE_PROGRESS_FILE_PATH)
+
+
+func _load_progress_for_user():
+	if not ResourceLoader.exists(SAVE_PROGRESS_FILE_PATH):
+		return
+	_progress = load(SAVE_PROGRESS_FILE_PATH)
+	_current_level = _progress.max_level_per_stage[_current_stage.key]
+	can_continue_game = true
+	
 
 
 func _read_stage(stage: String):

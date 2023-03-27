@@ -11,7 +11,8 @@ extends Resource
 	"nightmare": 1,
 }
 
-func _init(stages):
+# Default value required for save/load
+func _init(stages: Dictionary = {}):
 	for key in stages:
 		var stage = stages[key]
 		if stage == null:

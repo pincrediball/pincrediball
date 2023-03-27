@@ -6,8 +6,10 @@ extends Resource
 @export var medals: int
 @export var high_score: int
 
-func _init(level: int):
-	self.level = level
+
+# Default value required for save/load
+func _init(_level: int = 0):
+	level = _level
 
 
 func update_for(score: int, medal_targets):

@@ -6,7 +6,8 @@ signal credits_roll_requested()
 func _ready():
 	%SoundCheckButton.set_pressed_no_signal(not Audio.has_muted_pinball_sfx())
 	%MusicCheckButton.set_pressed_no_signal(not Audio.has_muted_music())
-
+	%ContinueGameButton.disabled = not GameStore.can_continue_game
+	%ProgressButton.disabled = not GameStore.can_continue_game
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel") and $OptionsMenu.visible:
