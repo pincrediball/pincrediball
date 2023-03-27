@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://etrp4vbsn388"]
+[gd_scene load_steps=7 format=3 uid="uid://etrp4vbsn388"]
 
 [ext_resource type="LabelSettings" uid="uid://bmt8337q2eie4" path="res://themes/default/paragraph_label_settings.tres" id="1_78fy2"]
 [ext_resource type="Script" path="res://game/core/level_header.gd" id="1_j0mak"]
@@ -9,6 +9,28 @@
 font = SubResource("FontVariation_2drok")
 font_size = 36
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
+
+[sub_resource type="Animation" id="Animation_b65uh"]
+resource_name = "flashing"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.196078, 0.784314, 0.196078, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2dwuh"]
+_data = {
+"flashing": SubResource("Animation_b65uh")
+}
 
 [node name="LevelHeader" type="VBoxContainer"]
 offset_right = 600.0
@@ -68,6 +90,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "    next level ▶   "
+
+[node name="NextLevelButtonAnimation" type="AnimationPlayer" parent="VBoxContainer2/VBoxContainer/HBoxContainer2/NextLevelButton"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_2dwuh")
+}
 
 [node name="Explanation" type="Label" parent="."]
 layout_mode = 2

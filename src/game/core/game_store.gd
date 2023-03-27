@@ -5,6 +5,7 @@ signal continue_game_requested()
 signal menu_open_requested()
 signal level_changed(level: int)
 signal high_score_changed(to: int)
+signal next_level_unlocked()
 
 var drag_data: Dictionary = { }
 
@@ -107,11 +108,23 @@ func persist_progress() -> void:
 			if level_progress.level == _current_level:
 				var medal_targets = get_current_medal_targets()
 				var was_new_high_score = score > level_progress.high_score
+				
 				level_progress.update_for(score, medal_targets)
-				if level_progress.medals > 0 and _current_level >= _progress.max_level_per_stage[_current_stage.key]:
+				
+				var is_new_level_unlocked = \
+					level_progress.medals > 0 \
+					and was_new_high_score \
+					and is_at_max_progression_level() \
+					and not is_at_max_stage_level()
+				
+				if is_new_level_unlocked:
 					_progress.max_level_per_stage[_current_stage.key] = _current_level + 1
+
+				# Emit signals as the last thing, and in the right order:
 				if was_new_high_score:
 					high_score_changed.emit(score)
+				if is_new_level_unlocked:
+					next_level_unlocked.emit()
 
 
 func _read_stage(stage: String):
