@@ -20,7 +20,7 @@ func reset_score():
 	score_changed.emit(oldScore, 0)
 
 
-# TODO: Turn this into setter for the public var
+# TODO: Turn this into setter for the public var?
 func set_enabled(value: bool):
 	is_enabled = value
 	scoring_mode_toggled.emit(value)

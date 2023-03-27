@@ -51,4 +51,5 @@ func _handle_unhandled_input(event: InputEvent):
 			_selected = true
 			_previous_position = global_position
 			_lerp_offset = get_local_mouse_position()
+			Scoring.set_enabled(false)
 			get_viewport().set_input_as_handled()

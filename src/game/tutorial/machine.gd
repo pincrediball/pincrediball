@@ -51,6 +51,7 @@ func _drop_data(at_position: Vector2, data):
 	component.move_by_player_ended.connect(_on_move_by_player_ended)
 	%PlayerComponents.add_child(component)
 	_set_drop_zone_glow_enabled(false)
+	Scoring.set_enabled(false)
 	GameStore.clear_drag_data()
 
 
