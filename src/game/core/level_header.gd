@@ -14,9 +14,7 @@ func _ready():
 
 func _load_level(level: int):
 	_current_level = level
-	var current_stage = GameStore.get_current_stage()
 	var medal_targets = GameStore.get_current_medal_targets()
-	var progress = GameStore.get_progress()
 	%LevelNumberLabel.text = "Level %s:" % level
 	%LevelTitleLabel.text = '"%s"' % medal_targets.title
 	%PreviousLevelButton.disabled = level <= 1

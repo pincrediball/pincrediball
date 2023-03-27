@@ -77,6 +77,10 @@ func get_progress() -> Progress:
 	return _progress
 
 
+func get_max_level_for_stage(stage_key: String) -> int:
+	return 0 if _progress == null else _progress.max_level_per_stage[stage_key]
+
+
 func is_at_max_stage_level() -> bool:
 	return _current_level >= len(_current_stage.medal_targets)
 
