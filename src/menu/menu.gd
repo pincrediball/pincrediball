@@ -10,6 +10,7 @@ func _ready():
 	%ContinueGameButton.disabled = not GameStore.can_continue_game
 	%ProgressButton.disabled = not GameStore.can_continue_game
 
+
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel") and $OptionsMenu.visible:
 		$OptionsMenu.hide()
@@ -17,7 +18,10 @@ func _input(event: InputEvent):
 
 func _on_new_game_button_pressed():
 	Audio.play_menu_button_sound_next()
-	GameStore.start_new_game()
+	if GameStore.can_continue_game:
+		%NewGameConfirmationDialog.show()
+	else:
+		GameStore.start_new_game()
 
 
 func _on_continue_game_button_pressed():
@@ -65,3 +69,14 @@ func _on_music_check_button_toggled(button_pressed: bool):
 func _on_visibility_changed():
 	%ContinueGameButton.disabled = not GameStore.can_continue_game
 	%ProgressButton.disabled = not GameStore.can_continue_game
+
+
+func _on_confirm_start_new_game_button_pressed():
+	Audio.play_menu_button_sound_next()
+	%NewGameConfirmationDialog.hide()
+	GameStore.start_new_game()
+
+
+func _on_cancel_start_new_game_button_pressed():
+	Audio.play_menu_button_sound_back()
+	%NewGameConfirmationDialog.hide()

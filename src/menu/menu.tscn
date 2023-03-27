@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b285vl84brpq4"]
+[gd_scene load_steps=39 format=3 uid="uid://b285vl84brpq4"]
 
 [ext_resource type="Shader" path="res://menu/menu.gdshader" id="1_fuy8x"]
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_wostc"]
@@ -35,10 +35,23 @@
 [ext_resource type="Texture2D" uid="uid://ctnbxgblmfc5x" path="res://art/menu/menu_button_back_hover.png" id="29_rtrop"]
 [ext_resource type="Texture2D" uid="uid://150oerf6jhrw" path="res://art/menu/menu_button_back_disabled.png" id="30_684ur"]
 [ext_resource type="PackedScene" uid="uid://dp5niqamgmbpl" path="res://menu/progress.tscn" id="35_ru3bc"]
+[ext_resource type="StyleBox" uid="uid://da5qxs57287rc" path="res://menu/dialog_button_stylebox.tres" id="36_7dh7h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00t86"]
 shader = ExtResource("1_fuy8x")
 shader_parameter/base_scroll_speed = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s17t0"]
+bg_color = Color(0.419608, 0.129412, 0.658824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.345098, 0.109804, 0.529412, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -171,6 +184,68 @@ texture_pressed = ExtResource("28_yg5uj")
 texture_hover = ExtResource("29_rtrop")
 texture_disabled = ExtResource("30_684ur")
 
+[node name="NewGameConfirmationDialog" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="NewGameConfirmationDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="NewGameConfirmationDialog/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s17t0")
+
+[node name="MarginContainer" type="MarginContainer" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Starting a new game will reset
+current progress.
+
+Are you sure you want to start
+a new game?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ConfirmStartNewGameButton" type="Button" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("36_7dh7h")
+text = "Yes, start fresh!"
+
+[node name="CancelStartNewGameButton" type="Button" parent="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("36_7dh7h")
+text = "Back to menu"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
@@ -181,3 +256,5 @@ texture_disabled = ExtResource("30_684ur")
 [connection signal="toggled" from="OptionsMenu/CenterContainer/VBoxContainer/SoundCheckButton" to="." method="_on_sound_check_button_toggled"]
 [connection signal="toggled" from="OptionsMenu/CenterContainer/VBoxContainer/MusicCheckButton" to="." method="_on_music_check_button_toggled"]
 [connection signal="pressed" from="OptionsMenu/CenterContainer/VBoxContainer/ExitOptionsButton" to="." method="_on_exit_options_button_pressed"]
+[connection signal="pressed" from="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmStartNewGameButton" to="." method="_on_confirm_start_new_game_button_pressed"]
+[connection signal="pressed" from="NewGameConfirmationDialog/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelStartNewGameButton" to="." method="_on_cancel_start_new_game_button_pressed"]

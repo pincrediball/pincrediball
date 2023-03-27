@@ -13,6 +13,11 @@ const ProgressRow = preload("res://menu/progress_row.tscn")
 var _stage_shown_index := 0
 
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel") and self.visible:
+		self.hide()
+
+
 func _on_back_button_pressed():
 	Audio.play_menu_button_sound_back()
 	self.hide()
