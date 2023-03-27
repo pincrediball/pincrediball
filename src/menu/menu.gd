@@ -4,6 +4,7 @@ signal credits_roll_requested()
 
 
 func _ready():
+	OptionsStore.load_options()
 	%SoundCheckButton.set_pressed_no_signal(not Audio.has_muted_pinball_sfx())
 	%MusicCheckButton.set_pressed_no_signal(not Audio.has_muted_music())
 	%ContinueGameButton.disabled = not GameStore.can_continue_game
@@ -47,6 +48,7 @@ func _on_exit_button_pressed():
 
 func _on_exit_options_button_pressed():
 	Audio.play_menu_button_sound_back()
+	OptionsStore.save_options()
 	$OptionsMenu.hide()
 
 

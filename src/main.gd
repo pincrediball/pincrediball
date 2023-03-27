@@ -2,7 +2,6 @@ extends Control
 
 var _is_game_scene_available := false
 
-
 func _ready():
 	Audio.start_music_for_game()
 	GameStore.new_game_started.connect(_on_new_game_started)
