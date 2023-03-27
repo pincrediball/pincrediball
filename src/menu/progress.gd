@@ -30,6 +30,8 @@ func _on_visibility_changed():
 			row.progress_for_level = progress_for_level
 			%ProgressionRows.add_child(row)
 	
+	# Hardcoded while we still only have 1 specific stage
+	%ButtonPreviousStage.modulate = Color(1,1,1,0)
 	_switch_to_stage(0)
 
 
@@ -38,8 +40,13 @@ func _switch_to_stage(index):
 		$StageSwapAnimationPlayer.play("progression_rows_fade_out")
 		await $StageSwapAnimationPlayer.animation_finished
 		%StageLabel.text = STAGES[index]
+		
 		%ButtonPreviousStage.disabled = index == 0
+		%ButtonPreviousStage.modulate = Color(1,1,1,0) if index == 0 else Color(1,1,1,1)
+		
 		%ButtonNextStage.disabled = index == (len(STAGES) - 1)
+		%ButtonNextStage.modulate = Color(1,1,1,0) if index == (len(STAGES) - 1) else Color(1,1,1,1)
+		
 		%ProgressionRows.visible = index == 0
 		%StageEmptyContainer.visible = index != 0
 		$StageSwapAnimationPlayer.play_backwards("progression_rows_fade_out")
