@@ -1,23 +1,33 @@
 extends PanelContainer
 
-var medal_data
+const HIGH_SCORE_SOUND = preload("res://sound/high-score-achieved-001.mp3")
 
+var _medal_data
 
 func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
 	Scoring.scoring_mode_toggled.connect(_on_scoring_mode_toggled)
 
-	medal_data = GameStore.get_current_medal_targets()
+	_medal_data = GameStore.get_current_medal_targets()
 	GameStore.level_changed.connect(_on_level_changed)
+	GameStore.high_score_changed.connect(_on_high_score_changed)
 	_set_score(0)
+	_set_high_score(GameStore.get_current_level_high_score())
 
 
-func _on_level_changed():
-	medal_data = GameStore.get_current_medal_targets()
+func _on_level_changed(_level: int):
+	_medal_data = GameStore.get_current_medal_targets()
+	_set_score(0)
+	_set_high_score(GameStore.get_current_level_high_score())
 
 
 func _on_score_changed(_from: int, to: int):
 	_set_score(to)
+
+
+func _on_high_score_changed(to: int):
+	_set_high_score(to)
+	get_tree().create_timer(0.5).timeout.connect(_celebrate_high_score)
 
 
 func _on_scoring_mode_toggled(enabled: bool):
@@ -25,28 +35,25 @@ func _on_scoring_mode_toggled(enabled: bool):
 
 
 func _set_score(to: int):
-	%ScoreLabel.text = "%s %s points" % [_format_medal(to), _format_score(to)]
+	%ScoreLabel.text = "%s %s" % [_format_medal(to), Scoring.format_score(to)]
+
+
+func _set_high_score(to: int):
+	%HighScoreLabel.text = "%s%s" % [_format_medal(to), Scoring.format_score(to)]
+
+
+func _celebrate_high_score():
+	$AudioStreamPlayer.stream = HIGH_SCORE_SOUND
+	$AudioStreamPlayer.play()
+	%CelebrationParticles.restart()
 
 
 func _format_medal(score: int) -> String:
-	if score >= medal_data.gold:
-		return "🥇"
-	elif score >= medal_data.silver:
-		return "🥈"
-	elif score >= medal_data.bronze:
-		return "🥉"
+	if score >= _medal_data.gold:
+		return "🥇 "
+	elif score >= _medal_data.silver:
+		return "🥈 "
+	elif score >= _medal_data.bronze:
+		return "🥉 "
 	else:
-		return " "
-
-
-# Whelp! GDScript doesn't have much formatting, does it? Apparently we 
-# have to write this stuff ourselves? Also no StringBuilder or similar
-# so this'll have to do... 
-# Adapted from https://godotengine.org/qa/18559/how-to-add-commas-to-an-integer-or-float-in-gdscript
-func _format_score(score: int) -> String:
-	var result = "%s" % score
-	var i : int = result.length() - 3
-	while i > 0:
-		result = result.insert(i, ",")
-		i = i - 3
-	return result
+		return ""

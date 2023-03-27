@@ -1,5 +1,6 @@
 extends Control
 
+var _is_game_scene_available := false
 
 func _ready():
 	Audio.start_music_for_game()
@@ -14,10 +15,11 @@ func _input(event: InputEvent):
 
 
 func set_menu_opened(menu_should_be_open: bool):
-	get_tree().paused = menu_should_be_open
 	$Menu.visible = menu_should_be_open
 	if menu_should_be_open:
 		Audio.set_suppressed_music(false)
+	if not menu_should_be_open:
+		$GameContainer.get_child(0).reset_pause_state()
 
 
 func reset_game_scene():
@@ -26,6 +28,7 @@ func reset_game_scene():
 	var game_scene = load("res://game/game.tscn").instantiate() as Control
 	game_scene.set_anchors_preset(Control.PRESET_FULL_RECT)
 	$GameContainer.add_child(game_scene)
+	_is_game_scene_available = true
 
 
 func _on_game_menu_open_requested():
@@ -43,4 +46,6 @@ func _on_new_game_started():
 
 
 func _on_continue_game_requested():
+	if not _is_game_scene_available:
+		reset_game_scene()
 	set_menu_opened(false)

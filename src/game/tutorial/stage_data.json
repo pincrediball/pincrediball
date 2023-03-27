@@ -1,30 +1,31 @@
 {
+	"key": "tutorial",
 	"playbooks": [
-		{ "level": 1, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
-		{ "level": 2, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
-		{ "level": 3, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
-		{ "level": 4, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
-		{ "level": 5, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
-		{ "level": 6, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 }
+		{ "level": 1, "max_run_time": 15, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 2, "max_run_time": 20, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 3, "max_run_time": 30, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 4, "max_run_time": 40, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 5, "max_run_time": 50, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 },
+		{ "level": 6, "max_run_time": 60, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7 }
 	],
 	"medal_targets": [
-		{ "level": 1, "bronze": 25, "silver": 50, "gold": 100 },
-		{ "level": 2, "bronze": 25, "silver": 50, "gold": 100 },
-		{ "level": 3, "bronze": 25, "silver": 50, "gold": 100 },
-		{ "level": 4, "bronze": 25, "silver": 50, "gold": 100 },
-		{ "level": 5, "bronze": 25, "silver": 50, "gold": 100 },
-		{ "level": 6, "bronze": 25, "silver": 50, "gold": 100 }
+		{ "level": 1, "bronze":  25, "silver":  50, "gold":  100, "title": "Bumping Basics" },
+		{ "level": 2, "bronze":  50, "silver":  75, "gold":  150, "title": "Bumping some more" },
+		{ "level": 3, "bronze":  75, "silver": 100, "gold":  175, "title": "Wall's that?!" },
+		{ "level": 4, "bronze": 125, "silver": 175, "gold":  250, "title": "Blue pills" },
+		{ "level": 5, "bronze": 200, "silver": 275, "gold":  400, "title": "Gate One" },
+		{ "level": 6, "bronze": 300, "silver": 500, "gold": 1000, "title": "Gate Trio" }
 	],
 	"toolbox_items": [
-		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Place it in the path of the ball that will be launched.", "unlocks_at": 1 },
-		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
-		{ "component_id": "bumper_circle", "title": "Bumper (circle)", "description": "Scores points each time when it's bumped. Tip: Add several close together to 'trap' the ball bouncing around.", "unlocks_at": 2 },
-		{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
-		{ "component_id": "wall_corner",   "title": "Wall (rounded)", "description": "Does not add score itself. Tip: use it to further 'trap' the ball bouncing around the bumpers.", "unlocks_at": 3 },
-		{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
-		{ "component_id": "bumper_pill",   "title": "Bumper (pill)", "description": "Scores points when bumped on yellow side. Tip: Make them bump the ball back into the set of circular bumpers.", "unlocks_at": 4 },
-		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: Place in the initial plunged ball's path.", "unlocks_at": 5 },
-		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 },
-		{ "component_id": "gate",          "title": "Gate (one-way)", "description": "Scores points when the ball passes in the right direction. Tip: bonus points if the ball passed through all gates.", "unlocks_at": 6 }
+		{ "unlocks_at": 1, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Place in path of the ball." },
+		{ "unlocks_at": 2, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Add bumpers close together to 'trap' a ball." },
+		{ "unlocks_at": 2, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Add bumpers close together to 'trap' a ball." },
+		{ "unlocks_at": 3, "component_id": "wall_corner",   "title": "Wall, rounded",  "description": "Walls do not add scores themselves, but can be used to improve ball 'traps'." },
+		{ "unlocks_at": 3, "component_id": "wall_corner",   "title": "Wall, rounded",  "description": "Walls do not add scores themselves, but can be used to improve ball 'traps'." },
+		{ "unlocks_at": 4, "component_id": "bumper_pill",   "title": "Bumper, pill",   "description": "Scores 10 when bumped on yellow side. Tip: rotate to bump balls back upwards." },
+		{ "unlocks_at": 4, "component_id": "bumper_pill",   "title": "Bumper, pill",   "description": "Scores 10 when bumped on yellow side. Tip: rotate to bump balls back upwards." },
+		{ "unlocks_at": 5, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: Place in the initial plunged ball's path." },
+		{ "unlocks_at": 6, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: big bonus when all three gates get lit!" },
+		{ "unlocks_at": 6, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: big bonus when all three gates get lit!" }
 	]
 }

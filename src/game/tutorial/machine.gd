@@ -51,6 +51,8 @@ func _drop_data(at_position: Vector2, data):
 	component.move_by_player_ended.connect(_on_move_by_player_ended)
 	%PlayerComponents.add_child(component)
 	_set_drop_zone_glow_enabled(false)
+	if not get_tree().paused:
+		Scoring.set_enabled(false)
 	GameStore.clear_drag_data()
 
 
@@ -62,6 +64,7 @@ func _on_drain_gutter_area_2d_body_entered(body: Node2D):
 		var nr_of_balls = balls.size()
 		if nr_of_balls == 0 or (nr_of_balls == 1 and balls[0] == body):
 			stop()
+			GameStore.persist_progress()
 
 
 func _on_mouse_entered():

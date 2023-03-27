@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpseboohqxgou"]
+[gd_scene load_steps=15 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/game/tutorial/bg_doodles.png" id="4_5dxhy"]
 [ext_resource type="PackedScene" uid="uid://dw1vps7k815gg" path="res://game/core/flipper.tscn" id="4_6pi0p"]
 [ext_resource type="Texture2D" uid="uid://dmcfrw3oe1auf" path="res://art/game/tutorial/machine_bounds.png" id="5_addj0"]
+[ext_resource type="Texture2D" uid="uid://c8u328k6fsvyc" path="res://art/game/tutorial/bg_center_box_gates.png" id="5_nnbku"]
 [ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/game/tutorial/flipper_lane.png" id="6_lvykr"]
 [ext_resource type="Texture2D" uid="uid://bow6uwf786rd2" path="res://art/game/tutorial/plunger_gate.png" id="7_tk6d3"]
 [ext_resource type="PackedScene" uid="uid://c2ikokn6p8d5d" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
@@ -63,21 +64,27 @@ process_mode = 1
 offset_right = 500.0
 offset_bottom = 800.0
 
-[node name="TextureRect" type="TextureRect" parent="SubViewport/MachineNode2D/GameComponents"]
+[node name="TextureRect_MathGrid" type="TextureRect" parent="SubViewport/MachineNode2D/GameComponents"]
 offset_right = 500.0
 offset_bottom = 800.0
 texture = ExtResource("2_jtvk6")
 stretch_mode = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
+[node name="Sprite2D_Clouds" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
 modulate = Color(1, 1, 1, 0.294118)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_0e6op")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
+[node name="Sprite2D_Doodles" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
 texture = ExtResource("4_5dxhy")
 centered = false
+
+[node name="Sprite2D_CenterBox" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(240, 510)
+texture = ExtResource("5_nnbku")
 
 [node name="Box" type="StaticBody2D" parent="SubViewport/MachineNode2D/GameComponents" groups=["isWall"]]
 z_index = 50
