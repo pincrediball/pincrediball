@@ -34,6 +34,7 @@ func _on_high_score_changed(_to: int):
 func _on_level_changed(level: int):
 	_current_level = level
 	_load_level(level)
+	%NextLevelButtonAnimation.stop()
 
 
 func _on_previous_level_button_pressed():

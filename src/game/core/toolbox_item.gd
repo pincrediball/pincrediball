@@ -12,13 +12,14 @@ var is_disabled := false:
 		return is_disabled
 	set(value):
 		is_disabled = value
-		%Overlay.visible = value
+		%OverlayUnlocksAt.visible = value
 
 var _stage_data
 
 
 func _ready():
 	GameStore.level_changed.connect(_on_level_changed)
+	GameStore.next_level_unlocked.connect(_on_next_level_unlocked)
 
 
 func _get_drag_data(_position):
@@ -45,9 +46,23 @@ func load_pinball_component(data):
 
 func _on_level_changed(level: int):
 	is_disabled = _stage_data.unlocks_at > level
+	%OverlayJustUnlocked.visible = false
+
+
+func _on_next_level_unlocked():
+	if _stage_data.unlocks_at == GameStore.get_current_level() + 1:
+		%OverlayJustUnlocked.visible = true
+		%OverlayUnlocksAt.visible = false
+		%UnlockAnimationPlayer.play()
 
 
 func _on_more_info_button_pressed():
 	Audio.play_menu_button_sound_next() if %TitleLabel.visible else Audio.play_menu_button_sound_back()
 	%TitleLabel.visible = not %TitleLabel.visible
 	%DescriptionLabel.visible = not %DescriptionLabel.visible
+
+
+func _on_overlay_just_unlocked_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		Audio.play_menu_button_sound_next()
+		GameStore.jump_to_level(_stage_data.unlocks_at)
