@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/StageLabel:modulate")
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/MachineTitleLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/VBoxContainer/StageEmptyContainer:modulate")
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/MachineEmptyContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -96,7 +96,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="ButtonPreviousStage" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonPrevious" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -104,8 +104,9 @@ theme_override_font_sizes/font_size = 48
 disabled = true
 text = "    ◀    "
 
-[node name="StageLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="MachineTitleLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(940, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
 theme_override_colors/font_outline_color = Color(0.847059, 0.705882, 0.996078, 1)
@@ -114,7 +115,7 @@ theme_override_font_sizes/font_size = 96
 text = "Tutorial Machine"
 horizontal_alignment = 1
 
-[node name="ButtonNextStage" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonNext" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -148,14 +149,14 @@ layout_mode = 2
 [node name="ProgressRow7" parent="CenterContainer/VBoxContainer/ProgressionRows" instance=ExtResource("2_j6hh4")]
 layout_mode = 2
 
-[node name="StageEmptyContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+[node name="MachineEmptyContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 420)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/StageEmptyContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/MachineEmptyContainer"]
 custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 bbcode_enabled = true
@@ -163,8 +164,8 @@ text = "[center]
 
 [font_size=48][b]UNDER CONSTRUCTION[/b][/font_size]
 
-Pincrediball is not yet fully finished! Want to let us know
-that we should finish the game and build more stages?
+Pincrediball is not yet fully finished! Want to let us know that
+we should finish the game and build more machines to play?
 
 Go to [url]https://pincrediball.com[/url] to find out more!
 [/center]"
@@ -194,12 +195,12 @@ texture_pressed = ExtResource("5_ol1y1")
 texture_hover = ExtResource("6_bd6ir")
 texture_disabled = ExtResource("7_tr1c7")
 
-[node name="StageSwapAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="MachineSwapAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e6i1v")
 }
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ButtonPreviousStage" to="." method="_on_button_previous_stage_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ButtonNextStage" to="." method="_on_button_next_stage_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ButtonPrevious" to="." method="_on_button_previous_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

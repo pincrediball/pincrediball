@@ -15,8 +15,7 @@ func _ready():
 func _load_level(level: int):
 	_current_level = level
 	var stage = GameStore.get_current_stage()
-	%LevelNumberLabel.text = "Level %s:" % level
-	%LevelTitleLabel.text = '"%s"' % stage.title
+	%LevelTitleLabel.text = '%s: "%s"' % [stage.level, stage.title]
 	%PreviousLevelButton.disabled = level <= 1
 	%NextLevelButton.disabled = GameStore.is_at_max_progression_level_for_current_machine() or GameStore.is_at_max_level_for_current_machine()
 	%NextLevelButton.modulate = Color(1,1,1,0) if GameStore.is_at_max_level_for_current_machine() else Color(1,1,1,1)

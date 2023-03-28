@@ -1,0 +1,23 @@
+{
+	"key": "tutorial",
+	"stages": [
+		{ "level": 1, "max_run_time": 15, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  25, "silver":  50, "gold":  100, "title": "Bumping Basics" },
+		{ "level": 2, "max_run_time": 20, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  50, "silver":  75, "gold":  150, "title": "Bumping some more" },
+		{ "level": 3, "max_run_time": 30, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  75, "silver": 100, "gold":  175, "title": "Wall's that?!" },
+		{ "level": 4, "max_run_time": 40, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 125, "silver": 175, "gold":  250, "title": "Blue pills" },
+		{ "level": 5, "max_run_time": 50, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 200, "silver": 275, "gold":  400, "title": "Gate One" },
+		{ "level": 6, "max_run_time": 60, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 300, "silver": 500, "gold": 1000, "title": "Gate Trio" }
+	],
+	"toolbox_items": [
+		{ "unlocks_at": 1, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Place in path of the ball." },
+		{ "unlocks_at": 2, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Add bumpers close together to 'trap' a ball." },
+		{ "unlocks_at": 2, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Add bumpers close together to 'trap' a ball." },
+		{ "unlocks_at": 3, "component_id": "wall_corner",   "title": "Wall, rounded",  "description": "Walls do not add scores themselves, but can be used to improve ball 'traps'." },
+		{ "unlocks_at": 3, "component_id": "wall_corner",   "title": "Wall, rounded",  "description": "Walls do not add scores themselves, but can be used to improve ball 'traps'." },
+		{ "unlocks_at": 4, "component_id": "bumper_pill",   "title": "Bumper, pill",   "description": "Scores 10 when bumped on yellow side. Tip: rotate to bump balls back upwards." },
+		{ "unlocks_at": 4, "component_id": "bumper_pill",   "title": "Bumper, pill",   "description": "Scores 10 when bumped on yellow side. Tip: rotate to bump balls back upwards." },
+		{ "unlocks_at": 5, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: Place in the initial plunged ball's path." },
+		{ "unlocks_at": 6, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: big bonus when all three gates get lit!" },
+		{ "unlocks_at": 6, "component_id": "gate",          "title": "Gate, one-way",  "description": "Scores 100 points per gate. Tip: big bonus when all three gates get lit!" }
+	]
+}
