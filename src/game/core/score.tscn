@@ -199,3 +199,7 @@ text = "Run Playbook to get a Score."
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"PinballSFX"
+
+[node name="AudioStreamPlayerTicker" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"PinballSFX"

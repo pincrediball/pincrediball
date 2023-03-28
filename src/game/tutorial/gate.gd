@@ -23,10 +23,7 @@ var _is_activated: bool = false:
 func _ready():
 	super._ready()
 	_sounds_default = [
-		preload("res://sound/wall-001.wav"),
-		preload("res://sound/wall-002.wav"),
-		preload("res://sound/wall-003.wav"),
-		preload("res://sound/wall-004.wav"),
+		preload("res://sound/wall-normal-001.wav"),
 	]
 
 

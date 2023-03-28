@@ -7,6 +7,7 @@ var _was_paused := true
 
 func reset_pause_state():
 	get_tree().paused = _was_paused
+	Audio.set_suppressed_music(not _was_paused)
 
 
 func _on_run_playbook_button_button_up():
