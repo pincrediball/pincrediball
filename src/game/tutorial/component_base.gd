@@ -2,6 +2,8 @@ class_name PlayerControlledComponent extends Node2D
 
 signal move_by_player_ended(node: Node2D)
 
+var level := 0
+
 var _sounds_default: Array[Resource] = []
 var _is_mouse_over_body := false
 var _selected := false
@@ -13,6 +15,7 @@ var _audio_stream_player := AudioStreamPlayer.new()
 func _ready():
 	_audio_stream_player.bus = Audio.BUS_NAME_PINBALL_SFX
 	add_child(_audio_stream_player)
+	GameStore.level_changed.connect(_on_level_changed)
 
 
 func _physics_process(delta):
@@ -54,3 +57,17 @@ func _handle_unhandled_input(event: InputEvent):
 			if not get_tree().paused:
 				Scoring.set_enabled(false)
 			get_viewport().set_input_as_handled()
+
+
+func _on_level_changed(new_level: int):
+	if new_level < level:
+		_set_ethereal(true)
+		modulate = Color(0.5, 0.5, 0.5, 0.35)
+		
+	else:
+		_set_ethereal(false)
+		modulate = Color(1.0, 1.0, 1.0, 1)
+
+
+func _set_ethereal(is_ethereal: bool):
+	pass # To be implemented by subclasses that know their shapes

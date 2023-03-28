@@ -51,6 +51,7 @@ func _drop_data(at_position: Vector2, data):
 	var component = COMPONENT_SCENES[data.component_id].instantiate() as Node2D
 	component.position = at_position
 	component.move_by_player_ended.connect(_on_move_by_player_ended)
+	component.level = data.level
 	%PlayerComponents.add_child(component)
 	_set_drop_zone_glow_enabled(false)
 	if not get_tree().paused:

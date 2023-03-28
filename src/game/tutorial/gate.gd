@@ -40,3 +40,10 @@ func _on_roll_over_area_2d_body_exited(body):
 
 func reset_pinball_component():
 	_is_activated = false
+
+
+func _set_ethereal(is_ethereal: bool):
+	$StaticBody2D.set_collision_layer_value(1, not is_ethereal)
+	$StaticBody2D.set_collision_mask_value(1, not is_ethereal)
+	$RollOverArea2D.set_collision_layer_value(1, not is_ethereal)
+	$RollOverArea2D.set_collision_mask_value(1, not is_ethereal)

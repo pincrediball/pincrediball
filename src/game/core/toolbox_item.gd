@@ -31,7 +31,11 @@ func _get_drag_data(_position):
 	preview.z_index = 60
 	preview.modulate = Color(1, 1, 1, 0.5)
 	set_drag_preview(preview)
-	var drag_data = { component_id = _toolbox_item_data.component_id, is_toolbox_item = true }
+	var drag_data = {
+		component_id = _toolbox_item_data.component_id,
+		level = _toolbox_item_data.unlocks_at,
+		is_toolbox_item = true,
+	}
 	GameStore.drag_data = drag_data
 	return drag_data
 
