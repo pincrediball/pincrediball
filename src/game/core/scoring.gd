@@ -2,6 +2,7 @@ extends Node
 
 signal score_changed(from: int, to: int)
 signal scoring_mode_toggled(enabled: bool)
+signal time_left_changed(to: float)
 
 var is_enabled: bool = true
 var _current_score: int = 0
@@ -20,7 +21,6 @@ func reset_score():
 	score_changed.emit(oldScore, 0)
 
 
-# TODO: Turn this into setter for the public var?
 func set_enabled(value: bool):
 	is_enabled = value
 	scoring_mode_toggled.emit(value)
@@ -28,6 +28,10 @@ func set_enabled(value: bool):
 
 func get_current_score():
 	return _current_score
+
+
+func update_time_left_to(time_left: float):
+	time_left_changed.emit(max(time_left, 0.0))
 
 
 # Whelp! GDScript doesn't have much formatting, does it? Apparently we 

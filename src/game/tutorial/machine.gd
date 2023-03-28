@@ -128,6 +128,7 @@ func _init_play(playbook):
 	Audio.set_suppressed_music(true)
 	for ball in get_tree().get_nodes_in_group("isBall"):
 		ball.queue_free()
+	%PlaybookTimeLeft.run_time_left = float(playbook.max_run_time)
 	get_tree().paused = false
 	get_tree().call_group("isResettablePinballComponent", "reset_pinball_component")
 	%FlipperLeft.reset(playbook.flipper_left_interval)

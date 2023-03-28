@@ -7,6 +7,8 @@ var _stage
 func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
 	Scoring.scoring_mode_toggled.connect(_on_scoring_mode_toggled)
+	Scoring.time_left_changed.connect(_on_time_left_changed)
+	_on_time_left_changed(GameStore.get_current_stage().max_run_time)
 
 	_stage = GameStore.get_current_stage()
 	GameStore.level_changed.connect(_on_level_changed)
@@ -32,6 +34,10 @@ func _on_high_score_changed(to: int):
 
 func _on_scoring_mode_toggled(enabled: bool):
 	%DisabledOverlay.visible = not enabled
+
+
+func _on_time_left_changed(to: float):
+	%TimeLeftLabel.text = "%.3fs" % to
 
 
 func _set_score(to: int):

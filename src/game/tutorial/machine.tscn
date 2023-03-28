@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpseboohqxgou"]
+[gd_scene load_steps=16 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
 [ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cs603d3w4khyh" path="res://art/game/tutorial/flipper_lane.png" id="6_lvykr"]
 [ext_resource type="Texture2D" uid="uid://bow6uwf786rd2" path="res://art/game/tutorial/plunger_gate.png" id="7_tk6d3"]
 [ext_resource type="PackedScene" uid="uid://c2ikokn6p8d5d" path="res://game/tutorial/sling.tscn" id="8_hrvvv"]
+[ext_resource type="Script" path="res://game/core/playbook_time_left.gd" id="11_3ga3p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bg44k"]
 friction = 0.75
@@ -185,6 +186,11 @@ process_mode = 3
 [node name="BallPlungeTimer" type="Timer" parent="SubViewport/MachineNode2D"]
 unique_name_in_owner = true
 process_mode = 1
+
+[node name="PlaybookTimeLeft" type="Node2D" parent="SubViewport/MachineNode2D"]
+unique_name_in_owner = true
+process_mode = 1
+script = ExtResource("11_3ga3p")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
