@@ -2,16 +2,16 @@ extends Control
 
 const ToolboxItem = preload("res://game/core/toolbox_item.tscn")
 
-var stage = null
+var machine = null
 
 
 func _ready():
-	stage = GameStore.get_current_stage()
+	machine = GameStore.get_current_machine()
 	
 	for child in %ItemsVBox.get_children():
 		child.queue_free()
 	
-	for entry in stage.toolbox_items:
+	for entry in machine.toolbox_items:
 		var toolboxItem: Control = ToolboxItem.instantiate()
 		toolboxItem.load_pinball_component(entry)
 		%ItemsVBox.add_child(toolboxItem)

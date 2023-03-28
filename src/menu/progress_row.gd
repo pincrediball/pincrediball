@@ -3,11 +3,11 @@ extends VBoxContainer
 const MODULATE_EMPHASIS = Color(1, 1, 1, 1)
 const MODULATE_NORMAL = Color(1, 1, 1, 0.25)
 
-@export var progress_for_level: ProgressForLevel:
+@export var progress_for_stage: ProgressForStage:
 	get:
-		return progress_for_level
+		return progress_for_stage
 	set(value):
-		progress_for_level = value
+		progress_for_stage = value
 		%LabelLevel.text = "Level %s" % value.level
 		%LabelScore.text = "Personal best: %s" % Scoring.format_score(value.high_score)
 		%LabelBronze.modulate = MODULATE_EMPHASIS if value.medals > 0 else MODULATE_NORMAL

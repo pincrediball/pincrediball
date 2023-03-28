@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_h6tt2"]
 font = SubResource("FontVariation_2drok")
-font_size = 36
+font_size = 32
 font_color = Color(0.984314, 0.74902, 0.141176, 1)
 
 [sub_resource type="Animation" id="Animation_b65uh"]
@@ -38,60 +38,39 @@ offset_bottom = 218.0
 theme_override_constants/separation = 8
 script = ExtResource("1_j0mak")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = -8
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Stage:"
-
-[node name="StageTitleLabel" type="Label" parent="VBoxContainer"]
+[node name="MachineTitleLabel" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
-theme_override_font_sizes/font_size = 24
-text = "Tutorial"
+theme_override_font_sizes/font_size = 20
+text = "Tutorial Machine"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = -8
-
-[node name="LevelNumberLabel" type="Label" parent="VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Level:"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="LevelTitleLabel" type="Label" parent="VBoxContainer2/VBoxContainer"]
+[node name="LevelTitleLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "\"Super long test title for a level to check overflow behavior\""
+text = "1: \"Level title that's long enough to check overflow behavior of the label\""
 label_settings = SubResource("LabelSettings_h6tt2")
 text_overrun_behavior = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="PreviousLevelButton" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="PreviousLevelButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "   ◀ previous level   "
 
-[node name="NextLevelButton" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="NextLevelButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "    next level ▶   "
 
-[node name="NextLevelButtonAnimation" type="AnimationPlayer" parent="VBoxContainer2/VBoxContainer/HBoxContainer2/NextLevelButton"]
+[node name="NextLevelButtonAnimation" type="AnimationPlayer" parent="HBoxContainer/NextLevelButton"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_2dwuh")
@@ -99,9 +78,9 @@ libraries = {
 
 [node name="Explanation" type="Label" parent="."]
 layout_mode = 2
-text = "Drag and drop components to get a high score!"
+text = "Drag and drop components to get a high score! Earn at least a bronze medal to advance to the next level."
 label_settings = ExtResource("1_78fy2")
 autowrap_mode = 2
 
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer2/PreviousLevelButton" to="." method="_on_previous_level_button_pressed"]
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer2/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PreviousLevelButton" to="." method="_on_previous_level_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
