@@ -27,6 +27,8 @@ var _balls_to_plunge := 0
 
 
 func _ready():
+	Scoring.time_ran_out.connect(_on_time_ran_out)
+	GameStore.level_changed.connect(_on_level_changed)
 	%DropZonePolygon2D.visible = false
 	stop()
 
@@ -82,6 +84,14 @@ func _on_gui_input(event: InputEvent):
 		if not event.is_pressed():
 			for child in %PlayerComponents.get_children():
 				child.end_move()
+
+
+func _on_time_ran_out():
+	stop()
+
+
+func _on_level_changed(_level: int):
+	stop()
 
 
 func play(playbook):

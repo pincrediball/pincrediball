@@ -3,6 +3,7 @@ extends Node
 signal score_changed(from: int, to: int)
 signal scoring_mode_toggled(enabled: bool)
 signal time_left_changed(to: float)
+signal time_ran_out()
 
 var is_enabled: bool = true
 var _current_score: int = 0
@@ -32,6 +33,8 @@ func get_current_score():
 
 func update_time_left_to(time_left: float):
 	time_left_changed.emit(max(time_left, 0.0))
+	if time_left <= 0.0:
+		time_ran_out.emit()
 
 
 # Whelp! GDScript doesn't have much formatting, does it? Apparently we 

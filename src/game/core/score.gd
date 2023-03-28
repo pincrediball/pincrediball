@@ -17,6 +17,7 @@ func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
 	Scoring.scoring_mode_toggled.connect(_on_scoring_mode_toggled)
 	Scoring.time_left_changed.connect(_on_time_left_changed)
+	Scoring.time_ran_out.connect(_on_time_ran_out)
 	
 	GameStore.level_changed.connect(_on_level_changed)
 	GameStore.high_score_changed.connect(_on_high_score_changed)
@@ -31,6 +32,7 @@ func _on_level_changed(_level: int):
 	_set_score(0)
 	_set_high_score(GameStore.get_current_stage_high_score())
 	_set_time_left(_stage.max_run_time)
+	_set_time_ran_out_mode_to(false)
 
 
 func _on_score_changed(_from: int, to: int):
@@ -64,12 +66,22 @@ func _on_time_left_changed(to: float):
 	_set_time_left(to)
 
 
+func _on_time_ran_out():
+	_set_time_ran_out_mode_to(true)
+
+
+func _set_time_ran_out_mode_to(is_error: bool):
+	%TimeLeftLabel.modulate = Color(1.0, 0.2, 0.2, 0.75) if is_error else Color(1, 1, 1, 1)
+	%ScoreLabel.modulate = Color(1.0, 0.2, 0.2, 0.75) if is_error else Color(1, 1, 1, 1)
+
+
 func _set_time_left(to: float):
-	%TimeLeftLabel.text = "%.3fs" % to
+	%TimeLeftLabel.text = "Time to drain: %.3fs" % to
 	%ProgressBar.value = to / _stage.max_run_time * 100.0
 
 
 func _set_score(to: int):
+	_set_time_ran_out_mode_to(false)
 	%ScoreLabel.text = "%s %s" % [_format_medal(to), Scoring.format_score(to)]
 
 
