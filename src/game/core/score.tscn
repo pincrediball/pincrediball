@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7gnqdufk7u88"]
+[gd_scene load_steps=14 format=3 uid="uid://b7gnqdufk7u88"]
 
 [ext_resource type="Script" path="res://game/core/score.gd" id="1_dmxya"]
 [ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/core/score_points_label.tres" id="2_rq23l"]
@@ -47,6 +47,17 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g6vv"]
+bg_color = Color(0.00784314, 0.517647, 0.780392, 0.294118)
+
+[sub_resource type="SystemFont" id="SystemFont_birc7"]
+font_names = PackedStringArray("Consolas", "Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg8bp"]
+font = SubResource("SystemFont_birc7")
+font_size = 20
+
 [node name="Score" type="PanelContainer"]
 offset_right = 585.0
 offset_bottom = 145.0
@@ -59,76 +70,45 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
-text = "Current
-Score"
+text = "Current Score"
 label_settings = SubResource("LabelSettings_5rvfl")
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
 label_settings = ExtResource("2_rq23l")
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-color = Color(0.356863, 0.129412, 0.713726, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="EmptyLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-label_settings = SubResource("LabelSettings_5rvfl")
-
-[node name="TimeLeftLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_vertical = 10
-text = "30.000"
-label_settings = ExtResource("2_rq23l")
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 16
-
-[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Best
-Score"
+text = "Best Score"
 label_settings = SubResource("LabelSettings_5rvfl")
 horizontal_alignment = 1
 
-[node name="CelebrationParticles" type="GPUParticles2D" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="CelebrationParticles" type="GPUParticles2D" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 self_modulate = Color(0.184314, 0.878431, 0.196078, 1)
-position = Vector2(76, 58)
+position = Vector2(119, 64)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_rce7g")
@@ -138,12 +118,41 @@ one_shot = true
 explosiveness = 0.9
 randomness = 1.0
 
-[node name="HighScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
 label_settings = ExtResource("2_rq23l")
 horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.00784314, 0.517647, 0.780392, 0.490196)
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_2g6vv")
+value = 60.0
+show_percentage = false
+
+[node name="TimeLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "30.000s"
+label_settings = SubResource("LabelSettings_dg8bp")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="DisabledOverlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
