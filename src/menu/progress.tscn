@@ -106,7 +106,6 @@ text = "    ◀    "
 
 [node name="StageLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(940, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
 theme_override_colors/font_outline_color = Color(0.847059, 0.705882, 0.996078, 1)

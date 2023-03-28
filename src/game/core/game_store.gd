@@ -50,6 +50,13 @@ func get_current_machine():
 
 func get_current_level() -> int:
 	return _current_level
+
+
+func get_current_stage():
+	for stage in _current_machine.stages:
+		if stage.level == _current_level:
+			return stage
+	return null
 	
 
 func get_current_stage_high_score() -> int:
@@ -59,33 +66,26 @@ func get_current_stage_high_score() -> int:
 	return 0
 
 
-func get_current_stage():
-	for stage in _current_machine.stages:
-		if stage.level == _current_level:
-			return stage
-	return null
-
-
 func get_progress() -> Progress:
 	return _progress
 
 
-func get_max_level_for_stage(stage_key: String) -> int:
-	return 0 if _progress == null else _progress.max_level_per_machine[stage_key]
+func get_max_unlocked_level_for_machine(machine_key: String) -> int:
+	return 0 if _progress == null else _progress.max_level_per_machine[machine_key]
 
 
-func is_at_max_stage_level() -> bool:
+func is_at_max_level_for_current_machine() -> bool:
 	return _current_level >= len(_current_machine.stages)
 
 
-func is_at_max_progression_level() -> bool:
+func is_at_max_progression_level_for_current_machine() -> bool:
 	return _current_level >= _progress.max_level_per_machine[_current_machine.key]
 
 
 func start_new_game() -> void:
 	_current_level = 1
-	can_continue_game = true
 	_progress = Progress.new(_machines)
+	can_continue_game = true
 	new_game_started.emit()
 
 
@@ -95,6 +95,7 @@ func continue_game() -> void:
 
 func jump_to_level(level: int) -> void:
 	assert(level > 0)
+	assert(level <= len(_current_machine.stages))
 	_current_level = level
 	level_changed.emit(level)
 
@@ -112,8 +113,8 @@ func persist_progress() -> void:
 				var is_new_level_unlocked = \
 					level_progress.medals > 0 \
 					and was_new_high_score \
-					and is_at_max_progression_level() \
-					and not is_at_max_stage_level()
+					and is_at_max_progression_level_for_current_machine() \
+					and not is_at_max_level_for_current_machine()
 				
 				if is_new_level_unlocked:
 					_progress.max_level_per_machine[_current_machine.key] = _current_level + 1
@@ -137,11 +138,10 @@ func _load_progress_for_user():
 	_progress = load(SAVE_PROGRESS_FILE_PATH)
 	_current_level = _progress.max_level_per_machine[_current_machine.key]
 	can_continue_game = true
-	
 
 
 func _read_machine(key: String):
-	var fileName = "res://game/%s/stage_data.json" % key
+	var fileName = "res://game/%s/machine_data.json" % key
 	var file = FileAccess.open(fileName, FileAccess.READ)
 	var contents = file.get_as_text()
 	file.close()

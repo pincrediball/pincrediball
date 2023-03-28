@@ -25,7 +25,7 @@ func _on_back_button_pressed():
 
 func _on_visibility_changed():
 	var progress = GameStore.get_progress()
-	var max_unlocked_level = GameStore.get_max_level_for_stage("tutorial")
+	var max_unlocked_level = GameStore.get_max_unlocked_level_for_machine("tutorial")
 
 	for child in %ProgressionRows.get_children():
 		child.queue_free()
