@@ -194,6 +194,7 @@ process_mode = 1
 script = ExtResource("11_3ga3p")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
+process_mode = 1
 anchor_mode = 0
 script = ExtResource("12_h57rn")
 

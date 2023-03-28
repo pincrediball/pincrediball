@@ -1,12 +1,12 @@
 {
 	"key": "tutorial",
 	"stages": [
-		{ "level": 1, "max_run_time": 15, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  25, "silver":  50, "gold":  100, "title": "Bumping Basics" },
-		{ "level": 2, "max_run_time": 20, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  50, "silver":  75, "gold":  150, "title": "Bumping some more" },
-		{ "level": 3, "max_run_time": 30, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze":  75, "silver": 100, "gold":  175, "title": "Wall's that?!" },
-		{ "level": 4, "max_run_time": 40, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 125, "silver": 175, "gold":  250, "title": "Blue pills" },
-		{ "level": 5, "max_run_time": 50, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 200, "silver": 275, "gold":  400, "title": "Gate One" },
-		{ "level": 6, "max_run_time": 60, "plunge_delay": 0.4, "flipper_left_interval": 0.8, "flipper_right_interval": 0.7, "bronze": 300, "silver": 500, "gold": 1000, "title": "Gate Trio" }
+		{ "level": 1, "max_run_time": 10, "plunge_delay": 0.4, "flipper_left_interval": 0.80, "flipper_right_interval": 0.76, "bronze":  25, "silver":  50, "gold":  100, "title": "Bumping Basics" },
+		{ "level": 2, "max_run_time": 12, "plunge_delay": 0.7, "flipper_left_interval": 0.76, "flipper_right_interval": 0.72, "bronze":  50, "silver":  75, "gold":  150, "title": "Bumping some more" },
+		{ "level": 3, "max_run_time": 14, "plunge_delay": 0.7, "flipper_left_interval": 0.81, "flipper_right_interval": 0.79, "bronze":  75, "silver": 100, "gold":  175, "title": "Wall's that?!" },
+		{ "level": 4, "max_run_time": 18, "plunge_delay": 0.1, "flipper_left_interval": 0.68, "flipper_right_interval": 0.70, "bronze": 125, "silver": 175, "gold":  250, "title": "Blue pills" },
+		{ "level": 5, "max_run_time": 20, "plunge_delay": 0.1, "flipper_left_interval": 0.64, "flipper_right_interval": 0.81, "bronze": 200, "silver": 275, "gold":  400, "title": "Gate One" },
+		{ "level": 6, "max_run_time": 25, "plunge_delay": 0.5, "flipper_left_interval": 0.62, "flipper_right_interval": 0.61, "bronze": 300, "silver": 500, "gold": 1000, "title": "Gate Trio" }
 	],
 	"toolbox_items": [
 		{ "unlocks_at": 1, "component_id": "bumper_circle", "title": "Bumper, circle", "description": "Scores 25 when bumped. Tip: Place in path of the ball." },
