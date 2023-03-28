@@ -2,23 +2,23 @@ extends PanelContainer
 
 const HIGH_SCORE_SOUND = preload("res://sound/high-score-achieved-001.mp3")
 
-var _medal_data
+var _stage
 
 func _ready():
 	Scoring.score_changed.connect(_on_score_changed)
 	Scoring.scoring_mode_toggled.connect(_on_scoring_mode_toggled)
 
-	_medal_data = GameStore.get_current_medal_targets()
+	_stage = GameStore.get_current_stage()
 	GameStore.level_changed.connect(_on_level_changed)
 	GameStore.high_score_changed.connect(_on_high_score_changed)
 	_set_score(0)
-	_set_high_score(GameStore.get_current_level_high_score())
+	_set_high_score(GameStore.get_current_stage_high_score())
 
 
 func _on_level_changed(_level: int):
-	_medal_data = GameStore.get_current_medal_targets()
+	_stage = GameStore.get_current_stage()
 	_set_score(0)
-	_set_high_score(GameStore.get_current_level_high_score())
+	_set_high_score(GameStore.get_current_stage_high_score())
 
 
 func _on_score_changed(_from: int, to: int):
@@ -49,11 +49,11 @@ func _celebrate_high_score():
 
 
 func _format_medal(score: int) -> String:
-	if score >= _medal_data.gold:
+	if score >= _stage.gold:
 		return "🥇 "
-	elif score >= _medal_data.silver:
+	elif score >= _stage.silver:
 		return "🥈 "
-	elif score >= _medal_data.bronze:
+	elif score >= _stage.bronze:
 		return "🥉 "
 	else:
 		return ""

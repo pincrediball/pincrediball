@@ -2,8 +2,8 @@ class_name Progress
 extends Resource
 
 @export var version := 1
-@export var levels: Array[ProgressForLevel] = []
-@export var max_level_per_stage = {
+@export var stages: Array[ProgressForStage] = []
+@export var max_level_per_machine = {
 	"tutorial": 1,
 	"newb": 1,
 	"normie": 1,
@@ -12,13 +12,13 @@ extends Resource
 }
 
 # Default value required for save/load
-func _init(stages: Dictionary = {}):
-	for key in stages:
-		var stage = stages[key]
-		if stage == null:
+func _init(machines: Dictionary = {}):
+	for key in machines:
+		var machine = machines[key]
+		if machine == null:
 			continue
-		for medal_target in stage.medal_targets:
-			var level_progress = ProgressForLevel.new(medal_target.level)
-			levels.append(level_progress)
-			if level_progress.medals > 0:
-				max_level_per_stage[key] = max(max_level_per_stage[key], level_progress.level)
+		for stage in machine.stages:
+			var stage_progress = ProgressForStage.new(stage.level)
+			stages.append(stage_progress)
+			if stage_progress.medals > 0:
+				max_level_per_machine[key] = max(max_level_per_machine[key], stage_progress.level)

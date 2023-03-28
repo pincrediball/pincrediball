@@ -17,7 +17,7 @@ var is_dragging: bool:
 var can_continue_game := false:
 	get: return can_continue_game
 
-var _stages = {
+var _machines = {
 	"tutorial": null,
 	"newb": null,
 	"normie": null,
@@ -26,13 +26,13 @@ var _stages = {
 }
 
 var _current_level := 1
-var _current_stage = null # TODO: Consider typing this
+var _current_machine = null # TODO: Consider typing this
 var _progress: Progress
 
 
 func _ready():
-	_stages.tutorial = _read_stage("tutorial")
-	_current_stage = _stages.tutorial
+	_machines.tutorial = _read_machine("tutorial")
+	_current_machine = _machines.tutorial
 	_load_progress_for_user()
 
 
@@ -44,32 +44,25 @@ func request_menu_open() -> void:
 	menu_open_requested.emit()
 
 
-func get_current_stage():
-	return _current_stage
+func get_current_machine():
+	return _current_machine
 	
 
 func get_current_level() -> int:
 	return _current_level
 	
 
-func get_current_level_high_score() -> int:
-	for level_progress in _progress.levels:
+func get_current_stage_high_score() -> int:
+	for level_progress in _progress.stages:
 		if level_progress.level == _current_level:
 			return level_progress.high_score
 	return 0
 
 
-func get_current_playbook():
-	for playbook in _current_stage.playbooks:
-		if playbook.level == _current_level:
-			return playbook
-	return null
-
-
-func get_current_medal_targets():
-	for medal_target in _current_stage.medal_targets:
-		if medal_target.level == _current_level:
-			return medal_target
+func get_current_stage():
+	for stage in _current_machine.stages:
+		if stage.level == _current_level:
+			return stage
 	return null
 
 
@@ -78,21 +71,21 @@ func get_progress() -> Progress:
 
 
 func get_max_level_for_stage(stage_key: String) -> int:
-	return 0 if _progress == null else _progress.max_level_per_stage[stage_key]
+	return 0 if _progress == null else _progress.max_level_per_machine[stage_key]
 
 
 func is_at_max_stage_level() -> bool:
-	return _current_level >= len(_current_stage.medal_targets)
+	return _current_level >= len(_current_machine.stages)
 
 
 func is_at_max_progression_level() -> bool:
-	return _current_level >= _progress.max_level_per_stage[_current_stage.key]
+	return _current_level >= _progress.max_level_per_machine[_current_machine.key]
 
 
 func start_new_game() -> void:
 	_current_level = 1
 	can_continue_game = true
-	_progress = Progress.new(_stages)
+	_progress = Progress.new(_machines)
 	new_game_started.emit()
 
 
@@ -109,12 +102,12 @@ func jump_to_level(level: int) -> void:
 func persist_progress() -> void:
 	if Scoring.is_enabled:
 		var score = Scoring.get_current_score()
-		for level_progress in _progress.levels:
+		for level_progress in _progress.stages:
 			if level_progress.level == _current_level:
-				var medal_targets = get_current_medal_targets()
+				var stage = get_current_stage()
 				var was_new_high_score = score > level_progress.high_score
 				
-				level_progress.update_for(score, medal_targets)
+				level_progress.update_for(score, stage)
 				
 				var is_new_level_unlocked = \
 					level_progress.medals > 0 \
@@ -123,7 +116,7 @@ func persist_progress() -> void:
 					and not is_at_max_stage_level()
 				
 				if is_new_level_unlocked:
-					_progress.max_level_per_stage[_current_stage.key] = _current_level + 1
+					_progress.max_level_per_machine[_current_machine.key] = _current_level + 1
 					
 				_save_progress_for_user()
 				
@@ -142,13 +135,13 @@ func _load_progress_for_user():
 	if not ResourceLoader.exists(SAVE_PROGRESS_FILE_PATH):
 		return
 	_progress = load(SAVE_PROGRESS_FILE_PATH)
-	_current_level = _progress.max_level_per_stage[_current_stage.key]
+	_current_level = _progress.max_level_per_machine[_current_machine.key]
 	can_continue_game = true
 	
 
 
-func _read_stage(stage: String):
-	var fileName = "res://game/%s/stage_data.json" % stage # Hardcoded for now
+func _read_machine(key: String):
+	var fileName = "res://game/%s/stage_data.json" % key
 	var file = FileAccess.open(fileName, FileAccess.READ)
 	var contents = file.get_as_text()
 	file.close()
