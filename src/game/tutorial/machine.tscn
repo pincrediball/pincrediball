@@ -160,6 +160,7 @@ unique_name_in_owner = true
 position = Vector2(321, 696)
 rotation = -3.14159
 scale = Vector2(1, -1)
+sound_index = 1
 
 [node name="SlingLeft" parent="SubViewport/MachineNode2D/GameComponents" instance=ExtResource("8_hrvvv")]
 position = Vector2(114, 567)

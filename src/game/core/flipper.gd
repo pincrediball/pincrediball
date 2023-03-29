@@ -3,9 +3,6 @@ extends Node2D
 const SOUNDS: Array[Resource] = [
 	preload("res://sound/flipper-001.wav"),
 	preload("res://sound/flipper-002.wav"),
-	preload("res://sound/flipper-003.wav"),
-	preload("res://sound/flipper-004.wav"),
-	preload("res://sound/flipper-005.wav"),
 ]
 
 enum FlipperState { RESTING, GOING_UP, GOING_DOWN }
@@ -14,6 +11,8 @@ const MAX_ROTATION := -85.0
 const REST_ANGLE := 35.0
 const TIME_TO_MOVE_UP := 0.06
 const TIME_TO_MOVE_DOWN := 0.3
+
+@export var sound_index = 0
 
 var _state := FlipperState.RESTING
 var _time_moving := 0.0
@@ -56,4 +55,5 @@ func stop():
 func _on_timer_timeout():
 	assert(_state == FlipperState.RESTING, "Flipper should fire but was not yet resting!")
 	_state = FlipperState.GOING_UP
-	Audio.play_random_sound_with($AudioStreamPlayer, SOUNDS)
+	$AudioStreamPlayer.stream = SOUNDS[sound_index]
+	$AudioStreamPlayer.play()
