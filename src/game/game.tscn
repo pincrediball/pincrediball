@@ -138,10 +138,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="DebugOptionUnlockAllLevelsButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
-layout_mode = 2
-text = "DEBUG OPTION: Unlock all levels."
-
 [node name="BackToMenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
@@ -157,5 +153,4 @@ layout_mode = 1
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/DebugOptionUnlockAllLevelsButton" to="." method="_on_debug_option_unlock_all_levels_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
