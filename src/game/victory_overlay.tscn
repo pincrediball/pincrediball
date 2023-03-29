@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckc64fctuta3k"]
+[gd_scene load_steps=17 format=3 uid="uid://ckc64fctuta3k"]
 
 [ext_resource type="Script" path="res://game/victory_overlay.gd" id="1_i82cq"]
 [ext_resource type="Texture2D" uid="uid://cwf16by50y5ba" path="res://art/menu/menu_button_continue_playing_normal.png" id="2_e84xu"]
@@ -14,25 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bsahfc4dktnsn" path="res://art/menu/menu_button_back_to_menu_hover.png" id="12_aykw3"]
 [ext_resource type="Texture2D" uid="uid://cshypb4u5h6md" path="res://art/menu/menu_button_back_to_menu_disabled.png" id="13_nte7x"]
 
-[sub_resource type="Curve" id="Curve_wh57q"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7vm5x"]
-curve = SubResource("Curve_wh57q")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6gdme"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 200.0
-initial_velocity_max = 300.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 0.1
-scale_curve = SubResource("CurveTexture_7vm5x")
-
 [sub_resource type="Gradient" id="Gradient_lp6w4"]
 offsets = PackedFloat32Array(0, 0.755747)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -43,6 +24,10 @@ width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_wh57q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="VictoryOverlay" type="Control"]
 layout_mode = 3
@@ -62,82 +47,138 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
-[node name="CelebrationParticles1" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles1" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.184314, 0.878431, 0.196078, 1)
 position = Vector2(213, 250)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 3.0
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles2" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles2" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.878431, 0.184314, 0.823529, 1)
 position = Vector2(726, 150)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 1.9
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles3" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles3" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.184314, 0.184314, 0.878431, 1)
 position = Vector2(1204, 423)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 3.9
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles4" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles4" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.878431, 0.776471, 0.184314, 1)
 position = Vector2(512, 760)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 2.5
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles5" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles5" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.878431, 0.184314, 0.184314, 1)
 position = Vector2(1466, 782)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 3.2
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles6" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles6" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.545098, 0.878431, 0.184314, 1)
 position = Vector2(1515, 71)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 3.2
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
-[node name="CelebrationParticles7" type="GPUParticles2D" parent="."]
+[node name="CelebrationParticles7" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.184314, 0.658824, 0.878431, 1)
 position = Vector2(49, 618)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_6gdme")
-texture = SubResource("GradientTexture2D_i8p1m")
 lifetime = 5.0
 explosiveness = 0.9
 randomness = 1.0
+lifetime_randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = SubResource("GradientTexture2D_i8p1m")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_wh57q")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
