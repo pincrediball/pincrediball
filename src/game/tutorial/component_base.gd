@@ -11,14 +11,12 @@ var _sounds_default: Array[Resource] = []
 var _is_mouse_over_body := false
 var _selected := false
 var _rotating := false
-var _lerp_offset := Vector2.ZERO
+var _position_offset := Vector2.ZERO
 var _rotation_offset := 0.0
 var _previous_position: Vector2
 var _previous_rotation: float
 var _audio_stream_player := AudioStreamPlayer.new()
 var _rotation_helper_line := Line2D.new()
-
-var _debug_sprites = { }
 
 
 func _ready():
@@ -30,14 +28,13 @@ func _ready():
 
 func _physics_process(delta):
 	if _selected:
-		# TODO: The lerp_offset doesn't work anymore when rotated
-		var target = get_global_mouse_position() - _lerp_offset
+		var target = get_global_mouse_position() - _position_offset
 		global_position = lerp(global_position, target, delta * MOVE_STEP)
 	elif _rotating:
 		var direction = get_global_mouse_position() - global_position
-		var temp = direction.angle()
-		var angle = rad_to_deg(temp - _rotation_offset) # Degrees improves snapping
-		rotation_degrees = snapped(angle, ROTATION_STEP_DEGREES)
+		var angle_rads = direction.angle() - _rotation_offset
+		var angle_degrees = rad_to_deg(angle_rads) # Degrees improves snapping
+		rotation_degrees = snapped(angle_degrees, ROTATION_STEP_DEGREES)
 		_rotation_helper_line.set_point_position(1, get_local_mouse_position())
 
 
@@ -74,7 +71,7 @@ func _handle_unhandled_input(event: InputEvent):
 			_selected = true
 			_previous_position = global_position
 			_previous_rotation = rotation
-			_lerp_offset = get_local_mouse_position()
+			_position_offset = get_local_mouse_position().rotated(rotation)
 			if not get_tree().paused:
 				Scoring.set_enabled(false)
 			get_viewport().set_input_as_handled()
