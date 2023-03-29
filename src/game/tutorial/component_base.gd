@@ -12,12 +12,17 @@ var _is_mouse_over_body := false
 var _selected := false
 var _rotating := false
 var _lerp_offset := Vector2.ZERO
+var _rotation_offset := 0.0
 var _previous_position: Vector2
 var _previous_rotation: float
 var _audio_stream_player := AudioStreamPlayer.new()
+var _rotation_helper_line := Line2D.new()
+
+var _debug_sprites = { }
 
 
 func _ready():
+	_set_up_rotation_helper_line()	
 	_audio_stream_player.bus = Audio.BUS_NAME_PINBALL_SFX
 	add_child(_audio_stream_player)
 	GameStore.level_changed.connect(_on_level_changed)
@@ -29,11 +34,11 @@ func _physics_process(delta):
 		var target = get_global_mouse_position() - _lerp_offset
 		global_position = lerp(global_position, target, delta * MOVE_STEP)
 	elif _rotating:
-		# TODO: Fix rotating initially and weirdly
-		var origin = global_position
-		var direction = get_global_mouse_position() - origin
-		var angle = rad_to_deg(global_position.angle_to(direction))
+		var direction = get_global_mouse_position() - global_position
+		var temp = direction.angle()
+		var angle = rad_to_deg(temp - _rotation_offset) # Degrees improves snapping
 		rotation_degrees = snapped(angle, ROTATION_STEP_DEGREES)
+		_rotation_helper_line.set_point_position(1, get_local_mouse_position())
 
 
 func on_ball_exit(_ball: RigidBody2D):
@@ -41,7 +46,9 @@ func on_ball_exit(_ball: RigidBody2D):
 
 
 func end_move():
-	if _selected:
+	_rotation_helper_line.visible = false
+	if _selected or _rotating:
+		_rotating = false
 		_selected = false
 		move_by_player_ended.emit(self)
 
@@ -74,12 +81,14 @@ func _handle_unhandled_input(event: InputEvent):
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if _rotating and not event.is_pressed():
 			_rotating = false
+			_rotation_helper_line.visible = false
 			move_by_player_ended.emit(self)
 		elif _is_mouse_over_body and not _rotating and event.is_pressed():
 			_rotating = true
 			_previous_position = global_position
 			_previous_rotation = rotation
-			_lerp_offset = get_local_mouse_position()
+			_rotation_offset = (get_global_mouse_position() - global_position).angle() - rotation
+			_rotation_helper_line.visible = true
 			if not get_tree().paused:
 				Scoring.set_enabled(false)
 			get_viewport().set_input_as_handled()
@@ -97,3 +106,12 @@ func _on_level_changed(new_level: int):
 
 func _set_ethereal(is_ethereal: bool):
 	pass # To be implemented by subclasses that know their shapes
+
+
+func _set_up_rotation_helper_line():
+	_rotation_helper_line.add_point(Vector2.ZERO)
+	_rotation_helper_line.add_point(Vector2.ZERO)
+	_rotation_helper_line.default_color = Color(0.9, 0.2, 0.1, 0.5)
+	_rotation_helper_line.width = 2
+	_rotation_helper_line.visible = false
+	add_child(_rotation_helper_line)
