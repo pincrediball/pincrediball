@@ -15,6 +15,7 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
 		close()
+		get_viewport().set_input_as_handled()
 
 
 func _on_texture_button_pressed():

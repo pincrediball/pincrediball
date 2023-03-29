@@ -6,6 +6,7 @@ Copyright remains with the Pincrediball authors.
 ## Exceptions
 
 - high-score-achieved-001.mp3 => https://pixabay.com/sound-effects/good-6081/ (Simplified Pixabay License)
+- timer-alarm-001.mp3 => https://pixabay.com/sound-effects/beep-warning-6387/ (Simplified Pixabay License)
 
 ## Licenses
 

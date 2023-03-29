@@ -24,3 +24,8 @@ func on_ball_exit(ball: RigidBody2D):
 	var impulse := direction * 1000
 	ball.apply_impulse(impulse)
 	Scoring.add_score(BASE_SCORE)
+
+
+func _set_ethereal(is_ethereal: bool):
+	$StaticBody2D.set_collision_layer_value(1, not is_ethereal)
+	$StaticBody2D.set_collision_mask_value(1, not is_ethereal)

@@ -27,6 +27,8 @@ var _balls_to_plunge := 0
 
 
 func _ready():
+	Scoring.time_ran_out.connect(_on_time_ran_out)
+	GameStore.level_changed.connect(_on_level_changed)
 	%DropZonePolygon2D.visible = false
 	stop()
 
@@ -49,6 +51,7 @@ func _drop_data(at_position: Vector2, data):
 	var component = COMPONENT_SCENES[data.component_id].instantiate() as Node2D
 	component.position = at_position
 	component.move_by_player_ended.connect(_on_move_by_player_ended)
+	component.level = data.level
 	%PlayerComponents.add_child(component)
 	_set_drop_zone_glow_enabled(false)
 	if not get_tree().paused:
@@ -82,6 +85,14 @@ func _on_gui_input(event: InputEvent):
 		if not event.is_pressed():
 			for child in %PlayerComponents.get_children():
 				child.end_move()
+
+
+func _on_time_ran_out():
+	stop()
+
+
+func _on_level_changed(_level: int):
+	stop()
 
 
 func play(playbook):
@@ -128,6 +139,7 @@ func _init_play(playbook):
 	Audio.set_suppressed_music(true)
 	for ball in get_tree().get_nodes_in_group("isBall"):
 		ball.queue_free()
+	%PlaybookTimeLeft.run_time_left = float(playbook.max_run_time)
 	get_tree().paused = false
 	get_tree().call_group("isResettablePinballComponent", "reset_pinball_component")
 	%FlipperLeft.reset(playbook.flipper_left_interval)

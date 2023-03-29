@@ -14,6 +14,7 @@ var is_disabled := false:
 		is_disabled = value
 		%OverlayUnlocksAt.visible = value
 
+var _is_dragging := false
 var _toolbox_item_data
 
 
@@ -31,9 +32,22 @@ func _get_drag_data(_position):
 	preview.z_index = 60
 	preview.modulate = Color(1, 1, 1, 0.5)
 	set_drag_preview(preview)
-	var drag_data = { component_id = _toolbox_item_data.component_id, is_toolbox_item = true }
+	var drag_data = {
+		component_id = _toolbox_item_data.component_id,
+		level = _toolbox_item_data.unlocks_at,
+		is_toolbox_item = true,
+	}
 	GameStore.drag_data = drag_data
+	_is_dragging = true
 	return drag_data
+
+
+func _notification(event):
+	match event:
+		NOTIFICATION_DRAG_END:
+			if _is_dragging:
+				%OverlayAlreadyUsed.visible = get_viewport().gui_is_drag_successful()
+				_is_dragging = false
 
 
 func load_pinball_component(data):

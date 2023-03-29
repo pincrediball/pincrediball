@@ -23,10 +23,7 @@ var _is_activated: bool = false:
 func _ready():
 	super._ready()
 	_sounds_default = [
-		preload("res://sound/wall-001.wav"),
-		preload("res://sound/wall-002.wav"),
-		preload("res://sound/wall-003.wav"),
-		preload("res://sound/wall-004.wav"),
+		preload("res://sound/wall-normal-001.wav"),
 	]
 
 
@@ -36,10 +33,21 @@ func _on_component_area_2d_mouse_exited(): _is_mouse_over_body = false
 
 
 func _on_roll_over_area_2d_body_exited(body):
-	if not _is_activated and body.is_in_group("isBall") and body.linear_velocity.y > 0:
-		_is_activated = true
-		Scoring.add_score(BASE_SCORE)
+	if not _is_activated and body.is_in_group("isBall"):
+		# The component might be rotated, so we need to adjust
+		# the direction of the velocity for this to keep the
+		# gate one-way.
+		if body.linear_velocity.rotated(rotation).y > 0:
+			_is_activated = true
+			Scoring.add_score(BASE_SCORE)
 
 
 func reset_pinball_component():
 	_is_activated = false
+
+
+func _set_ethereal(is_ethereal: bool):
+	$StaticBody2D.set_collision_layer_value(1, not is_ethereal)
+	$StaticBody2D.set_collision_mask_value(1, not is_ethereal)
+	$RollOverArea2D.set_collision_layer_value(1, not is_ethereal)
+	$RollOverArea2D.set_collision_mask_value(1, not is_ethereal)

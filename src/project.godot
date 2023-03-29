@@ -46,6 +46,12 @@ action_left_mouse_button={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="machine_default"
+2d_physics/layer_2="plunger_gates"
+2d_physics/layer_17="bounce_areas"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

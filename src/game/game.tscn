@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkm8htnfe2j7g"]
+[gd_scene load_steps=16 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Script" path="res://game/game.gd" id="1_hdvhs"]
 [ext_resource type="Shader" path="res://menu/menu.gdshader" id="2_wjxbc"]
 [ext_resource type="PackedScene" uid="uid://fmi417501t64" path="res://game/core/toolbox.tscn" id="3_5lpl1"]
 [ext_resource type="PackedScene" uid="uid://etrp4vbsn388" path="res://game/core/level_header.tscn" id="3_w8h4w"]
+[ext_resource type="Texture2D" uid="uid://lh7ntkfu5sxi" path="res://art/game/mouse_usage_hint.png" id="5_kai20"]
 [ext_resource type="PackedScene" uid="uid://cokkri2jg0cfk" path="res://game/core/playbook.tscn" id="5_t5wa1"]
 [ext_resource type="PackedScene" uid="uid://cb02onpxm2r7x" path="res://game/core/medals.tscn" id="6_18ytx"]
 [ext_resource type="PackedScene" uid="uid://b7gnqdufk7u88" path="res://game/core/score.tscn" id="7_ydt4m"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bwmhavc436lwn" path="res://art/menu/menu_button_tl_arrow_pressed.png" id="10_42wxf"]
 [ext_resource type="Texture2D" uid="uid://cam5ev8j0wfq7" path="res://art/menu/menu_button_tl_arrow_hover.png" id="11_8gol2"]
 [ext_resource type="Texture2D" uid="uid://d1bded6m5pb6l" path="res://art/menu/menu_button_tl_arrow_disabled.png" id="12_sqthh"]
+[ext_resource type="PackedScene" uid="uid://ckc64fctuta3k" path="res://game/victory_overlay.tscn" id="13_cwdk3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uoqc3"]
 shader = ExtResource("2_wjxbc")
@@ -79,7 +81,32 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="machine" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_b3inv")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "left mouse - move"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_kai20")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "rotate - right button"
+
+[node name="machine" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_b3inv")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -137,10 +164,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="DebugOptionUnlockAllLevelsButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
-layout_mode = 2
-text = "DEBUG OPTION: Unlock all levels."
-
 [node name="BackToMenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
@@ -150,7 +173,10 @@ texture_pressed = ExtResource("10_42wxf")
 texture_hover = ExtResource("11_8gol2")
 texture_disabled = ExtResource("12_sqthh")
 
+[node name="VictoryOverlay" parent="." instance=ExtResource("13_cwdk3")]
+visible = false
+layout_mode = 1
+
 [connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/RunPlaybookButton" to="." method="_on_run_playbook_button_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/DebugOptionUnlockAllLevelsButton" to="." method="_on_debug_option_unlock_all_levels_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

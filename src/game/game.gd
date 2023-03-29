@@ -7,6 +7,7 @@ var _was_paused := true
 
 func reset_pause_state():
 	get_tree().paused = _was_paused
+	Audio.set_suppressed_music(not _was_paused)
 
 
 func _on_run_playbook_button_button_up():
@@ -28,7 +29,3 @@ func _on_back_to_menu_button_pressed():
 	_was_paused = get_tree().paused
 	get_tree().paused = true
 	GameStore.request_menu_open()
-
-
-func _on_debug_option_unlock_all_levels_button_pressed():
-	GameStore.jump_to_level(6)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7gnqdufk7u88"]
+[gd_scene load_steps=14 format=3 uid="uid://b7gnqdufk7u88"]
 
 [ext_resource type="Script" path="res://game/core/score.gd" id="1_dmxya"]
 [ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/core/score_points_label.tres" id="2_rq23l"]
@@ -12,14 +12,14 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.292237, 1)
 colors = PackedColorArray(1, 0.668435, 0.619761, 1, 0.999997, 0.555785, 0.496989, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_twyf3"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7g2f"]
 gradient = SubResource("Gradient_a82wn")
 
 [sub_resource type="Curve" id="Curve_4mejp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_7vm5x"]
+[sub_resource type="CurveTexture" id="CurveTexture_lco3f"]
 curve = SubResource("Curve_4mejp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rce7g"]
@@ -32,24 +32,35 @@ initial_velocity_max = 300.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.1
-scale_curve = SubResource("CurveTexture_7vm5x")
+scale_curve = SubResource("CurveTexture_lco3f")
 color = Color(0.305882, 0.803922, 0.0901961, 1)
-color_ramp = SubResource("GradientTexture1D_twyf3")
+color_ramp = SubResource("GradientTexture1D_i7g2f")
 
-[sub_resource type="Gradient" id="Gradient_lp6w4"]
+[sub_resource type="Gradient" id="Gradient_ruiwy"]
 offsets = PackedFloat32Array(0, 0.755747)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_k127a"]
-gradient = SubResource("Gradient_lp6w4")
+gradient = SubResource("Gradient_ruiwy")
 width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g6vv"]
+bg_color = Color(0.00784314, 0.517647, 0.780392, 0.294118)
+
+[sub_resource type="SystemFont" id="SystemFont_birc7"]
+font_names = PackedStringArray("Consolas", "Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg8bp"]
+font = SubResource("SystemFont_birc7")
+font_size = 20
+
 [node name="Score" type="PanelContainer"]
-offset_right = 527.0
-offset_bottom = 132.0
+offset_right = 585.0
+offset_bottom = 145.0
 script = ExtResource("1_dmxya")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -59,39 +70,45 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
 text = "Current Score"
 label_settings = SubResource("LabelSettings_5rvfl")
+horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
 label_settings = ExtResource("2_rq23l")
+horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="HeaderLabelCurrentScore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Best Score"
 label_settings = SubResource("LabelSettings_5rvfl")
+horizontal_alignment = 1
 
-[node name="CelebrationParticles" type="GPUParticles2D" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="CelebrationParticles" type="GPUParticles2D" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 self_modulate = Color(0.184314, 0.878431, 0.196078, 1)
-position = Vector2(76, 58)
+position = Vector2(119, 64)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_rce7g")
@@ -101,11 +118,41 @@ one_shot = true
 explosiveness = 0.9
 randomness = 1.0
 
-[node name="HighScoreLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "🥉 0"
 label_settings = ExtResource("2_rq23l")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.00784314, 0.517647, 0.780392, 0.490196)
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_2g6vv")
+value = 60.0
+show_percentage = false
+
+[node name="TimeLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time to drain: 30.000s"
+label_settings = SubResource("LabelSettings_dg8bp")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="DisabledOverlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -151,4 +198,8 @@ layout_mode = 2
 text = "Run Playbook to get a Score."
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"PinballSFX"
+
+[node name="AudioStreamPlayerTicker" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 bus = &"PinballSFX"

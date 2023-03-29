@@ -1,0 +1,219 @@
+[gd_scene load_steps=19 format=3 uid="uid://ckc64fctuta3k"]
+
+[ext_resource type="Script" path="res://game/victory_overlay.gd" id="1_i82cq"]
+[ext_resource type="Texture2D" uid="uid://cwf16by50y5ba" path="res://art/menu/menu_button_continue_playing_normal.png" id="2_e84xu"]
+[ext_resource type="Texture2D" uid="uid://7wsb6o4u687h" path="res://art/menu/menu_button_continue_playing_pressed.png" id="3_kj4mr"]
+[ext_resource type="Texture2D" uid="uid://hj00asv5m1mc" path="res://art/menu/menu_button_continue_playing_hover.png" id="4_mwept"]
+[ext_resource type="Texture2D" uid="uid://bqcx5wiotjlo" path="res://art/menu/menu_button_continue_playing_disabled.png" id="5_oi0eh"]
+[ext_resource type="Texture2D" uid="uid://ct8qinurxeujm" path="res://art/menu/menu_button_show_credits_normal.png" id="6_xripb"]
+[ext_resource type="Texture2D" uid="uid://dq4vnevf52tgw" path="res://art/menu/menu_button_show_credits_pressed.png" id="7_40mrm"]
+[ext_resource type="Texture2D" uid="uid://wbjc8wxycnoe" path="res://art/menu/menu_button_show_credits_hover.png" id="8_h88gp"]
+[ext_resource type="Texture2D" uid="uid://cbjrt7fak2rnf" path="res://art/menu/menu_button_show_credits_disabled.png" id="9_4m8q3"]
+[ext_resource type="Texture2D" uid="uid://b7pipdrmcoswm" path="res://art/menu/menu_button_back_to_menu_normal.png" id="10_ps2ec"]
+[ext_resource type="Texture2D" uid="uid://b6756gm1eaivc" path="res://art/menu/menu_button_back_to_menu_pressed.png" id="11_e6h8m"]
+[ext_resource type="Texture2D" uid="uid://bsahfc4dktnsn" path="res://art/menu/menu_button_back_to_menu_hover.png" id="12_aykw3"]
+[ext_resource type="Texture2D" uid="uid://cshypb4u5h6md" path="res://art/menu/menu_button_back_to_menu_disabled.png" id="13_nte7x"]
+
+[sub_resource type="Curve" id="Curve_wh57q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7vm5x"]
+curve = SubResource("Curve_wh57q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6gdme"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_7vm5x")
+
+[sub_resource type="Gradient" id="Gradient_lp6w4"]
+offsets = PackedFloat32Array(0, 0.755747)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i8p1m"]
+gradient = SubResource("Gradient_lp6w4")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="VictoryOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i82cq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="CelebrationParticles1" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.184314, 0.878431, 0.196078, 1)
+position = Vector2(213, 250)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 3.0
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles2" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.878431, 0.184314, 0.823529, 1)
+position = Vector2(726, 150)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 1.9
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles3" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.184314, 0.184314, 0.878431, 1)
+position = Vector2(1204, 423)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 3.9
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles4" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.878431, 0.776471, 0.184314, 1)
+position = Vector2(512, 760)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 2.5
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles5" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.878431, 0.184314, 0.184314, 1)
+position = Vector2(1466, 782)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 3.2
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles6" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.545098, 0.878431, 0.184314, 1)
+position = Vector2(1515, 71)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 3.2
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CelebrationParticles7" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.184314, 0.658824, 0.878431, 1)
+position = Vector2(49, 618)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_6gdme")
+texture = SubResource("GradientTexture2D_i8p1m")
+lifetime = 5.0
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+color = Color(0.0666667, 0.0666667, 0.0666667, 0.909804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font_size=28][color=#fbbf24]
+[color=#a855f7][font_size=64]Tutorial Machine Completed![/font_size][/color]
+
+Wonderful job! You've completed the entire tutorial of [b]Pincrediball[/b]!
+
+For more information about the game, the project, and to know where
+to find us if you want to let us know we should make more levels:
+
+[color=#0284c7][url]https://pincrediball.com[/url][/color]
+
+Thank you for playing!
+
+[/color][/font_size][/center]"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ContinuePlayingButton" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_e84xu")
+texture_pressed = ExtResource("3_kj4mr")
+texture_hover = ExtResource("4_mwept")
+texture_disabled = ExtResource("5_oi0eh")
+
+[node name="ShowCreditsButton" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_xripb")
+texture_pressed = ExtResource("7_40mrm")
+texture_hover = ExtResource("8_h88gp")
+texture_disabled = ExtResource("9_4m8q3")
+
+[node name="BackToMenuButton" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_ps2ec")
+texture_pressed = ExtResource("11_e6h8m")
+texture_hover = ExtResource("12_aykw3")
+texture_disabled = ExtResource("13_nte7x")
+
+[connection signal="meta_clicked" from="CenterContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ContinuePlayingButton" to="." method="_on_continue_playing_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ShowCreditsButton" to="." method="_on_show_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

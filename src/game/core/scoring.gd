@@ -1,10 +1,15 @@
 extends Node
 
+enum TimePressure { LOW, MEDIUM, HIGH }
+
 signal score_changed(from: int, to: int)
 signal scoring_mode_toggled(enabled: bool)
+signal time_left_changed(to: float, pressure: TimePressure)
+signal time_ran_out()
 
 var is_enabled: bool = true
 var _current_score: int = 0
+var _time_rounded: int
 
 
 func add_score(score: int = 0):
@@ -20,7 +25,6 @@ func reset_score():
 	score_changed.emit(oldScore, 0)
 
 
-# TODO: Turn this into setter for the public var?
 func set_enabled(value: bool):
 	is_enabled = value
 	scoring_mode_toggled.emit(value)
@@ -28,6 +32,17 @@ func set_enabled(value: bool):
 
 func get_current_score():
 	return _current_score
+
+
+func update_time_left_to(time_left: float):
+	var time_pressure = TimePressure.LOW
+	if time_left <= 2.0:
+		time_pressure = TimePressure.HIGH
+	elif time_left <= 5.0:
+		time_pressure = TimePressure.MEDIUM
+	time_left_changed.emit(max(time_left, 0.0), time_pressure)
+	if time_left <= 0.0:
+		time_ran_out.emit()
 
 
 # Whelp! GDScript doesn't have much formatting, does it? Apparently we 

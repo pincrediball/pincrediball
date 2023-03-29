@@ -13,6 +13,7 @@ const MUSIC_TRACKS_GAME: Array[Resource] = [
 const MENU_BUTTON_SOUND_NEXT := preload("res://sound/menu-button-001.wav")
 const MENU_BUTTON_SOUND_BACK := preload("res://sound/menu-button-002.wav")
 const MUSIC_TRACK_CREDITS = preload("res://music/dear-mr-super-computer.mp3")
+const MUSIC_TRACK_VICTORY = preload("res://music/b-3.mp3")
 
 const music_volume_default := -5.0
 const music_volume_suppressed := -18.0
@@ -36,6 +37,12 @@ func start_music_for_credits():
 	$Music.play()
 
 
+func start_music_for_victory():
+	set_suppressed_music(false)
+	$Music.stream = MUSIC_TRACK_VICTORY
+	$Music.play()
+
+
 func set_credits_music_speed(speed: float):
 	$Music.pitch_scale = speed
 
@@ -43,6 +50,7 @@ func set_credits_music_speed(speed: float):
 func _on_game_music_finished():
 	music_track_index += 1
 	music_track_index %= len(MUSIC_TRACKS_GAME)
+	# This code might also go back from Credits/Victory music to default music
 	$Music.stream = MUSIC_TRACKS_GAME[music_track_index]
 	$Music.play()
 

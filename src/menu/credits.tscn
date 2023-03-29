@@ -9,6 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_giwih"]
 shader = ExtResource("1_peus8")
+shader_parameter/base_scroll_speed = 50.0
 
 [sub_resource type="Animation" id="Animation_c638r"]
 resource_name = "credits_scroll_animation"
@@ -143,6 +144,10 @@ Timo Versemann
 DEAR MR SUPER COMPUTER
 HoliznaCC0
 (licensed CC0 1.0 Universal)
+
+B-3
+BoxCat Games
+(licensed CC BY)
 [/font_size][/color]
 
 
