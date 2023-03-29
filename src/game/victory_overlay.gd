@@ -7,6 +7,12 @@ func _ready():
 	GameStore.next_machine_unlocked.connect(_on_next_machine_unlocked)
 
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel"):
+		self.visible = false
+		get_viewport().set_input_as_handled()
+
+
 func _on_rich_text_label_meta_clicked(meta):
 	Audio.play_menu_button_sound_next()
 	OS.shell_open(str(meta))
