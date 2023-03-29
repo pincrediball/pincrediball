@@ -6,6 +6,7 @@ signal menu_open_requested()
 signal level_changed(level: int)
 signal high_score_changed(to: int)
 signal next_level_unlocked()
+signal next_machine_unlocked()
 
 const SAVE_PROGRESS_FILE_PATH = "user://progress.tres"
 
@@ -28,6 +29,7 @@ var _machines = {
 var _current_level := 1
 var _current_machine = null # TODO: Consider typing this
 var _progress: Progress
+var is_next_machine_unlocked := false
 
 
 func _ready():
@@ -84,6 +86,7 @@ func is_at_max_progression_level_for_current_machine() -> bool:
 
 func start_new_game() -> void:
 	_current_level = 1
+	is_next_machine_unlocked = false
 	_progress = Progress.new(_machines)
 	can_continue_game = true
 	new_game_started.emit()
@@ -103,6 +106,7 @@ func jump_to_level(level: int) -> void:
 func persist_progress() -> void:
 	if Scoring.is_enabled:
 		var score = Scoring.get_current_score()
+		var was_next_machine_already_unlocked = is_next_machine_unlocked
 		for level_progress in _progress.stages:
 			if level_progress.level == _current_level:
 				var stage = get_current_stage()
@@ -118,7 +122,9 @@ func persist_progress() -> void:
 				
 				if is_new_level_unlocked:
 					_progress.max_level_per_machine[_current_machine.key] = _current_level + 1
-					
+				
+				is_next_machine_unlocked = _progress.stages.all(func(x): return x.medals > 0)
+				
 				_save_progress_for_user()
 				
 				# Emit signals as the last thing, and in the right order:
@@ -126,6 +132,8 @@ func persist_progress() -> void:
 					high_score_changed.emit(score)
 				if is_new_level_unlocked:
 					next_level_unlocked.emit()
+				if not was_next_machine_already_unlocked and is_next_machine_unlocked:
+					next_machine_unlocked.emit()
 
 
 func _save_progress_for_user():
@@ -137,6 +145,7 @@ func _load_progress_for_user():
 		return
 	_progress = load(SAVE_PROGRESS_FILE_PATH)
 	_current_level = _progress.max_level_per_machine[_current_machine.key]
+	is_next_machine_unlocked = _progress.stages.all(func(x): return x.medals > 0)
 	can_continue_game = true
 
 
