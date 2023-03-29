@@ -33,9 +33,13 @@ func _on_component_area_2d_mouse_exited(): _is_mouse_over_body = false
 
 
 func _on_roll_over_area_2d_body_exited(body):
-	if not _is_activated and body.is_in_group("isBall") and body.linear_velocity.y > 0:
-		_is_activated = true
-		Scoring.add_score(BASE_SCORE)
+	if not _is_activated and body.is_in_group("isBall"):
+		# The component might be rotated, so we need to adjust
+		# the direction of the velocity for this to keep the
+		# gate one-way.
+		if body.linear_velocity.rotated(rotation).y > 0:
+			_is_activated = true
+			Scoring.add_score(BASE_SCORE)
 
 
 func reset_pinball_component():
