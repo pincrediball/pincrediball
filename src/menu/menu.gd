@@ -46,6 +46,7 @@ func _on_credits_button_pressed():
 
 func _on_exit_button_pressed():
 	Audio.play_menu_button_sound_back()
+	%FadeToBlack.visible = true
 	await get_tree().create_timer(0.25).timeout # let the sound play first
 	get_tree().quit()
 
