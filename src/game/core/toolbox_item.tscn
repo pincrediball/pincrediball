@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3itbo4eksw1g"]
+[gd_scene load_steps=7 format=3 uid="uid://d3itbo4eksw1g"]
 
 [ext_resource type="Script" path="res://game/core/toolbox_item.gd" id="1_3w5fw"]
+[ext_resource type="Texture2D" uid="uid://dgy3r4dgfbt5q" path="res://art/game/checkmark.png" id="2_a62rr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqpcj"]
 bg_color = Color(0.419608, 0.129412, 0.658824, 1)
@@ -139,18 +140,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 0
 
-[node name="UnlocksAtLabel" type="Label" parent="OverlayAlreadyUsed/MarginContainer"]
-self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.784314)
+[node name="TextureRect" type="TextureRect" parent="OverlayAlreadyUsed/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
-theme_override_font_sizes/font_size = 20
-text = "✔"
-horizontal_alignment = 1
-vertical_alignment = 2
+size_flags_vertical = 4
+texture = ExtResource("2_a62rr")
 
 [node name="OverlayUnlocksAt" type="ColorRect" parent="."]
 unique_name_in_owner = true
