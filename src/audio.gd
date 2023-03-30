@@ -1,9 +1,5 @@
 extends Node
 
-static func play_random_sound_with(audio_stream_player: AudioStreamPlayer, sounds: Array[Resource]):
-	audio_stream_player.stream = sounds[randi() % len(sounds)]
-	audio_stream_player.play()
-
 const MUSIC_TRACKS_GAME: Array[Resource] = [
 	preload("res://music/one-cool-minute.mp3"),
 	preload("res://music/waiting-tttt.mp3"),
@@ -83,4 +79,8 @@ func play_menu_button_sound_next():
 func play_menu_button_sound_back():
 	$GenericSFX.stream = MENU_BUTTON_SOUND_BACK
 	$GenericSFX.play()
-	
+
+
+func play_random_sound_with(audio_stream_player: AudioStreamPlayer, sounds: Array[Resource]):
+	audio_stream_player.stream = sounds[randi() % len(sounds)]
+	audio_stream_player.play()

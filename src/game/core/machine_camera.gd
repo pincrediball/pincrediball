@@ -8,7 +8,7 @@ func _ready():
 	GameStore.level_changed.connect(_on_level_changed)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var strength: float = 0.0
 	
 	match _time_pressure:

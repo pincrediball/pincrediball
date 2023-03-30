@@ -101,7 +101,7 @@ func _on_level_changed(new_level: int):
 		modulate = Color(1.0, 1.0, 1.0, 1)
 
 
-func _set_ethereal(is_ethereal: bool):
+func _set_ethereal(_is_ethereal: bool):
 	pass # To be implemented by subclasses that know their shapes
 
 
