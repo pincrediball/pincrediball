@@ -49,10 +49,11 @@ func update_time_left_to(time_left: float):
 # have to write this stuff ourselves? Also no StringBuilder or similar
 # so this'll have to do... 
 # Adapted from https://godotengine.org/qa/18559/how-to-add-commas-to-an-integer-or-float-in-gdscript
-static func format_score(score: int) -> String:
+static func format_score(score: int, pad_to_total: int = 0) -> String:
 	var result = "%s" % score
 	var i : int = result.length() - 3
 	while i > 0:
 		result = result.insert(i, ",")
 		i = i - 3
-	return result
+	var format = str("%", pad_to_total, "s") if pad_to_total > 0 else "%s"
+	return format % result

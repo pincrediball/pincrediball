@@ -1,9 +1,7 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://v1wcljtmj368"]
 
-[sub_resource type="SystemFont" id="SystemFont_birc7"]
-font_names = PackedStringArray("Consolas", "Courier New")
-subpixel_positioning = 0
+[ext_resource type="FontFile" uid="uid://djdmpnr2y0ocb" path="res://fonts/RobotoMono-Regular.ttf" id="1_jnm2a"]
 
 [resource]
-font = SubResource("SystemFont_birc7")
+font = ExtResource("1_jnm2a")
 font_size = 38

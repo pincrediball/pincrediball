@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb02onpxm2r7x"]
+[gd_scene load_steps=7 format=3 uid="uid://cb02onpxm2r7x"]
 
 [ext_resource type="LabelSettings" uid="uid://v1wcljtmj368" path="res://game/core/score_points_label.tres" id="1_3x1qd"]
 [ext_resource type="Script" path="res://game/core/medals.gd" id="1_uj2qn"]
+[ext_resource type="Texture2D" uid="uid://cxmct4nrp6ynf" path="res://art/game/medal-gold.png" id="2_6rbt1"]
+[ext_resource type="Texture2D" uid="uid://binklc4y17y7v" path="res://art/game/medal-silver.png" id="4_awfwc"]
+[ext_resource type="Texture2D" uid="uid://dynlf85stusfk" path="res://art/game/medal-bronze.png" id="5_43xru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5f13i"]
 font_size = 28
@@ -26,20 +29,47 @@ layout_mode = 2
 text = "Score Targets"
 label_settings = SubResource("LabelSettings_5f13i")
 
-[node name="LabelGold" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "🥇 1,500 points"
-label_settings = ExtResource("1_3x1qd")
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
 
-[node name="LabelSilver" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="TextureRectGold" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "🥈 1,000 points"
-label_settings = ExtResource("1_3x1qd")
+texture = ExtResource("2_6rbt1")
+expand_mode = 2
+stretch_mode = 5
 
-[node name="LabelBronze" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelGold" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "🥉   500 points"
+text = "  1,500 points"
 label_settings = ExtResource("1_3x1qd")
+vertical_alignment = 1
+
+[node name="TextureRectSilver" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_awfwc")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="LabelSilver" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "  1,000 points"
+label_settings = ExtResource("1_3x1qd")
+vertical_alignment = 1
+
+[node name="TextureRectBronze" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_43xru")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LabelBronze" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "    500 points"
+label_settings = ExtResource("1_3x1qd")
+vertical_alignment = 1

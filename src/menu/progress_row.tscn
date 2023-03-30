@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy0jqclcruh0k"]
+[gd_scene load_steps=7 format=3 uid="uid://cy0jqclcruh0k"]
 
 [ext_resource type="Script" path="res://menu/progress_row.gd" id="1_j5odx"]
+[ext_resource type="Texture2D" uid="uid://cxmct4nrp6ynf" path="res://art/game/medal-gold.png" id="2_0w03w"]
+[ext_resource type="Texture2D" uid="uid://binklc4y17y7v" path="res://art/game/medal-silver.png" id="3_1jiys"]
+[ext_resource type="Texture2D" uid="uid://dynlf85stusfk" path="res://art/game/medal-bronze.png" id="4_pvgru"]
 
 [sub_resource type="Gradient" id="Gradient_btqf5"]
 colors = PackedColorArray(0.984314, 0.74902, 0.141176, 0.784314, 0.85098, 0.466667, 0.0235294, 0.784314)
@@ -32,6 +35,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Level 1"
+vertical_alignment = 1
 
 [node name="TextureRectScore" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -55,6 +59,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Score: 1,337"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRectMedals" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -74,26 +79,23 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelBronze" type="Label" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
+[node name="TextureRectGold" type="TextureRect" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "🥉"
-vertical_alignment = 2
+texture = ExtResource("2_0w03w")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="LabelSilver" type="Label" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
+[node name="TextureRectSilver" type="TextureRect" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "🥈"
-vertical_alignment = 2
+texture = ExtResource("3_1jiys")
+expand_mode = 2
+stretch_mode = 5
 
-[node name="LabelGold" type="Label" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
+[node name="TextureRectBronze" type="TextureRect" parent="HBoxContainer/TextureRectMedals/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "🥇"
-vertical_alignment = 2
+texture = ExtResource("4_pvgru")
+expand_mode = 3
+stretch_mode = 5

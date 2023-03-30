@@ -38,6 +38,10 @@ window/stretch/mode="canvas_items"
 
 movie_writer/movie_file="D:/git/pincrediball/movies-from-godot/pincrediball-v1-20230324-demo.avi"
 
+[gui]
+
+theme/custom_font="res://fonts/Roboto-Regular.ttf"
+
 [input]
 
 action_left_mouse_button={

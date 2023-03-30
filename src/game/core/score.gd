@@ -5,6 +5,13 @@ const TIMER_SOUND_NORMAL = preload("res://sound/timer-tick-001.wav")
 const TIMER_SOUND_PRESSURE = preload("res://sound/timer-tick-002.wav")
 const TIMER_SOUND_ALARM = preload("res://sound/timer-alarm-001.mp3")
 
+const MEDAL_TEXTURES = {
+	"gold": preload("res://art/game/medal-gold.png"),
+	"silver": preload("res://art/game/medal-silver.png"),
+	"bronze": preload("res://art/game/medal-bronze.png"),
+	"none": preload("res://art/game/medal-bronze.png"),
+}
+
 const VOLUME_DB_NORMAL := 0.0
 const VOLUME_DB_ALARM := -9.0
 
@@ -82,11 +89,17 @@ func _set_time_left(to: float):
 
 func _set_score(to: int):
 	_set_time_ran_out_mode_to(false)
-	%ScoreLabel.text = "%s %s" % [_format_medal(to), Scoring.format_score(to)]
+	var key = _medal_key(to)
+	%ScoreLabel.text = "%s" % Scoring.format_score(to)
+	%ScoreMedal.texture = MEDAL_TEXTURES[key]
+	%ScoreMedal.modulate = Color(1,1,1,0.25) if key == "none" else Color(1,1,1,1)
 
 
 func _set_high_score(to: int):
-	%HighScoreLabel.text = "%s%s" % [_format_medal(to), Scoring.format_score(to)]
+	var key = _medal_key(to)
+	%HighScoreLabel.text = "%s" % Scoring.format_score(to)
+	%HighScoreMedal.texture = MEDAL_TEXTURES[key]
+	%HighScoreMedal.modulate = Color(1,1,1,0.25) if key == "none" else Color(1,1,1,1)
 
 
 func _celebrate_high_score():
@@ -94,13 +107,12 @@ func _celebrate_high_score():
 	$AudioStreamPlayer.play()
 	%CelebrationParticles.restart()
 
-
-func _format_medal(score: int) -> String:
+func _medal_key(score: int) -> String:
 	if score >= _stage.gold:
-		return "🥇 "
+		return "gold"
 	elif score >= _stage.silver:
-		return "🥈 "
+		return "silver"
 	elif score >= _stage.bronze:
-		return "🥉 "
+		return "bronze"
 	else:
-		return ""
+		return "none"

@@ -61,14 +61,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-text = "   ◀ previous level   "
+text = "   << previous level   "
 
 [node name="NextLevelButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-text = "    next level ▶   "
+text = "    next level >>   "
 
 [node name="NextLevelButtonAnimation" type="AnimationPlayer" parent="HBoxContainer/NextLevelButton"]
 unique_name_in_owner = true
