@@ -1,0 +1,10 @@
+{
+  "VSCodeCounter.exclude": [
+    "**/.gitignore",
+    "**/.vscode/**",
+    "**/node_modules/**",
+    "**/*.mp3",
+    "**/*.cfg",
+    "**/*.import"
+  ]
+}
