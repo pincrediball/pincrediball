@@ -15,6 +15,8 @@ const MEDAL_TEXTURES = {
 const VOLUME_DB_NORMAL := 0.0
 const VOLUME_DB_ALARM := -9.0
 
+var MODULATE_MEDAL_DISABLED := Color(0.5, 0.5, 0.5, 0.1)
+
 var _stage
 var _time_integer: int
 
@@ -92,14 +94,14 @@ func _set_score(to: int):
 	var key = _medal_key(to)
 	%ScoreLabel.text = "%s" % Scoring.format_score(to)
 	%ScoreMedal.texture = MEDAL_TEXTURES[key]
-	%ScoreMedal.modulate = Color(1,1,1,0.25) if key == "none" else Color(1,1,1,1)
+	%ScoreMedal.modulate = MODULATE_MEDAL_DISABLED if key == "none" else Color(1, 1, 1, 1)
 
 
 func _set_high_score(to: int):
 	var key = _medal_key(to)
 	%HighScoreLabel.text = "%s" % Scoring.format_score(to)
 	%HighScoreMedal.texture = MEDAL_TEXTURES[key]
-	%HighScoreMedal.modulate = Color(1,1,1,0.25) if key == "none" else Color(1,1,1,1)
+	%HighScoreMedal.modulate = MODULATE_MEDAL_DISABLED if key == "none" else Color(1, 1, 1, 1)
 
 
 func _celebrate_high_score():
