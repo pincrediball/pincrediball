@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bpseboohqxgou"]
 
 [ext_resource type="Script" path="res://game/tutorial/machine.gd" id="1_07uey"]
-[ext_resource type="Texture2D" uid="uid://588loi4efqgk" path="res://art/game/tutorial/bg_tile_blue_lines.png" id="2_jtvk6"]
+[ext_resource type="Texture2D" uid="uid://duafdv6esqmq3" path="res://art/game/tutorial/bg_full_render.png" id="2_dv1p4"]
 [ext_resource type="Texture2D" uid="uid://c1hsu6ff3h4lg" path="res://art/game/tutorial/bg_clouds.png" id="3_0e6op"]
 [ext_resource type="Texture2D" uid="uid://buoossw013p5m" path="res://art/game/tutorial/bg_doodles.png" id="4_5dxhy"]
 [ext_resource type="PackedScene" uid="uid://dw1vps7k815gg" path="res://game/core/flipper.tscn" id="4_6pi0p"]
@@ -67,10 +67,9 @@ offset_right = 500.0
 offset_bottom = 800.0
 
 [node name="TextureRect_MathGrid" type="TextureRect" parent="SubViewport/MachineNode2D/GameComponents"]
-offset_right = 500.0
-offset_bottom = 800.0
-texture = ExtResource("2_jtvk6")
-stretch_mode = 1
+offset_right = 514.0
+offset_bottom = 820.0
+texture = ExtResource("2_dv1p4")
 
 [node name="Sprite2D_Clouds" type="Sprite2D" parent="SubViewport/MachineNode2D/GameComponents"]
 modulate = Color(1, 1, 1, 0.294118)
