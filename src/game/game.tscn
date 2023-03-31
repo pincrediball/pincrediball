@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dkm8htnfe2j7g"]
+[gd_scene load_steps=26 format=3 uid="uid://dkm8htnfe2j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bpseboohqxgou" path="res://game/tutorial/machine.tscn" id="1_b3inv"]
 [ext_resource type="Script" path="res://game/game.gd" id="1_hdvhs"]
@@ -17,10 +17,37 @@
 [ext_resource type="Texture2D" uid="uid://vhbo53xs0k1c" path="res://art/menu/menu_button_fullscreen_pressed.png" id="14_vg6en"]
 [ext_resource type="Texture2D" uid="uid://dfvvgvhvfsip3" path="res://art/menu/menu_button_fullscreen_hover.png" id="15_sjff2"]
 [ext_resource type="Texture2D" uid="uid://cg0d4r2mipy10" path="res://art/menu/menu_button_fullscreen_disabled.png" id="16_bk4u5"]
+[ext_resource type="StyleBox" uid="uid://bsdp2ulxylyef" path="res://game/introduction_label_style_box_texture.tres" id="18_dqiw0"]
+[ext_resource type="Texture2D" uid="uid://b783qlgvbwwld" path="res://art/menu/menu_button_letsplay_normal.png" id="19_kbyvr"]
+[ext_resource type="Texture2D" uid="uid://cp4t67x5badsq" path="res://art/menu/menu_button_letsplay_pressed.png" id="20_cpqgb"]
+[ext_resource type="Texture2D" uid="uid://c8vu4i8bgbk3r" path="res://art/menu/menu_button_letsplay_hover.png" id="21_q8htx"]
+[ext_resource type="Texture2D" uid="uid://blddrywifgwyv" path="res://art/menu/menu_button_letsplay_disabled.png" id="22_t38fp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uoqc3"]
 shader = ExtResource("2_wjxbc")
 shader_parameter/base_scroll_speed = 40.0
+
+[sub_resource type="Animation" id="Animation_w6q7p"]
+resource_name = "introduction_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.686275), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ok5t"]
+_data = {
+"introduction_animation": SubResource("Animation_w6q7p")
+}
 
 [node name="Game" type="Control"]
 process_mode = 3
@@ -186,6 +213,115 @@ texture_pressed = ExtResource("14_vg6en")
 texture_hover = ExtResource("15_sjff2")
 texture_disabled = ExtResource("16_bk4u5")
 
+[node name="IntroductionOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Label1" type="Label" parent="IntroductionOverlay"]
+layout_mode = 2
+offset_left = 528.0
+offset_top = 193.0
+offset_right = 877.0
+offset_bottom = 234.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "< Drag items from here..."
+
+[node name="Label2" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 247.0
+offset_right = 943.0
+offset_bottom = 288.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "...to the playing field..."
+
+[node name="Label3" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 301.0
+offset_right = 1085.0
+offset_bottom = 342.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "...and Run (or Stress Test) >"
+
+[node name="Label4" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 909.0
+offset_top = 75.0
+offset_right = 1049.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "Current level's >
+playbook >"
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 82.0
+offset_right = 624.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "< Current level"
+
+[node name="Label7" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 68.0
+offset_right = 809.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "^^"
+
+[node name="Label5" type="Label" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 858.0
+offset_top = 737.0
+offset_right = 1055.0
+offset_bottom = 791.0
+theme_override_colors/font_color = Color(0.345098, 0.109804, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_dqiw0")
+text = "Bronze required >
+to advance one level >"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroductionOverlay"]
+autoplay = "introduction_animation"
+libraries = {
+"": SubResource("AnimationLibrary_3ok5t")
+}
+
+[node name="DismissIntroductionButton" type="TextureButton" parent="IntroductionOverlay"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 444.0
+offset_right = 957.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("19_kbyvr")
+texture_pressed = ExtResource("20_cpqgb")
+texture_hover = ExtResource("21_q8htx")
+texture_disabled = ExtResource("22_t38fp")
+
 [node name="VictoryOverlay" parent="." instance=ExtResource("13_cwdk3")]
 visible = false
 layout_mode = 1
@@ -194,3 +330,4 @@ layout_mode = 1
 [connection signal="button_up" from="MarginContainer/HBoxContainer/RightSide/GridContainer/StressTestButton" to="." method="_on_stress_test_button_button_up"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/FullScreenButton" to="." method="_on_full_screen_button_pressed"]
+[connection signal="pressed" from="IntroductionOverlay/DismissIntroductionButton" to="." method="_on_dismiss_introduction_button_pressed"]

@@ -8,6 +8,8 @@ var _was_paused := true
 func _ready():
 	%FullScreenButton.disabled = OS.has_feature("IS_WEB")
 	%FullScreenButton.modulate = Color(1, 1, 1, 0) if OS.has_feature("IS_WEB") else Color(1, 1, 1, 1)
+	if GameStore.is_next_machine_unlocked:
+		%IntroductionOverlay.queue_free()
 
 
 func reset_pause_state():
@@ -51,3 +53,8 @@ func _on_full_screen_button_pressed():
 		%FullScreenButton.texture_pressed = load("res://art/menu/menu_button_nonfullscreen_pressed.png")
 		%FullScreenButton.texture_hover = load("res://art/menu/menu_button_nonfullscreen_hover.png")
 		%FullScreenButton.texture_disabled = load("res://art/menu/menu_button_nonfullscreen_disabled.png")
+
+
+func _on_dismiss_introduction_button_pressed():
+	Audio.play_menu_button_sound_next()
+	%IntroductionOverlay.queue_free()
