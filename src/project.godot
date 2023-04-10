@@ -25,6 +25,7 @@ Scoring="*res://game/core/scoring.gd"
 Audio="*res://audio.tscn"
 GameStore="*res://game/core/game_store.gd"
 OptionsStore="*res://menu/options_store.gd"
+SteamFacade="*res://steam/steam_facade.gd"
 
 [display]
 

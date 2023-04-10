@@ -5,6 +5,7 @@ signal continue_game_requested()
 signal menu_open_requested()
 signal level_changed(level: int)
 signal high_score_changed(to: int)
+signal number_of_medals_changed(medal_counts: Dictionary)
 signal next_level_unlocked()
 signal next_machine_unlocked()
 
@@ -106,6 +107,7 @@ func jump_to_level(level: int) -> void:
 func persist_progress() -> void:
 	if Scoring.is_enabled:
 		var score = Scoring.get_current_score()
+		var medal_count_original = _progress.medal_counts[_current_machine.key]["total"]
 		var was_next_machine_already_unlocked = is_next_machine_unlocked
 		for level_progress in _progress.stages:
 			if level_progress.level == _current_level:
@@ -125,11 +127,15 @@ func persist_progress() -> void:
 				
 				is_next_machine_unlocked = _progress.stages.all(func(x): return x.medals > 0)
 				
+				_progress.recalculate_medal_counts_for(_current_machine.key)
+				
 				_save_progress_for_user()
 				
 				# Emit signals as the last thing, and in the right order:
 				if was_new_high_score:
 					high_score_changed.emit(score)
+				if medal_count_original < _progress.medal_counts[_current_machine.key]["total"]:
+					number_of_medals_changed.emit(_progress.medal_counts[_current_machine.key])
 				if is_new_level_unlocked:
 					next_level_unlocked.emit()
 				if not was_next_machine_already_unlocked and is_next_machine_unlocked:

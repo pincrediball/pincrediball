@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 .VSCodeCounter/
+
+# For now, let's keep this nonpublic (but perhaps it's ok to publish later on)
+steam_appid.txt

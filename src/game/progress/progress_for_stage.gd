@@ -1,13 +1,15 @@
 class_name ProgressForStage
 extends Resource
 
+@export var machine_key: String
 @export var level: int
 @export var medals: int
 @export var high_score: int
 
 
 # Default value required for save/load
-func _init(_level: int = 0):
+func _init(_machine_key: String = "", _level: int = 0):
+	machine_key = _machine_key
 	level = _level
 
 
