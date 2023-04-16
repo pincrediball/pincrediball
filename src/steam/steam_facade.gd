@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 
 func _initialize_Steam():
 	var steam_init_result: Dictionary = Steam.steamInit(false)
-	if steam_init_result["status"] != STEAM_INIT_CODES.SUCCESS:
+	if steam_init_result["status"] == STEAM_INIT_CODES.SUCCESS:
 		_is_steam_available = true
 
 
